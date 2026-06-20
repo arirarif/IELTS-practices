@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS Reading — Practice Hub (11–20)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--panel:#fffefb;--panel2:#fbf5e9;--ink:#26241f;--muted:#7c7363;--line:#e6dcc6;
+ --primary:#0e7490;--primary-d:#0b5566;--primary-soft:#dcf0f3;--accent:#c2870b;--accent-soft:#fbf0d3;
+ --good:#157f3b;--good-bg:#e4f3e7;--hero1:#0e7490;--hero2:#0b4a59;--shadow:0 6px 22px rgba(40,30,10,.08)}
+html[data-theme="dark"]{--bg:#16191d;--panel:#1f242b;--panel2:#252b33;--ink:#e8e4da;--muted:#9aa1ab;--line:#323a44;
+ --primary:#38bdf8;--primary-d:#0ea5cf;--primary-soft:#0c3743;--accent:#ecb949;--accent-soft:#3a2f12;
+ --good:#56d07f;--good-bg:#12301d;--hero1:#0e7490;--hero2:#062e3a;--shadow:0 6px 22px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.bn{font-family:'Noto Sans Bengali','Nirmala UI','Inter',sans-serif;line-height:1.9}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px 80px}
+.hero{margin:26px 0 18px;padding:32px;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero .k{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.hero h1{font-size:28px;font-weight:800;margin:8px 0 8px}
+.hero p{opacity:.95;font-size:14px;max-width:680px}
+.topbar{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.topbar button{font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.step .num{width:26px;height:26px;border-radius:8px;background:var(--primary-soft);color:var(--primary-d);display:grid;place-items:center;font-weight:800;font-size:13px;margin-bottom:8px}
+html[data-theme="dark"] .step .num{color:var(--primary)}
+.step b{font-size:13.5px}.step p{font-size:12.5px;color:var(--muted);margin-top:3px}
+.note{background:var(--accent-soft);border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+h2{font-size:20px;margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+h2 .ic{color:var(--accent)}
+.books{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.book{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.book h3{font-size:16px;color:var(--primary-d);display:flex;align-items:center;justify-content:space-between}
+html[data-theme="dark"] .book h3{color:var(--primary)}
+.book .tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--panel2);color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.tests{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.tests a{font-size:13px;font-weight:600;text-decoration:none;padding:7px 13px;border-radius:9px;border:1px solid var(--line);color:var(--ink);background:var(--panel2);transition:.15s}
+.tests a:hover{border-color:var(--primary);color:var(--primary)}
+.tests a.ready{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.tests a.ready::before{content:"✓ "}
+.foot{margin-top:26px;font-size:12px;color:var(--muted);text-align:center}
+@media(max-width:760px){.steps{grid-template-columns:1fr 1fr}.books{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="k">Cambridge IELTS · Academic Reading</div>
+    <h1>Reading Practice Hub — Cam 11 → 20</h1>
+    <p class="bn">নিজের বই থেকে test দাও, তারপর এখানে এসে <b>Answers only</b> দিয়ে নিজের উত্তর মিলাও, আর <b>Full explanation</b> দিয়ে ভুলগুলোর কারণ বুঝে নাও।</p>
+    <div class="topbar"><button id="themeBtn">🌓 থিম</button></div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="num">1</div><b>📖 বই থেকে solve করো</b><p class="bn">নিজের Cambridge বই/PDF-এ passage পড়ে ২০ মিনিটে উত্তর লেখো।</p></div>
+    <div class="step"><div class="num">2</div><b>✅ Answers only</b><p class="bn">বোতাম চেপে answer key দেখো, কয়টা ভুল গুনে নাও।</p></div>
+    <div class="step"><div class="num">3</div><b>🧠 Full explanation</b><p class="bn">কেন ভুল হলো, paraphrase/trap কী — mentor ব্যাখ্যা পড়ো।</p></div>
+    <div class="step"><div class="num">4</div><b>📓 Error-log</b><p class="bn">ভুলের কোড (PP/NG/EX…) লিখে রাখো; weak point ধরো।</p></div>
+  </div>
+
+  <div class="note bn"><b>⚖️ কেন passage এখানে নেই:</b> Cambridge-এর passage/questions কপিরাইটেড — তাই হুবহু এখানে রাখা হয়নি। তুমি <b>বইয়ের মালিক</b>, তাই passage বই/PDF থেকে পড়বে; এই পেজগুলো তোমার <b>উত্তর-যাচাই + ব্যাখ্যা</b> দেয়। প্রতিটা test পেজে source link-ও আছে।</div>
+
+  <h2><span class="ic">📚</span> তোমার বইগুলো — Test বেছে নাও</h2>
+  <div class="books" id="books"></div>
+
+  <div class="foot bn">✓ সবুজ = explanation সহ তৈরি। বাকিগুলো তুমি বললে একই ফরম্যাটে বানিয়ে দেব।<br>Md. Ariful Islam · Band 7.0 target · পরীক্ষা ~28 আগস্ট 2026</div>
+</div>
+
+<script>
+// which test pages are fully built (answer key + explanation)
+const READY = {
+  "15-1":"Cam-15/Cam-15-Test-1.html",
+  "15-2":"Cam-15/Cam-15-Test-2.html",
+  "15-3":"Cam-15/Cam-15-Test-3.html",
+  "15-4":"Cam-15/Cam-15-Test-4.html",
+  "20-1":"Cam-20/Cam-20-Test-1.html",
+  "20-2":"Cam-20/Cam-20-Test-2.html",
+  "20-3":"Cam-20/Cam-20-Test-3.html",
+  "20-4":"Cam-20/Cam-20-Test-4.html"
+};
+const booksEl=document.getElementById('books');
+for(let b=11;b<=20;b++){
+  const div=document.createElement('div');div.className='book';
+  let tests='';
+  for(let t=1;t<=4;t++){
+    const key=b+'-'+t;
+    if(READY[key]) tests+=`<a class="ready" href="${READY[key]}">Test ${t}</a>`;
+    else tests+=`<a href="${'Cam-'+b}/" title="এখনো explanation বানানো হয়নি — বললে বানিয়ে দেব">Test ${t}</a>`;
+  }
+  const builtCount=[1,2,3,4].filter(t=>READY[b+'-'+t]).length;
+  div.innerHTML=`<h3>Cambridge IELTS ${b} <span class="tag">${builtCount}/4 ready</span></h3>
+    <div class="tests">${tests}</div>`;
+  booksEl.appendChild(div);
+}
+const root=document.documentElement;
+document.getElementById('themeBtn').onclick=()=>root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');
+</script>
+</body>
+</html>

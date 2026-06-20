@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Command Centre — Md. Ariful Islam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--panel:#fffefb;--panel2:#fbf5e9;--ink:#26241f;--muted:#7c7363;--line:#e6dcc6;--line2:#efe7d6;
+ --primary:#0e7490;--primary-d:#0b5566;--primary-soft:#dcf0f3;--accent:#c2870b;--accent-soft:#fbf0d3;
+ --good:#157f3b;--good-bg:#e4f3e7;--hero1:#0e7490;--hero2:#0b4a59;--shadow:0 6px 22px rgba(40,30,10,.08)}
+html[data-theme="dark"]{--bg:#16191d;--panel:#1f242b;--panel2:#252b33;--ink:#e8e4da;--muted:#9aa1ab;--line:#323a44;--line2:#2a313a;
+ --primary:#38bdf8;--primary-d:#0ea5cf;--primary-soft:#0c3743;--accent:#ecb949;--accent-soft:#3a2f12;
+ --good:#56d07f;--good-bg:#12301d;--hero1:#0e7490;--hero2:#062e3a;--shadow:0 6px 22px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.bn{font-family:'Noto Sans Bengali','Nirmala UI','Inter',sans-serif;line-height:1.9}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px 80px}
+.hero{margin:26px 0 8px;padding:30px 32px;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 70%)}
+.hero .k{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;opacity:.9}
+.hero h1{font-size:30px;font-weight:800;margin:8px 0 6px}
+.hero p{opacity:.95;font-size:14px;max-width:640px}
+.herostats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.hs{background:rgba(255,255,255,.16);backdrop-filter:blur(4px);border-radius:12px;padding:9px 15px;text-align:center}
+.hs b{display:block;font-size:22px;font-weight:800;line-height:1.1}
+.hs span{font-size:11px;opacity:.9}
+.topbar{position:absolute;top:18px;right:20px}
+.topbar button{font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:7px 11px;border-radius:8px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff}
+h2.sec{font-size:18px;margin:28px 0 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+h2.sec .ic{font-size:20px}
+h2.sec .bnsub{font-size:12px;color:var(--muted);font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px 18px;box-shadow:var(--shadow);transition:.16s;position:relative}
+.card:hover{transform:translateY(-2px);border-color:var(--primary);box-shadow:0 10px 26px rgba(40,30,10,.14)}
+.card .emoji{font-size:22px}
+.card h3{font-size:15px;margin:8px 0 3px;color:var(--primary-d)}
+html[data-theme="dark"] .card h3{color:var(--primary)}
+.card p{font-size:12.5px;color:var(--muted)}
+.card .badge{position:absolute;top:13px;right:13px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--good-bg);color:var(--good)}
+.card .badge.soon{background:var(--panel2);color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chips a{font-size:12px;font-weight:600;text-decoration:none;padding:6px 11px;border-radius:8px;border:1px solid var(--line);color:var(--ink);background:var(--panel2);transition:.15s}
+.chips a:hover{border-color:var(--primary);color:var(--primary)}
+.chips a.muted{color:var(--muted);opacity:.7}
+.note{background:var(--accent-soft);border:1px solid var(--line);border-radius:13px;padding:13px 16px;margin:16px 0;font-size:13px}
+.note code{background:var(--panel2);padding:1px 6px;border-radius:5px;border:1px solid var(--line2)}
+.foot{margin-top:30px;font-size:12px;color:var(--muted);text-align:center}
+@media (max-width:620px){
+  .wrap{padding:0 14px 60px}
+  .hero{padding:22px 18px;border-radius:16px}
+  .hero h1{font-size:23px}
+  .hero p{font-size:13px}
+  .topbar{position:static;margin-bottom:10px;text-align:right}
+  .herostats{gap:8px}
+  .hs{padding:8px 12px;flex:1;min-width:90px}
+  .hs b{font-size:19px}
+  .grid{grid-template-columns:1fr 1fr;gap:11px}
+  .card{padding:14px}
+  .card h3{font-size:14px}
+  h2.sec{font-size:16px}
+}
+@media (max-width:400px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="topbar"><button id="themeBtn">🌓 থিম</button></div>
+    <div class="k">IELTS Command Centre</div>
+    <h1>Md. Ariful Islam · Band 7.0</h1>
+    <p class="bn">তোমার সব IELTS রিসোর্স এক জায়গায়। নিচের যেকোনো কার্ডে ক্লিক করে সরাসরি চলে যাও।</p>
+    <div class="herostats">
+      <div class="hs"><b id="daysLeft">—</b><span>days to exam</span></div>
+      <div class="hs"><b id="clock">—</b><span>now</span></div>
+      <div class="hs"><b>28 Aug</b><span>2026 · target</span></div>
+    </div>
+  </div>
+
+  <!-- FOCUS -->
+  <h2 class="sec"><span class="ic">⏰</span> Focus Board <span class="bnsub">— রোজ এখান থেকে শুরু করো</span></h2>
+  <div class="grid">
+    <a class="card" href="exam-countdown.html"><div class="emoji">📅</div><h3>Exam Countdown</h3><p class="bn">লাইভ ঘড়ি, কত দিন বাকি, দিন-মার্কিং focus board।</p><span class="badge">live</span></a>
+    <a class="card" href="00_READ-ME-FIRST.md"><div class="emoji">🗺️</div><h3>Read Me First</h3><p class="bn">পুরো IELTS ফোল্ডারের ম্যাপ (text)।</p></a>
+  </div>
+
+  <!-- MENTORS -->
+  <h2 class="sec"><span class="ic">🎓</span> Mentors' Course <span class="bnsub">— কোচিং lecture breakdown (English + বাংলা)</span></h2>
+  <div class="grid">
+    <a class="card" href="01_MENTORS-COURSE/Lecture-01-Reading/Lecture-01-Reading.html"><div class="emoji">📘</div><h3>Lecture 1 · Reading</h3><p class="bn">৪ স্কিল + ৪ প্রশ্নের ধরন, সমাধান করা — visual।</p><span class="badge">ready</span></a>
+    <a class="card" href="01_MENTORS-COURSE/Lecture-01-Reading/README.md"><div class="emoji">📂</div><h3>Lecture 1 · Files</h3><p class="bn">text version + source (00–07 ফাইল)।</p></a>
+  </div>
+
+  <!-- CAMBRIDGE READING -->
+  <h2 class="sec"><span class="ic">📚</span> Cambridge Reading Tests <span class="bnsub">— solve · check · explain (Cam 11–20)</span></h2>
+  <div class="grid">
+    <a class="card" href="06_CAMBRIDGE-READING-TESTS/index.html"><div class="emoji">🏛️</div><h3>Reading Hub</h3><p class="bn">সব বই ও টেস্টের হোম পেজ। এখান থেকে বেছে নাও।</p><span class="badge">hub</span></a>
+  </div>
+  <div class="chips" style="margin-top:12px">
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-15/Cam-15-Test-1.html">Cam-15 · T1</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-15/Cam-15-Test-2.html">T2</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-15/Cam-15-Test-3.html">T3</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-15/Cam-15-Test-4.html">T4</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-20/Cam-20-Test-1.html">Cam-20 · T1</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-20/Cam-20-Test-2.html">T2</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-20/Cam-20-Test-3.html">T3</a>
+    <a href="06_CAMBRIDGE-READING-TESTS/Cam-20/Cam-20-Test-4.html">T4</a>
+    <a class="muted" href="06_CAMBRIDGE-READING-TESTS/index.html">Cam 11–14, 16–19 → বললে বানাবো</a>
+  </div>
+
+  <!-- READING PRACTICE -->
+  <h2 class="sec"><span class="ic">📖</span> Reading Practice <span class="bnsub">— কৌশল ও error-log</span></h2>
+  <div class="grid">
+    <a class="card" href="02_READING-PRACTICE/00-MASTER-READING-APPROACH.md"><div class="emoji">🧭</div><h3>Master Approach</h3><p class="bn">প্রতিটা passage কীভাবে ধরবে — ৪ ধাপ।</p></a>
+    <a class="card" href="02_READING-PRACTICE/ERROR-LOG.md"><div class="emoji">📓</div><h3>Error Log</h3><p class="bn">ভুলের কোড লেখো → weak point ধরো।</p></a>
+    <a class="card" href="02_READING-PRACTICE/01-Australian-Politics-SummaryWordBox.md"><div class="emoji">✍️</div><h3>Australian Politics</h3><p class="bn">Summary-word-box সমাধান + vocab।</p></a>
+  </div>
+
+  <!-- STUDY PLAN (skills) -->
+  <h2 class="sec"><span class="ic">🎯</span> Study Plan &amp; Skills <span class="bnsub">— Reading · Writing · Listening · Speaking</span></h2>
+  <div class="grid">
+    <a class="card" href="03_STUDY-PLAN/site/index.html"><div class="emoji">📋</div><h3>8-Week Plan (site)</h3><p class="bn">পুরো Band-7 পরিকল্পনা — সাজানো পেজ।</p><span class="badge">site</span></a>
+    <a class="card" href="03_STUDY-PLAN/site/reading.html"><div class="emoji">📗</div><h3>Reading Playbook</h3><p class="bn">কৌশল + কোন বই কতটা।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/writing.html"><div class="emoji">🖊️</div><h3>Writing Playbook</h3><p class="bn">Task 1 &amp; 2, 6.5→7 move।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/listening.html"><div class="emoji">🎧</div><h3>Listening Playbook</h3><p class="bn">section কৌশল।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/speaking.html"><div class="emoji">🗣️</div><h3>Speaking Playbook</h3><p class="bn">fluency + L1 উচ্চারণ।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/calendar.html"><div class="emoji">🗓️</div><h3>8-Week Calendar</h3><p class="bn">সপ্তাহভিত্তিক রুটিন।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/strategy.html"><div class="emoji">♟️</div><h3>Strategy</h3><p class="bn">কোথায় নম্বর তুলবে।</p></a>
+    <a class="card" href="03_STUDY-PLAN/site/library.html"><div class="emoji">📚</div><h3>Your Library</h3><p class="bn">কোন বই, কী বাদ।</p></a>
+  </div>
+
+  <!-- REFERENCE -->
+  <h2 class="sec"><span class="ic">🗃️</span> Reference <span class="bnsub">— বই, পুরোনো ডকস, অ্যাপ</span></h2>
+  <div class="grid">
+    <a class="card" href="05_BOOKS/"><div class="emoji">📕</div><h3>Books Library</h3><p class="bn">তোমার শারীরিক বইয়ের ছবি/ক্যাটালগ।</p></a>
+    <a class="card" href="04_PLANNING-DOCS/"><div class="emoji">🗂️</div><h3>Planning Docs</h3><p class="bn">পুরোনো ব্লুপ্রিন্ট (00–09)।</p></a>
+    <a class="card" href="http://localhost:3003" target="_blank"><div class="emoji">🖥️</div><h3>IELTS Coach (web app)</h3><p class="bn">localhost:3003 — backend চালু থাকলে খুলবে।</p><span class="badge soon">app</span></a>
+  </div>
+
+  <div class="note bn"><b>টিপ:</b> <code>.md</code> কার্ডগুলো text হিসেবে খুলবে (নোট/চেকলিস্ট)। <code>.html</code> কার্ডগুলো সুন্দরভাবে সাজানো পেজ। এই পেজটা bookmark করে রাখো — তোমার IELTS-এর হোম।</div>
+
+  <div class="foot bn">IELTS Command Centre · সর্বশেষ আপডেট 2026-06-20 · নতুন রিসোর্স যোগ হলে এখানেই লিংক আসবে।</div>
+</div>
+
+<script>
+const root=document.documentElement;
+document.getElementById('themeBtn').onclick=()=>root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');
+const EXAM=new Date(2026,7,28,9,0,0); // 28 Aug 2026
+function tick(){
+  const now=new Date();
+  const ms=EXAM-now; const days=Math.max(0,Math.ceil(ms/86400000));
+  document.getElementById('daysLeft').textContent=days;
+  let h=now.getHours(); const m=now.getMinutes().toString().padStart(2,'0');
+  const ap=h>=12?'PM':'AM'; let h12=h%12; if(h12===0)h12=12;
+  document.getElementById('clock').textContent=h12+':'+m+' '+ap;
+}
+tick(); setInterval(tick,20000);
+</script>
+</body>
+</html>

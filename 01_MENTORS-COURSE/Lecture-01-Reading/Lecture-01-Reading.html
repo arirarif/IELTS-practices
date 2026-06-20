@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentors' Reading · Lecture 1 — Md. Ariful Islam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7; --bg2:#efe7d6; --panel:#fffefb; --panel2:#fbf5e9;
+  --ink:#26241f; --muted:#7c7363; --line:#e6dcc6; --line2:#efe7d6;
+  --primary:#0e7490; --primary-d:#0b5566; --primary-soft:#dcf0f3;
+  --accent:#c2870b; --accent-soft:#fbf0d3;
+  --good:#157f3b; --good-bg:#e4f3e7; --good-line:#bfe3c7;
+  --bad:#c0392b; --bad-bg:#fbe7e3; --bad-line:#f1c7bf;
+  --warn:#9c6a06; --warn-bg:#fcf2d8; --warn-line:#ecd9a6;
+  --hero1:#0e7490; --hero2:#0b4a59; --shadow:0 6px 22px rgba(40,30,10,.08);
+}
+html[data-theme="dark"]{
+  --bg:#16191d; --bg2:#1c2026; --panel:#1f242b; --panel2:#252b33;
+  --ink:#e8e4da; --muted:#9aa1ab; --line:#323a44; --line2:#2a313a;
+  --primary:#38bdf8; --primary-d:#0ea5cf; --primary-soft:#0c3743;
+  --accent:#ecb949; --accent-soft:#3a2f12;
+  --good:#56d07f; --good-bg:#12301d; --good-line:#1e4a30;
+  --bad:#f08a7c; --bad-bg:#3a1d18; --bad-line:#5a2a22;
+  --warn:#e7c061; --warn-bg:#352b12; --warn-line:#4d3f1c;
+  --hero1:#0e7490; --hero2:#062e3a; --shadow:0 6px 22px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.bn,[lang="bn"]{font-family:'Noto Sans Bengali','Nirmala UI','Inter',sans-serif;line-height:1.95}
+
+/* progress + layout */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:100;transition:width .1s}
+.shell{display:flex;min-height:100vh}
+
+/* sidebar */
+.sidebar{
+  width:268px;flex:0 0 268px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:var(--panel);border-right:1px solid var(--line);padding:22px 16px;
+}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.brand .logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;font-weight:800;font-size:18px}
+.brand b{font-size:15px;letter-spacing:.2px}
+.brand small{display:block;color:var(--muted);font-size:11.5px;font-weight:500}
+.side-meta{font-size:11.5px;color:var(--muted);margin:8px 2px 16px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:9px;color:var(--ink);
+  text-decoration:none;font-size:13.5px;font-weight:500;margin-bottom:3px;transition:.15s;border:1px solid transparent}
+.nav a .ic{width:22px;text-align:center;font-size:15px;opacity:.9}
+.nav a:hover{background:var(--panel2)}
+.nav a.active{background:var(--primary-soft);color:var(--primary-d);font-weight:700;border-color:var(--line)}
+html[data-theme="dark"] .nav a.active{color:var(--primary)}
+.side-foot{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:11px;color:var(--muted)}
+.toolbar{display:flex;gap:8px;margin-top:14px}
+.toolbar button{flex:1;font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:8px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel2);color:var(--ink);transition:.15s}
+.toolbar button:hover{border-color:var(--primary);color:var(--primary)}
+
+/* main */
+.main{flex:1;min-width:0;max-width:920px;margin:0 auto;padding:0 30px 90px}
+.hero{margin:30px 0 8px;padding:34px 32px;border-radius:20px;color:#fff;
+  background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero .kicker{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.hero h1{font-size:30px;font-weight:800;margin:8px 0 10px;line-height:1.2}
+.hero p{opacity:.95;font-size:14.5px;max-width:620px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.hero .pill{background:rgba(255,255,255,.16);backdrop-filter:blur(4px);padding:6px 12px;border-radius:20px;font-size:12.5px;font-weight:600}
+
+section{padding-top:34px;scroll-margin-top:14px}
+.eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:1px;text-transform:uppercase}
+h2.sec{font-size:23px;font-weight:800;margin:6px 0 16px;display:flex;align-items:center;gap:10px}
+h2.sec .n{color:var(--primary);font-size:15px;background:var(--primary-soft);width:30px;height:30px;border-radius:9px;display:grid;place-items:center}
+h3{font-size:17px;font-weight:700;margin:22px 0 10px;color:var(--primary-d)}
+html[data-theme="dark"] h3{color:var(--primary)}
+p{margin:9px 0}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}
+.grid.c2{grid-template-columns:1fr 1fr}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.mini{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.mini .big{font-size:24px;font-weight:800;color:var(--primary)}
+.mini .lab{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px}
+
+/* callouts */
+.callout{border-radius:13px;padding:14px 16px;margin:14px 0;border:1px solid;font-size:14px}
+.callout .ct{font-weight:700;display:block;margin-bottom:4px}
+.callout.tip{background:var(--accent-soft);border-color:var(--warn-line);color:var(--ink)}
+.callout.good{background:var(--good-bg);border-color:var(--good-line)}
+.callout.bad{background:var(--bad-bg);border-color:var(--bad-line)}
+.callout.info{background:var(--primary-soft);border-color:var(--line);}
+
+/* passage panel */
+.passage{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14px}
+.passage .plabel{font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.passage p{margin:8px 0}
+.passage em{background:rgba(194,135,11,.16);font-style:normal;padding:0 3px;border-radius:3px}
+mark{background:rgba(14,116,144,.16);color:inherit;padding:0 3px;border-radius:3px;font-weight:600}
+
+/* questions */
+.q{margin:12px 0;padding:13px 16px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+.q .qh{font-weight:700;font-size:14px}
+.q ol.opts{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:5px}
+.q ol.opts li{font-size:13.5px;padding:5px 10px;border-radius:7px;background:var(--panel2);border:1px solid var(--line2)}
+.q ol.opts li b{color:var(--primary)}
+
+/* reveal */
+details.reveal{margin:8px 0 4px;border:1px solid var(--good-line);border-radius:11px;overflow:hidden;background:var(--good-bg)}
+details.reveal>summary{cursor:pointer;list-style:none;padding:10px 15px;font-weight:700;font-size:13.5px;color:var(--good);
+  display:flex;align-items:center;gap:8px;user-select:none}
+details.reveal>summary::-webkit-details-marker{display:none}
+details.reveal>summary::before{content:"👁";}
+details.reveal[open]>summary::before{content:"✓";}
+details.reveal[open]>summary{border-bottom:1px solid var(--good-line)}
+.reveal .body{padding:6px 16px 14px;font-size:13.5px;color:var(--ink)}
+.ans{display:inline-block;background:var(--good);color:#fff;font-weight:700;padding:1px 9px;border-radius:6px;font-size:13px}
+.trap{color:var(--bad);font-weight:600}
+
+/* tables */
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:var(--panel2);font-weight:700;color:var(--primary-d);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+html[data-theme="dark"] th{color:var(--primary)}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+
+/* chips for hooks */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.chip{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid}
+.chip.neg{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}
+.chip.link{background:var(--primary-soft);border-color:var(--line);color:var(--primary-d)}
+.chip.key{background:var(--accent-soft);border-color:var(--warn-line);color:var(--warn)}
+html[data-theme="dark"] .chip.link{color:var(--primary)}
+
+ul.clean{margin:8px 0 8px 4px;padding-left:18px}
+ul.clean li{margin:5px 0;font-size:14px}
+
+/* answer key grid */
+.akrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 14px}
+.ak{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:13px;font-weight:600}
+.ak b{color:var(--good)}
+
+.totop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--primary);color:#fff;font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.totop.show{opacity:1;pointer-events:auto}
+.mobnav{display:none}
+
+@media(max-width:880px){
+  .sidebar{display:none}
+  .main{padding:0 16px 80px}
+  .grid.c2,.grid.c3{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  .mobnav{display:flex;position:sticky;top:0;z-index:40;background:var(--panel);border-bottom:1px solid var(--line);
+    padding:10px 14px;align-items:center;justify-content:space-between;gap:10px}
+  .mobnav select{flex:1;font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+  .mobnav button{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:inherit;cursor:pointer}
+}
+@media print{.sidebar,.totop,.mobnav,.toolbar{display:none}.main{max-width:100%}details.reveal{open:true}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="mobnav">
+  <select id="mobsel"></select>
+  <button id="mobtheme">🌓</button>
+</div>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">M</span>
+      <div><b>Reading · Lecture 1</b><small>MENTORS' CRASH Course</small></div>
+    </div>
+    <div class="side-meta bn">Md. Ariful Islam · Batch 005 · 17 জুন 2026<br>লক্ষ্য: Band 7.0 · পরীক্ষা ~28 আগস্ট 2026</div>
+    <nav class="nav" id="nav">
+      <a href="#overview"><span class="ic">🏁</span> ওভারভিউ</a>
+      <a href="#fundamentals"><span class="ic">🧭</span> টেস্টের গঠন ও ৪ স্কিল</a>
+      <a href="#mcq"><span class="ic">🅰️</span> Type 1 · MCQ</a>
+      <a href="#short"><span class="ic">🅱️</span> Type 2 · Short Answer</a>
+      <a href="#summary"><span class="ic">🅲</span> Type 3 · Summary</a>
+      <a href="#sentence"><span class="ic">🅳</span> Type 4 · Sentence</a>
+      <a href="#hooks"><span class="ic">🪝</span> Focus Hooks ও ভুল</a>
+      <a href="#answers"><span class="ic">✅</span> Answer Key</a>
+    </nav>
+    <div class="toolbar">
+      <button id="revealAll">সব উত্তর খোলো</button>
+      <button id="themeBtn">🌓 থিম</button>
+    </div>
+    <div class="side-foot bn">English = পরীক্ষায় যা থাকবে।<br>বাংলা = কীভাবে করবে।<br>পাশাপাশি পড়ো।</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="hero">
+      <div class="kicker">Mentors' IELTS · Reading</div>
+      <h1>Reading Lecture-1 — Visual Study Guide</h1>
+      <p class="bn">কোচিং-এর পুরো lecture sheet এখানে সাজানো: টেস্টের গঠন, ৪টি core skill, আর ৪ ধরনের প্রশ্ন — প্রতিটা practice passage সমাধান করা, ব্যাখ্যা বাংলায়।</p>
+      <div class="pills">
+        <span class="pill">3 passages · 40 Q · 60 min</span>
+        <span class="pill">4 question types</span>
+        <span class="pill">English + বাংলা</span>
+        <span class="pill">Self-test reveals</span>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <p class="eyebrow">Start here</p>
+      <h2 class="sec"><span class="n">i</span> ওভারভিউ — এক নজরে</h2>
+      <div class="grid c3">
+        <div class="mini"><div class="big">3</div><div class="lab bn">Passage (~20 min করে)</div></div>
+        <div class="mini"><div class="big">40</div><div class="lab bn">প্রশ্ন = 40 মার্ক</div></div>
+        <div class="mini"><div class="big">60</div><div class="lab bn">মিনিট (transfer time নেই)</div></div>
+      </div>
+      <div class="callout info bn"><span class="ct">🎯 এই lecture-এর এক-লাইন শিক্ষা</span>
+        Reading = বোঝার পরীক্ষা নয়, <b>খোঁজার পরীক্ষা</b>। Skim করে map বানাও → keyword scan করো → শুধু উত্তরের জায়গা ধীরে পড়ো → paraphrase ও trap মিলিয়ে উত্তর দাও → word-limit মানো।</div>
+      <div class="card">
+        <h3>এই গাইডে কী আছে</h3>
+        <ul class="clean bn">
+          <li><b>টেস্টের গঠন ও ৪ স্কিল</b> — skim / scan / interpret / vocabulary।</li>
+          <li><b>Type 1 MCQ</b> — "Sky's the limit" (airlines) সমাধান।</li>
+          <li><b>Type 2 Short Answer</b> — "Classic style" (car fins) সমাধান।</li>
+          <li><b>Type 3 Summary</b> — "Australian Politics" (word box) + "Perfect Tomato" (no box)।</li>
+          <li><b>Type 4 Sentence Completion</b> — "Events in City Libraries"।</li>
+          <li><b>🪝 Focus Hooks</b> — যে signal-word-এ চোখ আটকাবে + তোমার common ৮ ভুল।</li>
+        </ul>
+        <div class="callout tip bn" style="margin-bottom:0"><span class="ct">কীভাবে ব্যবহার করবে</span> প্রতিটা প্রশ্নে আগে <b>নিজে উত্তর করো</b>, তারপর সবুজ "উত্তর ও ব্যাখ্যা দেখাও" বক্সে ক্লিক করে মেলাও। ভুলগুলো <b>ERROR-LOG</b>-এ কোড দিয়ে লিখে রাখো।</div>
+      </div>
+    </section>
+
+    <!-- FUNDAMENTALS -->
+    <section id="fundamentals">
+      <p class="eyebrow">Foundation</p>
+      <h2 class="sec"><span class="n">1</span> টেস্টের গঠন ও ৪টি Core Skill</h2>
+
+      <h3>Three speeds of reading — কখন কোন গতিতে</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Type</th><th>Speed</th><th>Comprehension</th><th class="bn">কখন</th></tr></thead>
+        <tbody>
+          <tr><td><b>Study Reading</b></td><td>200–300 wpm</td><td>80–90%</td><td class="bn">শুধু যে ২–৩ লাইনে উত্তর আছে</td></tr>
+          <tr><td><b>Average Reading</b></td><td>250–300 wpm</td><td>~70%</td><td class="bn">প্রশ্ন বোঝা, option পড়া</td></tr>
+          <tr><td><b>Skimming</b></td><td>~800 wpm</td><td>~50%</td><td class="bn">পুরো passage-এর map বানাতে</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout tip bn" style="margin-top:6px"><span class="ct">মূল কথা</span> ৯০% সময় <b>skim</b> করবে, ১০% সময় (যেখানে উত্তর) <b>study</b> করবে। এটাই গতি আর নম্বরের আসল খেলা।</div>
+
+      <h3>The 4 Core Skills ❤️</h3>
+      <div class="grid c2">
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">1 · Previewing / Skimming</b> <span style="color:var(--muted);font-size:12px">(২ মিনিট)</span>
+          <p class="bn" style="font-size:13.5px">Title → প্রতি paragraph-এর প্রথম বাক্য → মনে মনে <b>map</b> ("Para A=সমস্যা, B=কারণ, C=সমাধান")। Bold/নাম/সংখ্যা গোল করে রাখো। প্রতিটা শব্দ বুঝতে যেও না।</p>
+        </div>
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">2 · Interpreting questions</b> <span style="color:var(--muted);font-size:12px">(২ মিনিট)</span>
+          <p class="bn" style="font-size:13.5px">নিজেকে জিজ্ঞেস করো: উত্তরের <b>জাত</b> কী (সংখ্যা/নাম/তারিখ)? <b>Word-limit</b> কত? প্রতিটা প্রশ্নের <b>keyword</b> underline করো।</p>
+        </div>
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">3 · Scanning</b> <span style="color:var(--muted);font-size:12px">(~১ মিনিট/প্রশ্ন)</span>
+          <p class="bn" style="font-size:13.5px">চোখ দিয়ে শুধু <b>keyword খোঁজা</b> (ভিড়ে চেনা মুখ খোঁজার মতো)। পেলে থামো, ওই ২–৩ লাইন ধীরে পড়ো। উত্তর প্রায়ই <b>paraphrase</b> করা — synonym খোঁজো।</p>
+        </div>
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">4 · Unfamiliar vocabulary</b>
+          <p class="bn" style="font-size:13.5px">অচেনা শব্দে থেমো না — context, definition-signal (is/means), form (noun/verb), connective, syllable ভাঙা দিয়ে আন্দাজ করো। একটা শব্দ না বুঝলেও চলবে।</p>
+        </div>
+      </div>
+
+      <h3>5 Vocabulary techniques</h3>
+      <div class="tw"><table>
+        <thead><tr><th>#</th><th>Technique</th><th class="bn">ব্যাখ্যা + উদাহরণ</th></tr></thead>
+        <tbody>
+          <tr><td>T1</td><td><b>Check the context</b></td><td class="bn">আগের-পরের শব্দ দেখে অর্থ আন্দাজ</td></tr>
+          <tr><td>T2</td><td><b>Look for a definition</b></td><td class="bn"><i>is / means / refers to / that is</i> থাকলে পরেই অর্থ। "Snoring <b>is</b> a Noise"</td></tr>
+          <tr><td>T3</td><td><b>Word's form & purpose</b></td><td class="bn">Noun? Verb? Adjective? Adverb?</td></tr>
+          <tr><td>T4</td><td><b>Connective words</b></td><td class="bn"><i>but, because, however, so</i> — সম্পর্ক বোঝায়</td></tr>
+          <tr><td>T5</td><td><b>Break into syllables</b></td><td class="bn">Root + Prefix + Suffix. <i>un-stopp-able</i></td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout good bn"><span class="ct">🥇 Mentor's golden order (প্রতি passage-এ)</span>
+        1) Skim ২ মিনিট → map · 2) প্রশ্ন পড়ো, keyword + word-limit গোল করো · 3) Scan → জায়গা খোঁজো · 4) ধীরে পড়ো, paraphrase/trap মেলাও · 5) কঠিন প্রশ্ন <b>flag → guess → পরে ফেরো</b>। কখনো blank নয়।</div>
+    </section>
+
+    <!-- MCQ -->
+    <section id="mcq">
+      <p class="eyebrow">Question Type 1</p>
+      <h2 class="sec"><span class="n">A</span> Multiple Choice Questions</h2>
+      <div class="callout info bn"><span class="ct">পদ্ধতি (৬ ধাপ)</span> stem আগে পড়ো → passage-এ locate করো → নিজের ভাষায় উত্তর ভাবো → তারপর options পড়ো → ভুল ৩টা eliminate করো (এগুলোতে আসল শব্দ থাকে, অর্থ বদলানো) → একটাই mark করো।</div>
+      <p class="bn"><b>৪ ধরনের ফাঁদ:</b> <span class="trap">Word-match</span> (হুবহু শব্দ, ভুল অর্থ) · <span class="trap">Extreme</span> (all/never) · <span class="trap">Half-right</span> · <span class="trap">Outside-knowledge</span> (সত্য কিন্তু passage-এ নেই)।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Passage · "Sky's the limit"</div>
+        <p>Airlines are making money again, but they are also making their growing numbers of passengers miserable. Civil aviation is a tale of two contrasting trends: strong growth in sales and profits… on the other side of the coin, increasing misery and dissatisfaction for travelers.</p>
+        <p>For an industry that collectively lost $15 billion in the early 1990s… new profits rose from $4.5 billion in 1995, when the boom began, to $8.5 billion two years later. <em>However, the airlines are having to work harder and harder for them.</em> Revenue per seat is declining by 2% per year.</p>
+        <p>Consumer dissatisfaction has reached a new peak. <em>Hollywood has even started making movies that incorporate the frustrations of air travel.</em> Moreover, airlines are attacked by environmentalists for <em>contributing to global warming</em>… Although jet engines today are <em>much quieter</em> than ten years ago, the huge rise in the number of flights makes the problem worse.</p>
+        <p>To cap it all, consumer groups are attacking airlines for squashing in too many people. Sitting still for long periods <em>can cause blood clots</em>. Why is the industry failing? One answer is that it has been growing too fast.</p>
+      </div>
+
+      <div class="q"><div class="qh">Q1. What claim is the writer making in the first paragraph?</div>
+        <ol class="opts"><li><b>a)</b> people dislike the high profits airlines make</li><li><b>b)</b> America/Europe have the most profitable routes</li><li><b>c)</b> there are positive and negative developments in air travel</li><li><b>d)</b> there are two approaches to analyzing concerns</li></ol>
+      </div>
+      <div class="q"><div class="qh">Q2. According to the writer, the profits airlines make—</div>
+        <ol class="opts"><li><b>a)</b> have consistently grown</li><li><b>b)</b> fell to their lowest in 1995</li><li><b>c)</b> cost the consumer more than in 1995</li><li><b>d)</b> are proving increasingly hard to maintain</li></ol>
+      </div>
+      <div class="q"><div class="qh">Q3. The writer refers to Hollywood movies in order to illustrate—</div>
+        <ol class="opts"><li><b>a)</b> overwhelming importance of air travel</li><li><b>b)</b> extent of public frustration with air travel</li><li><b>c)</b> growth in public involvement</li><li><b>d)</b> current financial investment</li></ol>
+      </div>
+      <div class="q"><div class="qh">Q4. Which THREE issues are mentioned by the writer?</div>
+        <ol class="opts"><li><b>a)</b> size of modern airports</li><li><b>b)</b> worldwide polluting effects of fuel emissions</li><li><b>c)</b> engines are noisier than they used to be</li><li><b>d)</b> the increasing volume of air traffic</li><li><b>e)</b> the dangers to passenger health</li><li><b>f)</b> the size of airplane seats</li></ol>
+      </div>
+      <div class="q"><div class="qh">Q5. In the sixth paragraph, the writer is—</div>
+        <ol class="opts"><li><b>a)</b> making excuses for the airline industry</li><li><b>b)</b> suggesting reasons for the problems</li><li><b>c)</b> supporting an earlier argument</li><li><b>d)</b> outlining solutions</li></ol>
+      </div>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <p><b>Q1 → <span class="ans">C</span></b> <span class="bn">— "two contrasting trends": profit (ভালো) + misery (খারাপ)। <span class="trap">d ফাঁদ</span>: "two approaches" নয়, "two trends"। approach ≠ trend।</span></p>
+        <p><b>Q2 → <span class="ans">D</span></b> <span class="bn">— "However… working harder and harder", revenue কমছে → ধরে রাখা কঠিন। <span class="trap">1995</span> = boom শুরু, পতন নয়; consumer <b>কম</b> দিচ্ছে।</span></p>
+        <p><b>Q3 → <span class="ans">B</span></b> <span class="bn">— Hollywood সিনেমা = মানুষের হতাশা কতটা ছড়িয়েছে তার উদাহরণ।</span></p>
+        <p><b>Q4 → <span class="ans">B, D, E</span></b> <span class="bn">— global warming (B) · huge rise in flights (D) · blood clots = health (E)। <span class="trap">C উল্টো-ফাঁদ</span>: engines "quieter", noisier নয়।</span></p>
+        <p><b>Q5 → <span class="ans">C</span></b> <span class="bn">— "To cap it all" = অভিযোগের লিস্টে আরেকটা যোগ → আগের argument সমর্থন। কারণ-ব্যাখ্যা পরের para-তে।</span></p>
+      </div></details>
+    </section>
+
+    <!-- SHORT ANSWER -->
+    <section id="short">
+      <p class="eyebrow">Question Type 2</p>
+      <h2 class="sec"><span class="n">B</span> Short Answer Questions</h2>
+      <div class="callout info bn"><span class="ct">পদ্ধতি</span> Word-limit গোল করো (যেমন <b>NO MORE THAN TWO WORDS</b>) → question word (What/Which/When) থেকে উত্তরের জাত ধরো → keyword scan করো (প্রশ্ন passage-এর ক্রমে) → passage থেকে <b>হুবহু</b> তোলো, বানান ঠিক রাখো।</div>
+
+      <div class="passage">
+        <div class="plabel">📖 Passage · "Classic style" (car tail-fins)</div>
+        <p>It started in 1947 when Harley Earl of General Motors developed the notion of attaching fins to cars. Earl had been inspired by the twin tail fins he had seen on the <em>Lightning fighter planes</em> used during the war. In the 1950s, <em>a race began</em> between American manufacturers to produce the most extreme fins.</p>
+        <p>In the 1950s and 60s the American people were filled with a sense of <em>national optimism</em>… General Motors' <em>Firebird III</em> had no fewer than nine fins – still a world record. By the 1980s, society worried about petrol consumption and safety; the Federal Government passed a number of <em>new laws</em> that transformed the industry. In 1998, Chinese researchers found a fossil of a species they named the <em>abnormal shrimp</em>, which had fins on its tail.</p>
+      </div>
+      <p class="bn" style="font-size:13.5px"><b>Instruction:</b> NO MORE THAN TWO WORDS AND/OR A NUMBER.</p>
+      <ol class="clean" style="font-size:14px">
+        <li>In 1947, Cadillac cars copied the fins on what type of transport?</li>
+        <li>What did car companies take part in during the 1950s?</li>
+        <li>What feeling in America did car makers exploit in the 1950s/60s?</li>
+        <li>Which model of car had the most fins ever?</li>
+        <li>In the 1980s, what was introduced to make motoring more expensive?</li>
+        <li>According to Chinese research in 1998, what creature once had fins?</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 · <b>fighter planes</b></span><span class="ak">2 · <b>(a) race</b></span><span class="ak">3 · <b>national optimism</b></span>
+          <span class="ak">4 · <b>Firebird III</b></span><span class="ak">5 · <b>new laws</b></span><span class="ak">6 · <b>abnormal shrimp</b></span>
+        </div>
+        <p class="bn"><span class="trap">⚠️ ফাঁদ:</span> "Lightning fighter planes" লিখলে ৩ শব্দ = limit ভাঙা → শুধু <b>fighter planes</b>। বানান হুবহু কপি করো (abnormal, Firebird)।</p>
+      </div></details>
+    </section>
+
+    <!-- SUMMARY -->
+    <section id="summary">
+      <p class="eyebrow">Question Type 3</p>
+      <h2 class="sec"><span class="n">C</span> Summary Completion</h2>
+      <p class="bn">দুই রূপ: <b>(A) word box সহ</b> — grammar দিয়ে box ভাগ করো, synonym বাছো। <b>(B) box ছাড়া</b> — passage থেকে হুবহু শব্দ। দুটোতেই summary = passage-এর <b>paraphrase</b>, উত্তর <b>ক্রমে</b> আসে।</p>
+
+      <h3>🅐 With word box — "Australian Politics"</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (excerpt)</div>
+        <p>The Australian political scene is <em>dominated by</em> two major parties… in <em>recent years</em> become much more difficult to tell apart… an Australian will <em>remain faithful</em> to that party <em>for life</em>. The Labor Party… give the <em>trade unions</em> political representation… supports a <em>welfare society</em>. The Liberal Party, on the other hand, argues the best way is to allow more <em>freedom</em> to create wealth. Voters are increasingly turning their <em>attention</em> to smaller parties, based on one <em>major</em> current issue.</p>
+      </div>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Gap</th><th>Grammar</th><th>Passage</th><th>উত্তর</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>verb</td><td>dominated by</td><td><span class="ans">influence</span></td></tr>
+            <tr><td>2</td><td>adverb</td><td>in recent years</td><td><span class="ans">recently</span></td></tr>
+            <tr><td>3</td><td>adjective</td><td>faithful for life</td><td><span class="ans">devoted</span></td></tr>
+            <tr><td>4</td><td>name</td><td>Labor Party</td><td><span class="ans">Labor</span></td></tr>
+            <tr><td>5</td><td>noun</td><td>trade unions</td><td><span class="ans">trade unions</span></td></tr>
+            <tr><td>6</td><td>noun</td><td>welfare society</td><td><span class="ans">community</span></td></tr>
+            <tr><td>7</td><td>name</td><td>Liberal Party</td><td><span class="ans">Liberal</span></td></tr>
+            <tr><td>8</td><td>noun</td><td>freedom</td><td><span class="ans">liberty</span></td></tr>
+            <tr><td>9</td><td>noun</td><td>attention</td><td><span class="ans">attention</span></td></tr>
+            <tr><td>10</td><td>adjective</td><td>major issue</td><td><span class="ans">key</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️</span> box-এ passage-এর দেখা শব্দ (welfare, voters, policies) থাকলেও সেটা প্রায়ই <b>decoy</b> — synonym বাছো (society→community)।</p>
+      </div></details>
+
+      <h3>🅑 Without box — "In pursuit of the perfect Tomato"</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (excerpt)</div>
+        <p>The tomato symbolizes what has been lost in terms of taste and <em>texture</em>… growers are paid for yield and extended <em>shelf life</em>. Klee's answer starts with the <em>consumer</em> and what they want. His research started with <em>heritage</em> tomatoes. Volatiles contribute to the enticing <em>smell</em>; others such as <em>geranial</em>, regarded as marginal, were actually important. They bred a tomato — 'People love the taste of this <em>hybrid</em>.' Although he developed <em>GM</em> crops until 1995, he sees no role for GM here.</p>
+      </div>
+      <p class="bn" style="font-size:13.5px"><b>Instruction:</b> NO MORE THAN TWO WORDS AND/OR A NUMBER.</p>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 · <b>texture</b></span><span class="ak">2 · <b>shelf life</b></span><span class="ak">3 · <b>consumer</b></span><span class="ak">4 · <b>heritage</b></span>
+          <span class="ak">5 · <b>smell</b></span><span class="ak">6 · <b>geranial</b></span><span class="ak">7 · <b>hybrid</b></span><span class="ak">8 · <b>GM</b></span>
+        </div>
+        <p class="bn"><span class="trap">⚠️</span> "cis-3-hexanal" passage-এ আছে কিন্তু সেটা important <b>ছিল না</b> (decoy)। technical নাম <b>geranial</b> হুবহু কপি করো।</p>
+      </div></details>
+    </section>
+
+    <!-- SENTENCE -->
+    <section id="sentence">
+      <p class="eyebrow">Question Type 4</p>
+      <h2 class="sec"><span class="n">D</span> Sentence Completion</h2>
+      <div class="callout info bn"><span class="ct">পদ্ধতি</span> Word-limit গোল করো → অসম্পূর্ণ বাক্য পুরো পড়ো, কোন জাতের শব্দ লাগবে বুঝো → keyword scan → grammar মিলিয়ে বসাও (form ঠিক করো) → বসিয়ে বাক্য পড়ো, "শুনতে ঠিক?"।</div>
+      <div class="passage">
+        <div class="plabel">📖 Passage · "Events in City Libraries"</div>
+        <p><b>Storytime:</b> stories read aloud by librarians and sometimes by the <em>authors</em> themselves (ages 3–5). Some libraries offer storytimes in <em>languages</em> other than English. <b>After-school centers:</b> children get help with the <em>projects</em> their teacher has set; librarians help enhance the <em>presentation</em> of work submitted, a key aspect of assessment. <b>Adults' book group:</b> looked at historical fiction, classics, horror; <em>crime</em> is next for Nov/Dec. Does not meet in <em>January</em>.</p>
+      </div>
+      <p class="bn" style="font-size:13.5px"><b>Instruction:</b> ONE WORD ONLY.</p>
+      <ol class="clean" style="font-size:14px">
+        <li>Children are told stories by ___ as well as by librarians.</li>
+        <li>Storytime sessions might be heard in a variety of ___ in different libraries.</li>
+        <li>Librarians can assist children with researching their school ___.</li>
+        <li>Librarians can help with the ___ of their work because it will be graded.</li>
+        <li>Book club members will read books on the subject of ___ next.</li>
+        <li>No meetings in ___ have been scheduled for the book club.</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 · <b>authors</b></span><span class="ak">2 · <b>languages</b></span><span class="ak">3 · <b>projects</b></span>
+          <span class="ak">4 · <b>presentation</b></span><span class="ak">5 · <b>crime</b></span><span class="ak">6 · <b>January</b></span>
+        </div>
+        <p class="bn"><span class="trap">⚠️</span> "graded" = paraphrase of "assessment"। form ঠিক রাখো: <b>projects</b> (plural)। "the month of January" নয়, শুধু <b>January</b> (ONE WORD)।</p>
+      </div></details>
+    </section>
+
+    <!-- HOOKS -->
+    <section id="hooks">
+      <p class="eyebrow">Watch for these</p>
+      <h2 class="sec"><span class="n">🪝</span> Focus Hooks ও তোমার Common ভুল</h2>
+
+      <h3>🚩 Hook 1 — Negative-sense words (অর্থ উল্টে দেয়)</h3>
+      <div class="chips">
+        <span class="chip neg">No</span><span class="chip neg">None</span><span class="chip neg">Not</span><span class="chip neg">Rarely</span>
+        <span class="chip neg">Merely</span><span class="chip neg">Barely</span><span class="chip neg">Hardly</span><span class="chip neg">Difficulty</span>
+        <span class="chip neg">Seldom</span><span class="chip neg">Few</span><span class="chip neg">Neither/Nor</span>
+      </div>
+      <p class="bn" style="font-size:13.5px">এই শব্দে <b>থামো</b> — বাক্যের মানে আবার পড়ো। "no practical purpose" এ "no" মিস করলে উত্তর উল্টো।</p>
+
+      <h3>🚩 Hook 2 — Signpost / linking words</h3>
+      <div class="chips">
+        <span class="chip link">However ↔</span><span class="chip link">But</span><span class="chip link">Although</span><span class="chip link">Whereas</span>
+        <span class="chip link">On the other hand</span><span class="chip key">Often</span><span class="chip key">Sometimes</span><span class="chip key">Somewhat</span>
+        <span class="chip link">Hence</span><span class="chip link">Therefore</span><span class="chip link">Because</span><span class="chip link">Moreover</span><span class="chip link">To cap it all</span>
+      </div>
+      <p class="bn" style="font-size:13.5px"><b>However/But</b> = মোড় ঘুরছে, উত্তর পরের অংশে। <b>Often/Sometimes</b> = নরম ভাষা → option-এ "always/never" থাকলে <span class="trap">extreme trap</span>। <b>To cap it all</b> = লিস্টে যোগ → "supporting earlier argument"।</p>
+
+      <h3>🚩 Hook 3 — Scan keywords (paraphrase হয় না)</h3>
+      <div class="chips">
+        <span class="chip key">নাম (Harry Klee)</span><span class="chip key">সাল (1947)</span><span class="chip key">সংখ্যা (25, 70%)</span>
+        <span class="chip key">CAPITAL শব্দ</span><span class="chip key">technical (geranial)</span><span class="chip key">জায়গা (Florida)</span>
+      </div>
+
+      <h3>🚩 Hook 4 — Definition signals · Hook 5 — Instruction words</h3>
+      <div class="chips">
+        <span class="chip link">is</span><span class="chip link">means</span><span class="chip link">refers to</span><span class="chip link">that is / i.e.</span><span class="chip link">known as</span>
+      </div>
+      <div class="chips">
+        <span class="chip neg">NO MORE THAN TWO WORDS</span><span class="chip neg">ONE WORD ONLY</span><span class="chip neg">AND/OR A NUMBER</span><span class="chip neg">from the passage</span>
+      </div>
+
+      <h3>❌ তোমার (Bangla L1) Common ৮ ভুল</h3>
+      <div class="tw"><table>
+        <thead><tr><th>#</th><th class="bn">ভুল</th><th class="bn">এড়ানোর উপায়</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="bn">Word-limit ভাঙা</td><td class="bn">instruction গোল করো; শব্দ <b>গোনো</b></td></tr>
+          <tr><td>2</td><td class="bn">বানান ভুল (কপি করার সময়)</td><td class="bn">অক্ষরে অক্ষরে মেলাও</td></tr>
+          <tr><td>3</td><td class="bn">Paraphrase মিস (হুবহু শব্দ খোঁজা)</td><td class="bn">অর্থ খোঁজো: dominated→influence</td></tr>
+          <tr><td>4</td><td class="bn">Negative word মিস (not/barely)</td><td class="bn">ওই শব্দে থামো</td></tr>
+          <tr><td>5</td><td class="bn">Extreme option বাছা (all/never)</td><td class="bn">passage "some/many" বললে = ভুল</td></tr>
+          <tr><td>6</td><td class="bn">Opposite trap (quieter↔noisier)</td><td class="bn">একই দিক কিনা মেলাও</td></tr>
+          <tr><td>7</td><td class="bn">নিজের জ্ঞানে উত্তর (NG-তে True)</td><td class="bn">শুধু লেখা আছে যা; না থাকলে NG</td></tr>
+          <tr><td>8</td><td class="bn">এক প্রশ্নে আটকে সময় নষ্ট</td><td class="bn">flag → guess → পরে</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout good bn"><span class="ct">🎯 তোমার Priority Focus</span>
+        <b>বেশি জোর:</b> (1) Skimming + map · (2) Paraphrase চেনা (দিনে ৫টা synonym-pair) · (3) Word-limit + spelling discipline · (4) True/False/<b>Not Given</b>-এ inference করো না।<br>
+        <b>কম জোর:</b> প্রতিটা শব্দের মানে · সুন্দর হাতের লেখা / নিজের ভাষায় উত্তর — দরকার নেই।</div>
+    </section>
+
+    <!-- ANSWERS -->
+    <section id="answers">
+      <p class="eyebrow">Cheat sheet</p>
+      <h2 class="sec"><span class="n">✓</span> Answer Key — সব Exercise</h2>
+      <div class="card">
+        <h3 style="margin-top:0">Type 1 · MCQ — "Sky's the limit"</h3>
+        <div class="akrow"><span class="ak">1 · <b>C</b></span><span class="ak">2 · <b>D</b></span><span class="ak">3 · <b>B</b></span><span class="ak">4 · <b>B,D,E</b></span><span class="ak">5 · <b>C</b></span></div>
+        <h3>Type 2 · Short Answer — "Classic style"</h3>
+        <div class="akrow"><span class="ak">1 · <b>fighter planes</b></span><span class="ak">2 · <b>race</b></span><span class="ak">3 · <b>national optimism</b></span><span class="ak">4 · <b>Firebird III</b></span><span class="ak">5 · <b>new laws</b></span><span class="ak">6 · <b>abnormal shrimp</b></span></div>
+        <h3>Type 3a · Summary (word box) — "Australian Politics"</h3>
+        <div class="akrow"><span class="ak">1 <b>influence</b></span><span class="ak">2 <b>recently</b></span><span class="ak">3 <b>devoted</b></span><span class="ak">4 <b>Labor</b></span><span class="ak">5 <b>trade unions</b></span><span class="ak">6 <b>community</b></span><span class="ak">7 <b>Liberal</b></span><span class="ak">8 <b>liberty</b></span><span class="ak">9 <b>attention</b></span><span class="ak">10 <b>key</b></span></div>
+        <h3>Type 3b · Summary (no box) — "Perfect Tomato"</h3>
+        <div class="akrow"><span class="ak">1 <b>texture</b></span><span class="ak">2 <b>shelf life</b></span><span class="ak">3 <b>consumer</b></span><span class="ak">4 <b>heritage</b></span><span class="ak">5 <b>smell</b></span><span class="ak">6 <b>geranial</b></span><span class="ak">7 <b>hybrid</b></span><span class="ak">8 <b>GM</b></span></div>
+        <h3>Type 4 · Sentence Completion — "City Libraries"</h3>
+        <div class="akrow"><span class="ak">1 <b>authors</b></span><span class="ak">2 <b>languages</b></span><span class="ak">3 <b>projects</b></span><span class="ak">4 <b>presentation</b></span><span class="ak">5 <b>crime</b></span><span class="ak">6 <b>January</b></span></div>
+      </div>
+      <div class="callout tip bn"><span class="ct">পরের ধাপ</span> পরের coaching lecture sheet পেলে আমাকে দিও — একই visual কাঠামোয় <b>Lecture-02</b> বানিয়ে দেব। আর প্রতিদিন <b>02_READING-PRACTICE</b> থেকে একটা passage timed করো।</div>
+    </section>
+
+  </main>
+</div>
+
+<button class="totop" id="totop" title="উপরে">↑</button>
+
+<script>
+// progress bar
+const prog=document.getElementById('progress');
+function onScroll(){
+  const h=document.documentElement;
+  const sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(sc/max*100):0)+'%';
+  document.getElementById('totop').classList.toggle('show',sc>400);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// scrollspy
+const links=[...document.querySelectorAll('.nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const spy=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+      const sel=document.getElementById('mobsel'); if(sel) sel.value=id;
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>s&&spy.observe(s));
+
+// mobile select nav
+const sel=document.getElementById('mobsel');
+links.forEach(a=>{const o=document.createElement('option');o.value=a.getAttribute('href');o.textContent=a.textContent.trim();sel.appendChild(o);});
+sel.addEventListener('change',()=>{document.querySelector(sel.value).scrollIntoView({behavior:'smooth'});});
+
+// reveal all toggle
+let allOpen=false;
+const revs=[...document.querySelectorAll('details.reveal')];
+function setAll(v){revs.forEach(d=>d.open=v);allOpen=v;
+  const t=v?'সব উত্তর বন্ধ করো':'সব উত্তর খোলো';
+  document.getElementById('revealAll').textContent=t;}
+document.getElementById('revealAll').addEventListener('click',()=>setAll(!allOpen));
+
+// theme toggle
+const root=document.documentElement;
+function toggleTheme(){root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');}
+document.getElementById('themeBtn').addEventListener('click',toggleTheme);
+document.getElementById('mobtheme').addEventListener('click',toggleTheme);
+
+// back to top
+document.getElementById('totop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+onScroll();
+</script>
+</body>
+</html>
