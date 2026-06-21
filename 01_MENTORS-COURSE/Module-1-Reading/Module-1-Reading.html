@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentors' Reading · Module 1 — Md. Ariful Islam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7; --bg2:#efe7d6; --panel:#fffefb; --panel2:#fbf5e9;
+  --ink:#26241f; --muted:#7c7363; --line:#e6dcc6; --line2:#efe7d6;
+  --primary:#0e7490; --primary-d:#0b5566; --primary-soft:#dcf0f3;
+  --accent:#c2870b; --accent-soft:#fbf0d3;
+  --good:#157f3b; --good-bg:#e4f3e7; --good-line:#bfe3c7;
+  --bad:#c0392b; --bad-bg:#fbe7e3; --bad-line:#f1c7bf;
+  --warn:#9c6a06; --warn-bg:#fcf2d8; --warn-line:#ecd9a6;
+  --hero1:#0e7490; --hero2:#0b4a59; --shadow:0 6px 22px rgba(40,30,10,.08);
+}
+html[data-theme="dark"]{
+  --bg:#16191d; --bg2:#1c2026; --panel:#1f242b; --panel2:#252b33;
+  --ink:#e8e4da; --muted:#9aa1ab; --line:#323a44; --line2:#2a313a;
+  --primary:#38bdf8; --primary-d:#0ea5cf; --primary-soft:#0c3743;
+  --accent:#ecb949; --accent-soft:#3a2f12;
+  --good:#56d07f; --good-bg:#12301d; --good-line:#1e4a30;
+  --bad:#f08a7c; --bad-bg:#3a1d18; --bad-line:#5a2a22;
+  --warn:#e7c061; --warn-bg:#352b12; --warn-line:#4d3f1c;
+  --hero1:#0e7490; --hero2:#062e3a; --shadow:0 6px 22px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;}
+.bn,[lang="bn"]{font-family:'Noto Sans Bengali','Nirmala UI','Inter',sans-serif;line-height:1.95}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:100;transition:width .1s}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:268px;flex:0 0 268px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--panel);border-right:1px solid var(--line);padding:22px 16px;}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.brand .logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;font-weight:800;font-size:18px}
+.brand b{font-size:15px;letter-spacing:.2px}
+.brand small{display:block;color:var(--muted);font-size:11.5px;font-weight:500}
+.side-meta{font-size:11.5px;color:var(--muted);margin:8px 2px 16px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:9px;color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:500;margin-bottom:3px;transition:.15s;border:1px solid transparent}
+.nav a .ic{width:22px;text-align:center;font-size:15px;opacity:.9}
+.nav a:hover{background:var(--panel2)}
+.nav a.active{background:var(--primary-soft);color:var(--primary-d);font-weight:700;border-color:var(--line)}
+html[data-theme="dark"] .nav a.active{color:var(--primary)}
+.nav .grp{font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin:14px 6px 5px}
+.side-foot{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:11px;color:var(--muted)}
+.toolbar{display:flex;gap:8px;margin-top:14px}
+.toolbar button{flex:1;font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);transition:.15s}
+.toolbar button:hover{border-color:var(--primary);color:var(--primary)}
+.main{flex:1;min-width:0;max-width:920px;margin:0 auto;padding:0 30px 90px}
+.hero{margin:30px 0 8px;padding:34px 32px;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero .kicker{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.hero h1{font-size:30px;font-weight:800;margin:8px 0 10px;line-height:1.2}
+.hero p{opacity:.95;font-size:14.5px;max-width:620px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.hero .pill{background:rgba(255,255,255,.16);backdrop-filter:blur(4px);padding:6px 12px;border-radius:20px;font-size:12.5px;font-weight:600}
+section{padding-top:34px;scroll-margin-top:14px}
+.eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:1px;text-transform:uppercase}
+h2.sec{font-size:23px;font-weight:800;margin:6px 0 16px;display:flex;align-items:center;gap:10px}
+h2.sec .n{color:var(--primary);font-size:15px;background:var(--primary-soft);min-width:30px;height:30px;padding:0 7px;border-radius:9px;display:grid;place-items:center}
+h3{font-size:17px;font-weight:700;margin:22px 0 10px;color:var(--primary-d)}
+html[data-theme="dark"] h3{color:var(--primary)}
+p{margin:9px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}
+.grid.c2{grid-template-columns:1fr 1fr}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.mini{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.mini .big{font-size:24px;font-weight:800;color:var(--primary)}
+.mini .lab{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px}
+.callout{border-radius:13px;padding:14px 16px;margin:14px 0;border:1px solid;font-size:14px}
+.callout .ct{font-weight:700;display:block;margin-bottom:4px}
+.callout.tip{background:var(--accent-soft);border-color:var(--warn-line);color:var(--ink)}
+.callout.good{background:var(--good-bg);border-color:var(--good-line)}
+.callout.bad{background:var(--bad-bg);border-color:var(--bad-line)}
+.callout.info{background:var(--primary-soft);border-color:var(--line);}
+.passage{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14px}
+.passage .plabel{font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.passage p{margin:8px 0}
+.passage em{background:rgba(194,135,11,.16);font-style:normal;padding:0 3px;border-radius:3px}
+.passage .pp{font-weight:800;color:var(--accent)}
+mark{background:rgba(14,116,144,.16);color:inherit;padding:0 3px;border-radius:3px;font-weight:600}
+.q{margin:12px 0;padding:13px 16px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+.q .qh{font-weight:700;font-size:14px}
+details.reveal{margin:8px 0 4px;border:1px solid var(--good-line);border-radius:11px;overflow:hidden;background:var(--good-bg)}
+details.reveal>summary{cursor:pointer;list-style:none;padding:10px 15px;font-weight:700;font-size:13.5px;color:var(--good);display:flex;align-items:center;gap:8px;user-select:none}
+details.reveal>summary::-webkit-details-marker{display:none}
+details.reveal>summary::before{content:"👁";}
+details.reveal[open]>summary::before{content:"✓";}
+details.reveal[open]>summary{border-bottom:1px solid var(--good-line)}
+.reveal .body{padding:6px 16px 14px;font-size:13.5px;color:var(--ink)}
+.ans{display:inline-block;background:var(--good);color:#fff;font-weight:700;padding:1px 9px;border-radius:6px;font-size:13px}
+.trap{color:var(--bad);font-weight:600}
+/* deep-dive mentor discussion (collapsed) */
+details.deep{margin:10px 0 4px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--primary-soft)}
+details.deep>summary{cursor:pointer;list-style:none;padding:11px 16px;font-weight:700;font-size:13.5px;color:var(--primary-d);display:flex;align-items:center;gap:8px;user-select:none}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::before{content:"📖"}
+details.deep[open]>summary::before{content:"📂"}
+details.deep[open]>summary{border-bottom:1px solid var(--line)}
+html[data-theme="dark"] details.deep>summary{color:var(--primary)}
+.deep .body{padding:12px 14px 16px;background:var(--panel)}
+.deep .intro{font-size:13px;margin-bottom:12px}
+.dq{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line2);border-left:3px solid var(--primary);border-radius:9px;background:var(--panel2)}
+.dq:last-child{margin-bottom:0}
+.dq .dqh{font-weight:700;font-size:13.5px;margin-bottom:5px}
+.dq .ev{display:block;margin:6px 0;padding:7px 10px;background:var(--accent-soft);border:1px solid var(--warn-line);border-radius:7px;font-size:12.8px}
+.dq .ev b{color:var(--accent)}
+.dq p{margin:5px 0;font-size:12.8px;line-height:1.85}
+.dq .lbl{font-weight:700;color:var(--primary-d)}
+html[data-theme="dark"] .dq .lbl{color:var(--primary)}
+.dq .no{color:var(--bad);font-weight:700}
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:var(--panel2);font-weight:700;color:var(--primary-d);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+html[data-theme="dark"] th{color:var(--primary)}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.chip{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid}
+.chip.neg{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}
+.chip.link{background:var(--primary-soft);border-color:var(--line);color:var(--primary-d)}
+.chip.key{background:var(--accent-soft);border-color:var(--warn-line);color:var(--warn)}
+html[data-theme="dark"] .chip.link{color:var(--primary)}
+ul.clean{margin:8px 0 8px 4px;padding-left:18px}
+ul.clean li{margin:5px 0;font-size:14px}
+ol.clean{margin:8px 0 8px 4px;padding-left:22px}
+ol.clean li{margin:6px 0;font-size:14px}
+.akrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 14px}
+.ak{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:13px;font-weight:600}
+.ak b{color:var(--good)}
+.bank{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--primary);border-radius:12px;padding:14px 18px;margin:14px 0}
+.bank .blab{font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--primary-d);margin-bottom:8px}
+html[data-theme="dark"] .bank .blab{color:var(--primary)}
+.bank ol{list-style:none;padding-left:0;margin:0;columns:2;column-gap:26px;font-size:13px}
+.bank ol li{margin:4px 0;break-inside:avoid}
+.bank ol li b{color:var(--primary-d)}
+html[data-theme="dark"] .bank ol li b{color:var(--primary)}
+.totop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;background:var(--primary);color:#fff;font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.totop.show{opacity:1;pointer-events:auto}
+.mobnav{display:none}
+@media(max-width:880px){
+  .sidebar{display:none}
+  .main{padding:0 16px 80px}
+  .grid.c2,.grid.c3{grid-template-columns:1fr}
+  .bank ol{columns:1}
+  .hero h1{font-size:24px}
+  .mobnav{display:flex;position:sticky;top:0;z-index:40;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px;align-items:center;justify-content:space-between;gap:10px}
+  .mobnav select{flex:1;font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+  .mobnav button{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:inherit;cursor:pointer}
+}
+@media print{.sidebar,.totop,.mobnav,.toolbar{display:none}.main{max-width:100%}details.reveal{open:true}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="mobnav">
+  <select id="mobsel"></select>
+  <button id="mobtheme">🌓</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">M</span>
+      <div><b>Reading · Module 1</b><small>MENTORS' CRASH Course</small></div>
+    </div>
+    <div class="side-meta bn">Md. Ariful Islam · Batch 005<br>Full Mock · 2 Reading Test · 5/6 passage solved</div>
+    <nav class="nav" id="nav">
+      <a href="#overview"><span class="ic">🏁</span> ওভারভিউ</a>
+      <div class="grp">Test A</div>
+      <a href="#a1"><span class="ic">🥁</span> P1 · Zulu Culture</a>
+      <a href="#a2"><span class="ic">⚖️</span> P2 · Obesity</a>
+      <a href="#a3"><span class="ic">🚬</span> P3 · Adolescents</a>
+      <div class="grp">Test B</div>
+      <a href="#b1"><span class="ic">🚂</span> P1 · Steam Engine</a>
+      <a href="#b2"><span class="ic">🧩</span> P2 · Disability</a>
+      <a href="#b3"><span class="ic">🌱</span> P3 · Skyscrapers</a>
+      <div class="grp">Reference</div>
+      <a href="#answers"><span class="ic">✅</span> Answer Key</a>
+    </nav>
+    <div class="toolbar">
+      <button id="revealAll">সব উত্তর খোলো</button>
+      <button id="themeBtn">🌓 থিম</button>
+    </div>
+    <a href="../../07_VOCABULARY/Mentors/Mentors-Vocabulary.html" target="_blank" style="display:block;margin-top:12px;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--primary-soft);color:var(--primary-d);text-decoration:none;font-size:12.5px;font-weight:700;text-align:center">🧠 Vocabulary খোলো →</a>
+    <div class="side-foot bn">English = passage ও প্রশ্ন (পরীক্ষায় যা থাকবে)।<br>বাংলা = কীভাবে উত্তর বের হলো।<br>আগে timed করো, পরে মেলাও।</div>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div class="kicker">Mentors' IELTS · Reading</div>
+      <h1>Reading Module-1 — Visual Study Guide</h1>
+      <p class="bn">দুটো সম্পূর্ণ mock Reading Test (Test A + Test B), প্রতিটায় ৩টা passage = ৪০ প্রশ্ন। প্রতিটা passage পুরো দেওয়া, প্রতিটা প্রশ্ন self-test করার জন্য সাজানো, উত্তর ও ব্যাখ্যা বাংলায় — Lecture-1 ও 2-এর ৯টা question type একসাথে অনুশীলন।</p>
+      <div class="pills">
+        <span class="pill">Test A · 40 Q</span>
+        <span class="pill">Test B · 40 Q</span>
+        <span class="pill">6 passages</span>
+        <span class="pill">9 question types</span>
+        <span class="pill">English + বাংলা</span>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <p class="eyebrow">Start here</p>
+      <h2 class="sec"><span class="n">i</span> ওভারভিউ — এক নজরে</h2>
+      <div class="grid c3">
+        <div class="mini"><div class="big">2</div><div class="lab bn">পূর্ণ Reading Test (A ও B)</div></div>
+        <div class="mini"><div class="big">5/6</div><div class="lab bn">Passage সমাধান করা (P-B3 বাকি)</div></div>
+        <div class="mini"><div class="big">20</div><div class="lab bn">মিনিট / passage — timed করো</div></div>
+      </div>
+      <div class="callout info bn"><span class="ct">🎯 এই module-এর এক-লাইন শিক্ষা</span>
+        এটা পড়ার গাইড নয়, <b>পরীক্ষার মহড়া</b>। প্রতিটা passage আগে <b>২০ মিনিট timed</b> নিজে করো (নিজের printout/খাতায়), তারপর এখানে সবুজ reveal খুলে মেলাও। প্রতিটা ভুল <b>ERROR-LOG</b>-এ কোড দিয়ে লেখো: <b>KW</b>=keyword miss · <b>PP</b>=paraphrase miss · <b>NG</b>=False/NotGiven গুলিয়ে ফেলা · <b>EX</b>=extreme word · <b>LIM</b>=word-limit ভাঙা।</div>
+      <div class="card">
+        <h3 style="margin-top:0">এই module-এ কী আছে</h3>
+        <div class="tw"><table>
+          <thead><tr><th>Test</th><th>Passage</th><th>Question types</th><th>Q#</th></tr></thead>
+          <tbody>
+            <tr><td><b>A</b></td><td>Zulu Culture</td><td>T/F/NG · Note completion</td><td>1–13</td></tr>
+            <tr><td><b>A</b></td><td>Tackling Obesity</td><td>Matching Headings · Summary</td><td>14–27</td></tr>
+            <tr><td><b>A</b></td><td>Market among Adolescents</td><td>Headings · Y/N/NG · Sentence</td><td>28–40</td></tr>
+            <tr><td><b>B</b></td><td>History of the Steam Engine</td><td>Flow chart · Matching person</td><td>1–12</td></tr>
+            <tr><td><b>B</b></td><td>Intellectual Disability</td><td>Completion · Y/N/NG · Short · Headings</td><td>13–27</td></tr>
+            <tr><td><b>B</b></td><td>Crop-growing skyscrapers</td><td>Sentence · T/F/NG <span class="trap">(এখনো সমাধান বাকি)</span></td><td>28–40</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout tip bn" style="margin-bottom:0"><span class="ct">কীভাবে ব্যবহার করবে</span> প্রতিটা প্রশ্নসেটে আগে <b>নিজে উত্তর করো</b>, তারপর সবুজ "উত্তর ও ব্যাখ্যা দেখাও" বক্সে ক্লিক করে মেলাও। Matching-এর জন্য List of Headings বক্স দেওয়া আছে — passage পড়ে প্রতিটা para-র heading নিজে বাছো।</div>
+      </div>
+    </section>
+
+    <!-- ============ TEST A · P1 ZULU ============ -->
+    <section id="a1">
+      <p class="eyebrow">Test A · Passage 1 · Q1–13</p>
+      <h2 class="sec"><span class="n">A1</span> Zulu Culture</h2>
+      <p class="bn">প্রশ্ন: <b>Q1–8 True/False/Not Given</b> + <b>Q9–13 Note completion</b>। আগে পুরো passage পড়ো, তারপর প্রশ্ন করো।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Reading Passage</div>
+        <p><span class="pp">A.</span> The tourism industry has explored the ancient culture of the Zulu, an African ethnic group of 11 million people who live in Kwa Zulu – Natal Province. The Zulu traditions and the culture are a great tourist attraction. Zulu are hospitable and amiable. Their language is derived from Bantu. In antiquity, they migrated into South Africa from the Niger River Delta. The tribal story tellers narrate that the Zulu are people of heaven, descended from Nguni people. One of the early settlers was Malandela, whose wife Nozinga bore him two sons; the second was named Zulu. Under the powerful reign of Shaka, all small Zulu clans were united into a proud and powerful nation. They played a significant role subsequently in the history of South Africa. Rural Zulu people live in villages, without electricity, and scarcity of water is a common feature. The poor villagers make a living selling basketwork and beadwork to tourists and urban people. During each year, they hold ceremonies to revive old cultures and tradition, the "Heritage Day" being the most widely known. On this day, thousands of Zulu virgins converge at the Royal Palace and the famous 'Reed dance' is organised. The virgins fetch the reeds from the river and bring them to the Royal palace for the King who is free to choose his youngest wife.</p>
+        <p><span class="pp">B.</span> The visitors from all over the world are charmed by the "Bead Culture" of the Zulu. Beads are an integral part and it is considered as the dominant economic activity of Zulu and a major source of their income. The women living in villages spend most of their free time in bead work and there are special institutes which teach techniques of patterns and designs of bead art. Bead culture is carried from one generation to the other generation; they design their beadwork in attractive mathematical patterns. Bracelets, headbands, necklaces are decorated with beads, they have ceremonial significance too. In the 16th century the beads were highly coveted and prized over gold and silver. Different beads convey different messages, a rectangular ornament is a token of love, black bead conveys the emotions of mourning loneliness and anguish, pink conveys poverty and blue loyalty.</p>
+        <p><span class="pp">C.</span> Zulu wedding is of conspicuous significance and it has many forms and cultural traditions. The wedding takes place in a church amidst Zulu colourful dances in which young virgins take keen interest. Dancing, singing and drinking beer are common practices and dancing is not confined to any special occasion. They spend the whole night in dancing and singing and celebrating the festivities. Traditional dress for men consists of animal skin and feathers. When a young woman is engaged, she lets her hair grow and covers her body with a colourful cloth as a sign of respect to her future family. She wears a heavy knee length animal hide skirt. The Zulu people have a well-devised social structure; they follow etiquettes, duties, manners, respect elders and look after the sick and the poor. It is the mother's duty to bring up the children and teach them respect and their place within the family. Young boys look after the cattle and work in the fields. They indulge in cultural games and learn stick fighting, throwing spear and rat hunting. The men defend the families' land and cattle. Zulu social structure is thus homely, simple and without any complexity.</p>
+        <p><span class="pp">D.</span> Zulu people are by nature very orthodox and superstitious. The Sangoma has to fulfil a demand for "Umuthi" (medicine) to prevent misfortune. Sangoma is not a witch doctor, but a spiritual healer and is much respected in Zulu tribe. He works with herbs, roots, snake skins and many unusual things. A Sangoma can reveal the past, has the spiritual power to look into the future, can find the lost things and has the power to identify thieves. No one can become a Sangoma by profession; the ancestor's call makes a Sangoma. Like most African tribes, the Zulu pay tribute to the youth of the dead, they believe that the ancestors are guardian angels; they make sacrifices and perform many ceremonies to keep them happy. The Zulu men communicate with them as they are the head of the family. The Zulus believe that all diseases, misfortune, unexplained death occur by witchcraft. A Sangoma should be consulted to restore peace in the life of the family.</p>
+        <p><span class="pp">E.</span> Zulu music is very popular; it incorporates rhythm, melody and harmony. Zulu music has been carried worldwide by Paul Simon Johnny Clegg. Zulu group Ladysmith Black has won international recognition and the "Graceland" album received two Grammy Awards. Many tourists visit the Zulu land to enjoy cultural ceremonies of Zulu people, to attend Zulu fair, dances and Zulu games.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q1–8 · TRUE / FALSE / NOT GIVEN</span> passage মেলে = TRUE · উল্টো বলছে = FALSE · কিছুই বলছে না = NOT GIVEN।</div>
+      <ol class="clean">
+        <li>Zulu people are considered hostile and rude.</li>
+        <li>People from lower-economic strata earn money by selling handicrafts.</li>
+        <li>Ceremonies act as a means of propagating the culture and tradition.</li>
+        <li>The use of glass beads was more popular than the use of gold and silver in the past.</li>
+        <li>Dance was customarily organised in the Zulu ceremonies.</li>
+        <li>Zulu people have a carelessly planned social hierarchy.</li>
+        <li>Many social groups in Africa revered their ancestors.</li>
+        <li>Most of the Zulu music has received international acclaims.</li>
+      </ol>
+
+      <div class="callout tip bn"><span class="ct">📋 Q9–13 · Note completion</span> ONE WORD AND/OR A NUMBER — passage থেকে হুবহু শব্দ বসাও।</div>
+      <div class="passage" style="border-left-color:var(--primary)">
+        <div class="plabel" style="color:var(--primary-d)">📝 ZULU CULTURE — Notes</div>
+        <p><b>Zulu</b> — an ethnic group that <b>(9)______</b> into a part of the African continent · famous for ceremonial celebrations and the 'Reed Dance'.</p>
+        <p><b>Bead Culture</b> — the predominant economic activity · a leisure activity generally pursued by <b>(10)______</b> · passed down the generations · the colour of the beads represents varied <b>(11)______</b> and social classes.</p>
+        <p><b>Sangoma</b> — wards off the <b>(12)______</b> · a respected spiritual healer · generally <b>(13)______</b> for establishing harmony in the life of Zulu people.</p>
+      </div>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Ans</th><th>Locate + কেন</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><span class="ans">FALSE</span></td><td class="bn">A: "Zulu are <b>hospitable and amiable</b>" — hostile/rude-এর সরাসরি উল্টো</td></tr>
+            <tr><td>2</td><td><span class="ans">TRUE</span></td><td class="bn">A: "The <b>poor villagers</b> make a living <b>selling basketwork and beadwork</b>"</td></tr>
+            <tr><td>3</td><td><span class="ans">TRUE</span></td><td class="bn">A: "they hold <b>ceremonies to revive old cultures and tradition</b>"</td></tr>
+            <tr><td>4</td><td><span class="ans">TRUE</span></td><td class="bn">B: "the beads were highly coveted and <b>prized over gold and silver</b>"</td></tr>
+            <tr><td>5</td><td><span class="ans">TRUE</span></td><td class="bn">C: "dancing is <b>not confined to any special occasion</b>" = customary</td></tr>
+            <tr><td>6</td><td><span class="ans">FALSE</span></td><td class="bn">C: "Zulu people have a <b>well-devised social structure</b>" — careless-এর উল্টো</td></tr>
+            <tr><td>7</td><td><span class="ans">TRUE</span></td><td class="bn">D: "<b>Like most African tribes</b>, the Zulu pay tribute to… the dead"</td></tr>
+            <tr><td>8</td><td><span class="ans">NOT GIVEN</span></td><td class="bn">E: কিছু group recognition পেয়েছে, কিন্তু "<b>most</b> of the Zulu music" — পরিমাণ বলা নেই</td></tr>
+            <tr><td>9</td><td><span class="ans">migrated</span></td><td class="bn">A: "they <b>migrated into</b> South Africa from the Niger River Delta"</td></tr>
+            <tr><td>10</td><td><span class="ans">women</span></td><td class="bn">B: "The <b>women</b> living in villages spend most of their free time in bead work"</td></tr>
+            <tr><td>11</td><td><span class="ans">messages</span></td><td class="bn">B: "Different beads convey different <b>messages</b>" (love/mourning/poverty/loyalty)</td></tr>
+            <tr><td>12</td><td><span class="ans">misfortune</span></td><td class="bn">D: "demand for 'Umuthi' (medicine) <b>to prevent misfortune</b>"</td></tr>
+            <tr><td>13</td><td><span class="ans">consulted</span></td><td class="bn">D: "A Sangoma should be <b>consulted to restore peace</b>"</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️ ফাঁদ:</span> <b>Q6 FALSE নয় NG</b> — "well-devised" ↔ "carelessly planned" মেরু-বিপরীত, passage বিষয়টা নিয়ে কথা বলছে। <b>Q8 NG</b> — "some recognition" দেখে TRUE দিও না; "most" passage বলেনি। <b>Q11</b> — emotions কাছাকাছি, কিন্তু passage হুবহু "<b>messages</b>" বলেছে।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা প্রশ্ন breakdown (Q1–13)</summary><div class="body">
+        <p class="intro bn">নিজে attempt করার <b>পরে</b> এটা খোলো। প্রতিটা প্রশ্নে: 📍 passage-এর ঠিক কোন লাইন · 🔑 প্রশ্ন ও passage-এর শব্দ কীভাবে মেলে (paraphrase) · কেন এই উত্তর · কেন অন্য option নয় · 🎯 শেখার পয়েন্ট।</p>
+
+        <div class="dq">
+          <div class="dqh">Q1 · "Zulu people are considered hostile and rude." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 <b>Para A:</b> "Zulu are <u>hospitable and amiable</u>."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> statement-এর <b>hostile</b> (বৈরী) ও <b>rude</b> (রূঢ়/অভদ্র) ↔ passage-এর <b>hospitable</b> (অতিথিপরায়ণ) ও <b>amiable</b> (বন্ধুসুলভ)। এ দুটো জোড়া <b>মেরু-বিপরীত</b>।</p>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> passage যা বলছে আর statement যা দাবি করছে — ঠিক উল্টো। এই সরাসরি বিরোধ (contradiction) = <b>FALSE</b>।</p>
+          <p class="bn"><span class="no">কেন NOT GIVEN নয়:</span> NG হতো যদি passage Zulu-দের স্বভাব নিয়ে <b>কিছুই</b> না বলত। কিন্তু এখানে স্পষ্ট লেখা আছে তারা hospitable/amiable — বিষয়টা addressed এবং উল্টো। তাই চুপ নয় → NG নয়, FALSE।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> "considered hostile/rude"-এর মতো negative ব্যক্তিত্ব-দাবি দেখলে passage-এ ব্যক্তিত্বের <b>adjective</b> (hospitable, friendly, kind…) খোঁজো — পেলেই উত্তর।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q2 · "People from lower-economic strata earn money by selling handicrafts." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 <b>Para A:</b> "The <u>poor villagers</u> make a living <u>selling basketwork and beadwork</u> to tourists and urban people."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "lower-economic strata" = <b>poor villagers</b> · "earn money" = <b>make a living</b> · "handicrafts" = <b>basketwork and beadwork</b> (হাতে বোনা জিনিস)।</p>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> তিনটা অংশই হুবহু মেলে — কোনো অতিরিক্ত/উল্টো দাবি নেই। সবটা confirm → <b>TRUE</b>।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> পুরো বাক্যের <b>প্রতিটা অংশ</b> (কে · কী করে · কীভাবে) আলাদা করে passage-এ মেলাও — তিনটাই মিললে নিশ্চিন্তে TRUE।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q3 · "Ceremonies act as a means of propagating the culture and tradition." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 <b>Para A:</b> "they hold <u>ceremonies to revive old cultures and tradition</u>, the 'Heritage Day' being the most widely known."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "propagating the culture" (সংস্কৃতি ছড়ানো/বাঁচিয়ে রাখা) = <b>revive old cultures and tradition</b> (পুরোনো সংস্কৃতি পুনরুজ্জীবিত করা)।</p>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> ceremony-র <b>উদ্দেশ্য</b> হিসেবেই passage বলছে "to revive… culture and tradition" — statement-এর দাবির সাথে এক। → <b>TRUE</b>।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> "propagate / preserve / promote / revive" — এগুলো সবই "সংস্কৃতি টিকিয়ে রাখা/ছড়ানো" ভাবের synonym। শব্দ আলাদা হলেও ভাব এক।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q4 · "The use of glass beads was more popular than the use of gold and silver in the past." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 <b>Para B:</b> "In the 16th century the beads were highly coveted and <u>prized over gold and silver</u>."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "more popular than gold and silver" = <b>prized over gold and silver</b> (সোনা-রুপার চেয়ে বেশি মূল্যবান/কাঙ্ক্ষিত) · "in the past" = <b>In the 16th century</b>।</p>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> "prized over X" মানে X-এর চেয়ে বেশি মূল্য দেওয়া হতো — statement-এর "more popular than"-এর সাথে মেলে। → <b>TRUE</b>।</p>
+          <p class="bn"><span class="no">ফাঁদ এড়াও:</span> "glass" শব্দটা নিয়ে আটকে যেও না — passage শুধু "beads" বলেছে, কিন্তু পুরো অনুচ্ছেদ এই bead নিয়েই; মূল তুলনা ("prized over gold and silver")-ই উত্তর ঠিক করে।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q5 · "Dance was customarily organised in the Zulu ceremonies." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 <b>Para C:</b> "the wedding takes place… amidst Zulu colourful dances… <u>Dancing, singing and drinking beer are common practices and dancing is not confined to any special occasion</u>."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "customarily organised" (নিয়মিত/রীতিমাফিক হতো) = <b>common practices</b> + <b>not confined to any special occasion</b> (যেকোনো সময়ই হয়)।</p>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> নাচ যে নিয়মিত/স্বাভাবিক রীতি — passage দুবার বলেছে (wedding-এ, আবার "common practices")। → <b>TRUE</b>।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> "customarily / usually / commonly / traditionally" = passage-এ "common / not confined to / always" জাতীয় শব্দ খোঁজো।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q6 · "Zulu people have a carelessly planned social hierarchy." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 <b>Para C:</b> "The Zulu people have a <u>well-devised social structure</u>… Zulu social structure is thus homely, simple and without any complexity."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "carelessly planned" (এলোমেলো/অপরিকল্পিত) ↔ <b>well-devised</b> (সুপরিকল্পিত)। "social hierarchy" = <b>social structure</b>।</p>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> passage বলছে গঠনটা সুপরিকল্পিত — statement বলছে অপরিকল্পিত। সরাসরি বিরোধ → <b>FALSE</b>।</p>
+          <p class="bn"><span class="no">কেন NOT GIVEN নয়:</span> social structure নিয়ে passage স্পষ্ট মন্তব্য করেছে ("well-devised") — চুপ থাকেনি। তাই NG নয়।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> এক শব্দের <b>বিপরীতার্থক</b> (well-devised ↔ careless) পেলেই FALSE — NG নয়। NG তখনই, যখন তথ্যটাই অনুপস্থিত।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q7 · "Many social groups in Africa revered their ancestors." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 <b>Para D:</b> "<u>Like most African tribes</u>, the Zulu pay tribute to the youth of the dead, they believe that the <u>ancestors are guardian angels</u>."</span>
+          <p class="bn"><span class="lbl">🔑 শব্দ-ম্যাপিং:</span> "Many social groups in Africa" = <b>most African tribes</b> · "revered their ancestors" = <b>pay tribute to… the dead</b> / ancestors = guardian angels (পূর্বপুরুষকে শ্রদ্ধা/পূজা)।</p>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> "<b>Like</b> most African tribes" শব্দটাই বলে দিচ্ছে — এই পূর্বপুরুষ-শ্রদ্ধা শুধু Zulu নয়, বেশিরভাগ আফ্রিকান গোষ্ঠীর রীতি। তাই "many social groups" দাবি confirm। → <b>TRUE</b>।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> "Like most…", "as in many…", "similar to other…" — এই তুলনা-শব্দগুলো প্রায়ই অন্য গোষ্ঠী/বিষয়ে সাধারণীকরণের প্রশ্নের উত্তর দেয়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q8 · "Most of the Zulu music has received international acclaims." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 <b>Para E:</b> "Zulu group <u>Ladysmith Black</u> has won international recognition and the <u>'Graceland' album</u> received two Grammy Awards."</span>
+          <p class="bn"><span class="lbl">🔑 কী বলা আছে:</span> passage একটা <b>নির্দিষ্ট</b> গ্রুপ (Ladysmith Black) ও একটা নির্দিষ্ট album (Graceland)-এর আন্তর্জাতিক স্বীকৃতির কথা বলেছে।</p>
+          <p class="bn"><span class="lbl">কী বলা নেই:</span> Zulu-র <b>"most" (বেশিরভাগ)</b> music আন্তর্জাতিক স্বীকৃতি পেয়েছে কিনা — এই <b>পরিমাণ</b> passage কোথাও বলেনি।</p>
+          <p class="bn"><span class="no">কেন TRUE নয়:</span> দু-একটা উদাহরণ ≠ "most"। নির্দিষ্ট কয়েকজন স্বীকৃতি পেলেই "বেশিরভাগ music" প্রমাণ হয় না।</p>
+          <p class="bn"><span class="no">কেন FALSE নয়:</span> passage এটা অস্বীকারও করেনি ("most music স্বীকৃতি পায়নি" বলেনি) — শুধু পরিমাণ নিয়ে চুপ। তথ্য অনুপস্থিত → <b>NOT GIVEN</b>।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> classic ফাঁদ — passage <b>specific উদাহরণ</b> দেয়, statement সেটাকে <b>"most/many/all"</b>-এ বাড়িয়ে দেয় → প্রায় সবসময় <b>NOT GIVEN</b>।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q9 · "Zulu is an ethnic group that ___ into a part of the African continent." → <span class="ans">migrated</span></div>
+          <span class="ev">📍 <b>Para A:</b> "they <u>migrated into</u> South Africa from the Niger River Delta."</span>
+          <p class="bn"><span class="lbl">🔑 কেন:</span> note-এর "___ into a part of the African continent" হুবহু passage-এর "<b>migrated into</b> South Africa"-এর গঠন। ফাঁকা জায়গায় <b>verb</b> লাগবে → <b>migrated</b>। (ONE WORD — past tense রাখো।)</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q10 · "Bead Culture — a leisure activity generally pursued by ___." → <span class="ans">women</span></div>
+          <span class="ev">📍 <b>Para B:</b> "The <u>women</u> living in villages spend most of their <u>free time</u> in bead work."</span>
+          <p class="bn"><span class="lbl">🔑 কেন:</span> "leisure activity" = <b>free time</b>-এর কাজ; "pursued by ___" = কারা করে = <b>women</b>। সরল একক শব্দ।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q11 · "the colour of the beads represents varied ___ and social-classes." → <span class="ans">messages</span></div>
+          <span class="ev">📍 <b>Para B:</b> "Different beads convey different <u>messages</u>, a rectangular ornament is a token of love, black bead conveys… mourning… pink conveys poverty and blue loyalty."</span>
+          <p class="bn"><span class="lbl">🔑 কেন messages:</span> note বলছে রঙ "varied ___" বোঝায় — passage-এর ছাতা-শব্দ (umbrella word) হলো "<b>messages</b>" (এরপর উদাহরণ: প্রেম, শোক, দারিদ্র্য, আনুগত্য)।</p>
+          <p class="bn"><span class="no">কেন "emotions" নয়:</span> "emotions" শব্দটা passage-এ আছে (black = emotions of mourning), লোভনীয় ফাঁদ — কিন্তু সেটা শুধু এক রঙের ব্যাখ্যা। পুরো ধারণাটার জন্য passage যে সাধারণ শব্দ দিয়েছে তা <b>messages</b>। আর "poverty/loyalty" আবেগ নয়, সামাজিক বার্তা — তাই "messages"-ই খাপ খায়।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> completion-এ যখন একাধিক শব্দ কাছাকাছি মনে হয়, passage-এর <b>মূল/সাধারণ শব্দটা</b> (যার পরে উদাহরণ আসে) বাছো — নির্দিষ্ট উদাহরণের শব্দ নয়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q12 · "Sangoma — wards off the ___." → <span class="ans">misfortune</span></div>
+          <span class="ev">📍 <b>Para D:</b> "The Sangoma has to fulfil a demand for 'Umuthi' (medicine) <u>to prevent misfortune</u>."</span>
+          <p class="bn"><span class="lbl">🔑 কেন:</span> "wards off" (দূরে রাখে/ঠেকায়) = <b>prevent</b>; কী ঠেকায় = <b>misfortune</b> (দুর্ভাগ্য)। সরাসরি synonym-ম্যাপিং।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q13 · "Sangoma — generally ___ for establishing harmony in life of Zulu people." → <span class="ans">consulted</span></div>
+          <span class="ev">📍 <b>Para D:</b> "A Sangoma should be <u>consulted to restore peace</u> in the life of the family."</span>
+          <p class="bn"><span class="lbl">🔑 কেন:</span> "establishing harmony" = <b>restore peace</b> (শান্তি ফেরানো); "generally ___" = passive verb = <b>consulted</b> (পরামর্শ নেওয়া হয়)। form ঠিক রাখো — passive (consulted)।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 এই passage-এর বড় শিক্ষা</span> TFNG-তে বারবার একই খেলা: <b>বিপরীত শব্দ</b> পেলে FALSE (Q1, Q6), <b>specific→most/all বাড়ানো</b> পেলে NOT GIVEN (Q8), আর বাকিগুলো paraphrase মিললে TRUE। Completion-এ passage-এর <b>হুবহু শব্দ</b> + ঠিক form।</div>
+      </div></details>
+    </section>
+
+    <!-- ============ TEST A · P2 OBESITY ============ -->
+    <section id="a2">
+      <p class="eyebrow">Test A · Passage 2 · Q14–27</p>
+      <h2 class="sec"><span class="n">A2</span> Tackling Obesity in the Western World</h2>
+      <p class="bn">প্রশ্ন: <b>Q14–21 Matching Headings</b> + <b>Q22–27 Summary completion</b>।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Reading Passage</div>
+        <p><span class="pp">A.</span> Obesity is a huge problem in many Western countries and one which now attracts considerable medical interest as researchers take up the challenge to find a 'cure' for the common condition of being seriously overweight. However, rather than take responsibility for their weight, obese people have often sought solace in the excuse that they have a slow metabolism, a genetic hiccup which sentences more than half the Australian population (63% of men and 47% of women) to a life battling with their weight. The argument goes like this: it doesn't matter how little they eat, they gain weight because their bodies break down food and turn it into energy more slowly than those with a so-called 'normal metabolic rate'.</p>
+        <p><span class="pp">B.</span> 'This is nonsense,' says Dr Susan Jebb from the Dunn Nutrition Unit at Cambridge, England. Despite the persistence of this metabolism myth, science has known for several years that the exact opposite is in fact true. Fat people have faster metabolisms than thin people. 'What is very clear,' says Dr Jebb, 'is that overweight people actually burn off more energy. They have more cells, bigger hearts, bigger lungs and they all need more energy just to keep going.'</p>
+        <p><span class="pp">C.</span> It took only one night, spent in a sealed room at the Dunn Unit, to disabuse one of their parents of the beliefs of a lifetime. Her metabolism was fast, not slow. By sealing the room and measuring the exact amount of oxygen she used, researchers were able to show her that her metabolism was not the culprit. It wasn't the answer she expected and probably not the one she wanted but she took the news philosophically.</p>
+        <p><span class="pp">D.</span> Although the metabolism myth has been completely disproved, science has far from discounted our genes as responsible for making us whatever weight we are, fat or thin. One of the world's leading obesity researchers, geneticist Professor Stephen O'Rahily, goes so far as to say that we are on the threshold of a complete change in the way we view not only morbid obesity, but also everyday overweight. Professor O'Rahily's groundbreaking work in Cambridge has proven that obesity can be caused by our genes. 'These people are not weak-willed, slothful or lazy,' says Prof O'Rahily. 'They have a medical condition due to a genetic defect and that causes them to be obese.'</p>
+        <p><span class="pp">E.</span> In Australia, the University of Sydney's Professor Ian Caterson says that while genetic defects may be rare, many people probably have minor genetic variations that combine to dictate weight and are responsible for things such as how much we eat, the amount of exercise we do and the amount of energy we need. When you add up all these little variations, the result is that some people are genetically predisposed to putting on weight. He says while the fast/slow metabolism debate may have been settled, that doesn't mean some other subtle change in the metabolism gene won't be found in overweight people. He is confident that science will, eventually, be able to cure some forms of obesity but the only effective way for the vast majority of the overweight and obese people to lose weight is a change of diet and an increase in exercise.</p>
+        <p><span class="pp">F.</span> Despite the $500 million a year the Australians spend trying to lose weight, and the $830 million it costs the community in health care, obesity is at epidemic proportions here, as it is in all Western nations. Until recently, research and treatment for obesity had concentrated on behaviour modification, drugs to decrease appetite and surgery. How the drugs worked was often not understood, and may have caused severe side effects and even death in some patients. Surgery for obesity has also claimed many lives.</p>
+        <p><span class="pp">G.</span> It has long been known that a part of the brain called the hypothalamus is responsible for regulating hunger, among other things. But it wasn't until 1994 that Professor Jeffrey Friedman from Rockefeller University in the US sent science in a new direction by studying an obese mouse. Prof. Friedman found that unlike its thin brothers, the fat mouse did not produce a hitherto unknown hormone called leptin. Manufactured by the fat cells, leptin acts as a messenger, sending signals to the hypothalamus to turn off the appetite. Previously, the fat cells were thought to be responsible simply for storing fat. Prof. Friedman gave the fat mouse leptin and it lost 30% of its body weight in 2 weeks.</p>
+        <p><span class="pp">H.</span> On the other side of the Atlantic, Prof. O'Rahily read about this research with great excitement. For many months, two blood samples had lain in the bottom of his freezer, taken from two extremely obese young cousins. He hired a doctor to develop a test for leptin in human blood, which eventually resulted in the discovery that neither of the children's blood contained the hormone. When one cousin was given leptin, she lost a stone in weight and Prof. O'Rahily made medical history. Here was the first proof that leptin deficiency could cause obesity in humans. But leptin deficiency turned out to be an extremely rare condition and there is a lot more research to be done before the 'magic' cure for obesity is ever found.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q14–21 · Matching Headings</span> Para <b>A–H</b> প্রতিটার জন্য নিচের তালিকা (i–xi) থেকে heading বাছো (৩টা ফাঁদ থাকবে)।</div>
+      <div class="bank">
+        <div class="blab">📚 List of Headings</div>
+        <ol>
+          <li><b>i</b> — Obesity in animals</li>
+          <li><b>ii</b> — Hidden dangers</li>
+          <li><b>iii</b> — Proof of the truth</li>
+          <li><b>iv</b> — New perspective on the horizon</li>
+          <li><b>v</b> — No known treatment</li>
+          <li><b>vi</b> — Rodent research leads the way</li>
+          <li><b>vii</b> — Expert explains energy requirements of obese people</li>
+          <li><b>viii</b> — A very uncommon complaint</li>
+          <li><b>ix</b> — Nature or nurture</li>
+          <li><b>x</b> — Shifting the blame</li>
+          <li><b>xi</b> — Lifestyle change required despite new findings</li>
+        </ol>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q22–27 · Summary completion</span> Word List থেকে এক/দুই শব্দ বসাও।</div>
+      <div class="passage" style="border-left-color:var(--primary)">
+        <div class="plabel" style="color:var(--primary-d)">📝 Summary</div>
+        <p>People with a <b>(22)____</b> problem often try to deny responsibility. They do this by seeking to blame their <b>(23)____</b> for the fact that they are overweight and erroneously believe that they use <b>(24)____</b> energy than thin people to stay alive. However, recent research has shown that a <b>(25)____</b> problem can be responsible for obesity as some people seem programmed to <b>(26)____</b> more than others. The new research points to a shift from trying to change people's <b>(27)____</b> to seeking an answer to the problem in the laboratory.</p>
+      </div>
+      <div class="chips">
+        <span class="chip key">weight</span><span class="chip key">mind</span><span class="chip key">metabolism</span><span class="chip key">less</span><span class="chip key">behavior</span><span class="chip key">exercise</span><span class="chip key">bodies</span><span class="chip key">more</span><span class="chip key">physical</span><span class="chip key">use</span><span class="chip key">sleep</span><span class="chip key">genetic</span><span class="chip key">consume</span><span class="chip key">mental</span>
+      </div>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Para</th><th>Heading</th><th>কেন (locate)</th></tr></thead>
+          <tbody>
+            <tr><td>14</td><td>A</td><td><span class="ans">x</span></td><td class="bn">Shifting the blame — "sought solace in the <b>excuse</b> that they have a slow metabolism"</td></tr>
+            <tr><td>15</td><td>B</td><td><span class="ans">vii</span></td><td class="bn">Energy requirements — Dr Jebb: "overweight people actually <b>burn off more energy</b>"</td></tr>
+            <tr><td>16</td><td>C</td><td><span class="ans">iii</span></td><td class="bn">Proof of the truth — sealed-room experiment "<b>not the culprit</b>"</td></tr>
+            <tr><td>17</td><td>D</td><td><span class="ans">iv</span></td><td class="bn">New perspective — "<b>threshold of a complete change in the way we view</b> obesity"</td></tr>
+            <tr><td>18</td><td>E</td><td><span class="ans">xi</span></td><td class="bn">Lifestyle change — "the only effective way… <b>change of diet and an increase in exercise</b>"</td></tr>
+            <tr><td>19</td><td>F</td><td><span class="ans">v</span></td><td class="bn">No known treatment — drugs "<b>death</b>"; surgery "<b>claimed many lives</b>"</td></tr>
+            <tr><td>20</td><td>G</td><td><span class="ans">vi</span></td><td class="bn">Rodent research — "studying an <b>obese mouse</b>… new direction"</td></tr>
+            <tr><td>21</td><td>H</td><td><span class="ans">viii</span></td><td class="bn">Uncommon complaint — "leptin deficiency… <b>extremely rare condition</b>"</td></tr>
+            <tr><td>22</td><td>—</td><td><span class="ans">weight</span></td><td class="bn">"a ___ problem" = পুরো passage-এর বিষয়</td></tr>
+            <tr><td>23</td><td>A</td><td><span class="ans">metabolism</span></td><td class="bn">"blame their ___" = slow <b>metabolism</b>-এর অজুহাত</td></tr>
+            <tr><td>24</td><td>A</td><td><span class="ans">less</span></td><td class="bn">তারা ভাবে তারা <b>কম</b> শক্তি ব্যয় করে (myth)</td></tr>
+            <tr><td>25</td><td>D</td><td><span class="ans">genetic</span></td><td class="bn">"a ___ problem can be responsible" = <b>genetic</b></td></tr>
+            <tr><td>26</td><td>E</td><td><span class="ans">consume</span></td><td class="bn">"programmed to ___ more" = <b>consume</b>/eat more</td></tr>
+            <tr><td>27</td><td>F</td><td><span class="ans">behavior</span></td><td class="bn">"change people's ___" = <b>behaviour</b> modification</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️ সূক্ষ্ম:</span> <b>D=iv নয় ix</b> (মূল ভাব = নতুন দৃষ্টিভঙ্গি আসছে)। <b>F=v নয় ii</b> (নিরাপদ চিকিৎসা নেই)। <b>G=vi নয় i</b> (ইঁদুর-গবেষণা পথ দেখাল)। ব্যবহৃত হয়নি: i, ii, ix। <b>Q24 less</b> — "more" ফাঁদ; তাদের <i>বিশ্বাস</i> কম, যদিও বাস্তবে বেশি burn করে। <b>Q26 consume</b> — "more" আগেই বাক্যে, তাই blank = verb।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা প্রশ্ন breakdown (Q14–27)</summary><div class="body">
+        <p class="intro bn">Matching Headings-এ আসল খেলা = প্রতিটা para-র <b>মূল ভাব</b> (topic) ধরা, শব্দ নয়। নিচে প্রতিটা para-র key line + কেন এই heading + কেন তার পাশের <b>distractor heading</b> নয়।</p>
+
+        <div class="dq">
+          <div class="dqh">Q14 · Para A → <span class="ans">x · Shifting the blame</span></div>
+          <span class="ev">📍 "rather than <u>take responsibility</u> for their weight, obese people have often sought solace in the <u>excuse</u> that they have a slow metabolism."</span>
+          <p class="bn"><span class="lbl">কেন x:</span> পুরো para-র ভাব = মোটা মানুষ নিজের দায় না নিয়ে slow metabolism-এর উপর <b>দোষ চাপায়</b> = "shifting the blame"। "excuse", "rather than take responsibility" = দায় এড়ানো।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q15 · Para B → <span class="ans">vii · Expert explains energy requirements</span></div>
+          <span class="ev">📍 Dr Jebb: "overweight people actually <u>burn off more energy</u>. They have more cells, bigger hearts, bigger lungs and they all <u>need more energy</u>."</span>
+          <p class="bn"><span class="lbl">কেন vii:</span> একজন <b>বিশেষজ্ঞ</b> (Dr Jebb) মোটা মানুষের <b>শক্তি-চাহিদা</b> ব্যাখ্যা করছেন — heading-এর "expert explains energy requirements" হুবহু।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q16 · Para C → <span class="ans">iii · Proof of the truth</span></div>
+          <span class="ev">📍 sealed room — "researchers were able to <u>show her that her metabolism was not the culprit</u>… Her metabolism was fast, not slow."</span>
+          <p class="bn"><span class="lbl">কেন iii:</span> একটা পরীক্ষা করে <b>সত্য প্রমাণ</b> করা হলো (তার metabolism আসলে fast) — "proof of the truth"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q17 · Para D → <span class="ans">iv · New perspective on the horizon</span></div>
+          <span class="ev">📍 "we are on the <u>threshold of a complete change in the way we view</u>… obesity… obesity can be caused by our genes."</span>
+          <p class="bn"><span class="lbl">কেন iv:</span> "threshold of a complete change in the way we view" = obesity দেখার ভঙ্গিতে <b>নতুন দৃষ্টিভঙ্গি দিগন্তে</b>।</p>
+          <p class="bn"><span class="no">কেন ix (Nature or nurture) নয়:</span> para-তে gene (nature) আছে বটে, কিন্তু সেটা মূল কথা নয় — মূল কথা <b>একটা বড় পরিবর্তন আসছে</b>। ix একটা আলগা theme; এই নির্দিষ্ট "complete change in the way we view"-এর সাথে iv বেশি খাপ খায়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q18 · Para E → <span class="ans">xi · Lifestyle change required despite new findings</span></div>
+          <span class="ev">📍 "the <u>only effective way</u> for the vast majority… to lose weight is a <u>change of diet and an increase in exercise</u>."</span>
+          <p class="bn"><span class="lbl">কেন xi:</span> gene-গবেষণা যতই হোক, বেশিরভাগ মানুষের জন্য <b>diet + exercise</b>-ই একমাত্র উপায় = "lifestyle change required despite new findings"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q19 · Para F → <span class="ans">v · No known treatment</span></div>
+          <span class="ev">📍 drugs "may have caused <u>severe side effects and even death</u>"; "Surgery for obesity has also <u>claimed many lives</u>."</span>
+          <p class="bn"><span class="lbl">কেন v:</span> যেসব চিকিৎসা চেষ্টা হয়েছে (drugs, surgery) তা বিপজ্জনক/অকার্যকর — তাই এখনো <b>নিরাপদ-কার্যকর চিকিৎসা নেই</b>।</p>
+          <p class="bn"><span class="no">কেন ii (Hidden dangers) নয়:</span> বিপদ আছে ঠিকই, কিন্তু para-র মূল বার্তা = চিকিৎসার <b>অভাব/ব্যর্থতা</b>, লুকানো বিপদ নয়। ii লোভনীয় ফাঁদ।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q20 · Para G → <span class="ans">vi · Rodent research leads the way</span></div>
+          <span class="ev">📍 "Professor Jeffrey Friedman… <u>sent science in a new direction by studying an obese mouse</u>" → leptin আবিষ্কার।</span>
+          <p class="bn"><span class="lbl">কেন vi:</span> ইঁদুর-গবেষণা বিজ্ঞানকে <b>নতুন পথ</b> দেখাল (leptin) — "rodent research leads the way"।</p>
+          <p class="bn"><span class="no">কেন i (Obesity in animals) নয়:</span> i নিছক "পশুর স্থূলতা" — বর্ণনামূলক। কিন্তু এখানে ইঁদুর <b>পথপ্রদর্শক ভূমিকা</b> নিচ্ছে → vi, i নয়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q21 · Para H → <span class="ans">viii · A very uncommon complaint</span></div>
+          <span class="ev">📍 "leptin deficiency turned out to be an <u>extremely rare condition</u>."</span>
+          <p class="bn"><span class="lbl">কেন viii:</span> leptin-ঘাটতি <b>অত্যন্ত বিরল</b> রোগ = "a very uncommon complaint"। (complaint এখানে = রোগ/অসুখ।)</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q22–27 · Summary completion → <span class="ans">weight · metabolism · less · genetic · consume · behavior</span></div>
+          <p class="bn"><span class="lbl">22 weight:</span> পুরো passage-এর বিষয় = ওজন-সমস্যা।</p>
+          <p class="bn"><span class="lbl">23 metabolism:</span> "blame their ___" — তারা slow <b>metabolism</b>-এর উপর দোষ চাপায় (Para A)।</p>
+          <p class="bn"><span class="lbl">24 less:</span> "use ___ energy <b>than</b> thin people" — তারা <b>ভুল করে ভাবে</b> তারা কম শক্তি খরচ করে। <span class="no">"more" ফাঁদ:</span> বাস্তবে তারা বেশি burn করে, কিন্তু তাদের <i>বিশ্বাস</i> = কম → <b>less</b>।</p>
+          <p class="bn"><span class="lbl">25 genetic:</span> "a ___ problem can be responsible" = <b>genetic</b> (Para D: genes obesity ঘটাতে পারে)।</p>
+          <p class="bn"><span class="lbl">26 consume:</span> বাক্যে "___ more than others" — "more" আগেই আছে, তাই blank = <b>verb</b> → <b>consume</b> (Para E: "how much we eat")। <span class="no">"use" ফাঁদ</span> (ওটা Q24-এর জন্য নয়)।</p>
+          <p class="bn"><span class="lbl">27 behavior:</span> "change people's ___" = <b>behaviour</b> (Para F: "behaviour modification")। "mind" distractor।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 এই passage-এর বড় শিক্ষা</span> Matching Headings = topic sentence ধরো, তারপর <b>distractor heading</b> বাদ দাও — distractor সাধারণত para-র একটা ছোট detail ধরে (ii hidden dangers, i animals, ix nature/nurture)। Summary-তে grammar (verb/noun) আর passage-এর <b>হুবহু শব্দ</b> বাছার নিয়ম।</div>
+      </div></details>
+    </section>
+
+    <!-- ============ TEST A · P3 ADOLESCENTS ============ -->
+    <section id="a3">
+      <p class="eyebrow">Test A · Passage 3 · Q28–40</p>
+      <h2 class="sec"><span class="n">A3</span> Looking for a Market among Adolescents</h2>
+      <p class="bn">প্রশ্ন: <b>Q28–33 Matching Headings</b> (Para D ও H example দেওয়া) + <b>Q34–37 Yes/No/Not Given</b> + <b>Q38–40 Sentence completion</b>।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Reading Passage</div>
+        <p><span class="pp">A.</span> In 1992, the most recent year for which data are available, the US tobacco industry spent $5 billion on domestic marketing. That figure represents a huge increase from the approximate £250-million budget in 1971, when tobacco advertising was banned from television and radio. The current expenditure translates to about $75 for every adult smoker, or to $4,500 for every adolescent who became a smoker that year. This apparently high cost to attract a new smoker is very likely to be recouped over the average 25 years that this teen will smoke.</p>
+        <p><span class="pp">B.</span> In the first half of this century, leaders of the tobacco companies boasted that innovative mass-marketing strategies built the industry. Recently, however, the tobacco business has maintained that its advertising is geared to draw established smokers to particular brands. But public health advocates insist that such advertising plays a role in generating new demand, with adolescents being the primary target. To explore the issue, we examined several marketing campaigns undertaken over the years and correlated them with the ages smokers say they began their habit. We find that, historically, there is considerable evidence that such campaigns led to an increase in cigarette smoking among adolescents of the targeted group.</p>
+        <p><span class="pp">C.</span> National surveys collected the ages at which people started smoking. The 1955 Current Population Survey (CPS) was the first to query respondents for this information, although only summary data survive. Beginning in 1970, however, the National Health Interview Surveys (NHIS) included this question in some polls. Answers from all the surveys were combined to produce a sample of more than 165,000 individuals. Using a respondent's age at the time of the survey and the reported age of initiation (the age they started smoking), the year the person began smoking could be determined. Dividing the number of adolescents (defined as those 12 to 17 years old) who started smoking during a particular interval by the number who were 'eligible' to begin at the start of the interval gives the initiation rate for that group.</p>
+        <p><span class="pp">D.</span> <i>(Example heading = iv)</i> Mass-marketing campaigns began as early as the 1880s, which boosted tobacco consumption six fold by 1900. Much of the rise was attributed to a greater number of people smoking cigarettes, as opposed to using cigars, pipes, snuff or chewing tobacco. Marketing strategies included painted billboards and an extensive distribution of coupons. Some brands included soft-porn pictures of women in the packages. Such tactics inspired outcry from educational leaders concerned about their corrupting influence on teenage boys. Thirteen percent of the males surveyed in 1955 who reached adolescence between 1890 and 1910 commenced smoking by 18 years of age, compared with almost no females.</p>
+        <p><span class="pp">E.</span> The power of targeted advertising is more apparent if one considers the men born between 1890 and 1899. In 1912, when many of these men were teenagers, the R.J. Reynolds Company launched the Camel brand of cigarettes with a revolutionary approach. Every city in the country was bombarded with print advertising. According to the 1955 CPS, initiation by age 18 for males in this group jumped to 21.6 percent, a two thirds increase over those born before 1890. The NHIS initiation rate also reflected this change. For adolescent males, it went up from 2.9 percent between 1910 and 1912 to 4.9 percent between 1918 and 1921.</p>
+        <p><span class="pp">F.</span> It was not until the mid-1920s that social mores permitted cigarette advertising to focus on women. In 1926 a poster depicted women imploring smokers of Chesterfield cigarettes to 'Blow Some My Way'. The most successful crusade, however, was for Lucky Strikes, which urged women to 'Reach for a Lucky instead of a Sweet.' The 1955 CPS data showed that 7 percent of the women who were adolescents during the mid-1920s had started smoking by age 18, compared with only 2 percent in the preceding generation of female adolescents. Initiation rates from the NHIS data for adolescent girls were observed to increase threefold, from 0.6 percent between 1922 and 1925 to 1.8 percent between 1930 and 1933. In contrast, rates for males rose only slightly.</p>
+        <p><span class="pp">G.</span> The next major boost in smoking initiation in adolescent females occurred in the late 1960s. In 1967 the tobacco industry launched 'niche' brands aimed exclusively at women. The most popular was Virginia Slims. The visuals of this campaign emphasized a woman who was strong, independent and very thin. Initiation in female adolescents nearly doubled, from 3.7 percent between 1964 and 1967 to 6.2 percent between 1972 and 1975 (NHIS data). During the same period, rates for adolescent males remained stable.</p>
+        <p><span class="pp">H.</span> <i>(Example heading = xi)</i> Thus, in four distinct instances over the past 100 years, innovative and directed tobacco marketing campaigns were associated with marked surges in primary demand from adolescents only in the target group. The first two were directed at males and the second two at females. Of course, other factors helped to entrench smoking in society. Yet it is clear from the data that advertising has been an overwhelming force in attracting new users.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q28–33 · Matching Headings</span> Para A, B, C, E, F, G-এর জন্য heading বাছো। <b>D=iv ও H=xi</b> example হিসেবে দেওয়া।</div>
+      <div class="bank">
+        <div class="blab">📚 List of Headings</div>
+        <ol>
+          <li><b>i</b> — Gathering the information</li>
+          <li><b>ii</b> — Cigarettes produced to match an image</li>
+          <li><b>iii</b> — Financial outlay on marketing</li>
+          <li><b>iv</b> — The first advertising methods <i>(example: D)</i></li>
+          <li><b>v</b> — Pressure causes a drop in sales</li>
+          <li><b>vi</b> — Changing attitudes allow new marketing tactics</li>
+          <li><b>vii</b> — Background to the research</li>
+          <li><b>viii</b> — A public uproar is avoided</li>
+          <li><b>ix</b> — The innovative move to written advertisements</li>
+          <li><b>x</b> — A century of uninhibited smoking</li>
+          <li><b>xi</b> — Conclusions of the research <i>(example: H)</i></li>
+        </ol>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q34–37 · YES / NO / NOT GIVEN</span> লেখকের দাবির সাথে মেলে = YES · উল্টো = NO · নেই = NOT GIVEN।</div>
+      <ol class="clean" start="34">
+        <li>Cigarette marketing has declined in the US since tobacco advertising was banned on TV.</li>
+        <li>Tobacco companies claim that their advertising targets existing smokers.</li>
+        <li>Women who took up smoking in the past lost weight.</li>
+        <li>The two surveys show different trends in cigarette initiation.</li>
+      </ol>
+
+      <div class="callout tip bn"><span class="ct">📋 Q38–40 · Sentence completion</span> NO MORE THAN THREE WORDS AND/OR A NUMBER.</div>
+      <ol class="clean" start="38">
+        <li>Tobacco companies are currently being accused of aiming their advertisements mainly at ______.</li>
+        <li>Statistics on smoking habits for men born between 1890 and 1899 were gathered in the year ______.</li>
+        <li>The ______ brand of cigarettes was designed for a particular sex.</li>
+      </ol>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Para</th><th>Ans</th><th>কেন (locate)</th></tr></thead>
+          <tbody>
+            <tr><td>28</td><td>A</td><td><span class="ans">iii</span></td><td class="bn">Financial outlay — "$5 billion… huge increase from… £250-million budget"</td></tr>
+            <tr><td>29</td><td>B</td><td><span class="ans">vii</span></td><td class="bn">Background to research — "<b>To explore the issue, we examined</b>…"</td></tr>
+            <tr><td>30</td><td>C</td><td><span class="ans">i</span></td><td class="bn">Gathering info — "surveys <b>collected the ages</b>… sample of 165,000"</td></tr>
+            <tr><td>31</td><td>E</td><td><span class="ans">ix</span></td><td class="bn">Move to written ads — Camel "bombarded with <b>print advertising</b>"</td></tr>
+            <tr><td>32</td><td>F</td><td><span class="ans">vi</span></td><td class="bn">Changing attitudes — "<b>social mores permitted</b>… focus on women"</td></tr>
+            <tr><td>33</td><td>G</td><td><span class="ans">ii</span></td><td class="bn">Match an image — Virginia Slims "strong, independent, very thin"</td></tr>
+            <tr><td>34</td><td>A</td><td><span class="ans">NO</span></td><td class="bn">spending "<b>huge increase</b>" since TV ban — declined-এর উল্টো</td></tr>
+            <tr><td>35</td><td>B</td><td><span class="ans">YES</span></td><td class="bn">"advertising is geared to draw <b>established smokers</b>"</td></tr>
+            <tr><td>36</td><td>F</td><td><span class="ans">NOT GIVEN</span></td><td class="bn">"thin"/"instead of a Sweet" ads আছে, কিন্তু নারীরা আসলে ওজন কমিয়েছে — বলা নেই</td></tr>
+            <tr><td>37</td><td>E</td><td><span class="ans">NO</span></td><td class="bn">দুই survey "<b>also reflected</b> this change" = একই প্রবণতা, different নয়</td></tr>
+            <tr><td>38</td><td>B</td><td><span class="ans">adolescents</span></td><td class="bn">"<b>adolescents being the primary target</b>"</td></tr>
+            <tr><td>39</td><td>E</td><td><span class="ans">1955</span></td><td class="bn">"According to the <b>1955 CPS</b>… for males in this group"</td></tr>
+            <tr><td>40</td><td>G</td><td><span class="ans">Virginia Slims</span></td><td class="bn">"niche brands aimed <b>exclusively at women</b>… Virginia Slims"</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️ ফাঁদ:</span> <b>Q36 NG</b> — বিজ্ঞাপন ওজন/মিষ্টির ইঙ্গিত দিয়েছে, কিন্তু "নারীরা ওজন কমিয়েছে" passage বলেনি — নিজের অনুমানে YES দিও না। <b>Q37 NO</b> — "also reflected" = একই দিক। ব্যবহৃত হয়নি: v, viii, x।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা প্রশ্ন breakdown (Q28–40)</summary><div class="body">
+        <p class="intro bn">তিন ধরনের প্রশ্ন: Headings (para-র মূল ভাব), Y/N/NG (লেখকের দাবি), Sentence (হুবহু শব্দ)। মনে রাখো — D=iv ও H=xi <b>example</b> হিসেবে দেওয়া ছিল।</p>
+
+        <div class="dq">
+          <div class="dqh">Q28 · Para A → <span class="ans">iii · Financial outlay on marketing</span></div>
+          <span class="ev">📍 "$5 billion on domestic marketing… a <u>huge increase from the approximate £250-million budget</u> in 1971."</span>
+          <p class="bn"><span class="lbl">কেন iii:</span> পুরো para = marketing-এ <b>কত টাকা খরচ</b> হয় তার হিসাব (outlay = ব্যয়)। সংখ্যা/টাকা = financial outlay।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q29 · Para B → <span class="ans">vii · Background to the research</span></div>
+          <span class="ev">📍 "<u>To explore the issue, we examined</u> several marketing campaigns… and correlated them with the ages smokers say they began."</span>
+          <p class="bn"><span class="lbl">কেন vii:</span> "we examined / to explore the issue" = গবেষণার <b>প্রেক্ষাপট/উদ্দেশ্য</b> ঘোষণা = background to the research।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q30 · Para C → <span class="ans">i · Gathering the information</span></div>
+          <span class="ev">📍 "National surveys <u>collected the ages</u>… combined to produce a <u>sample of more than 165,000</u> individuals."</span>
+          <p class="bn"><span class="lbl">কেন i:</span> para = কীভাবে <b>তথ্য সংগ্রহ</b> করা হলো (survey, sample) = gathering the information।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q31 · Para E → <span class="ans">ix · The innovative move to written advertisements</span></div>
+          <span class="ev">📍 Camel "launched… with a revolutionary approach. Every city in the country was <u>bombarded with print advertising</u>."</span>
+          <p class="bn"><span class="lbl">কেন ix:</span> নতুনত্ব = <b>print (লিখিত) বিজ্ঞাপন</b> দিয়ে সারা দেশ ছেয়ে ফেলা = "move to written advertisements"।</p>
+          <p class="bn"><span class="no">কেন iii নয়:</span> টাকার কথা নয়, <b>মাধ্যমের</b> (print) নতুনত্ব — তাই ix, financial (iii) নয়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q32 · Para F → <span class="ans">vi · Changing attitudes allow new marketing tactics</span></div>
+          <span class="ev">📍 "It was not until the mid-1920s that <u>social mores permitted</u> cigarette advertising to focus on women."</span>
+          <p class="bn"><span class="lbl">কেন vi:</span> আগে নারীদের লক্ষ্য করে বিজ্ঞাপন সমাজ মানত না; "social mores <b>permitted</b>" = <b>মনোভাব বদলে</b> নতুন কৌশলের সুযোগ এলো।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q33 · Para G → <span class="ans">ii · Cigarettes produced to match an image</span></div>
+          <span class="ev">📍 Virginia Slims — "niche brands <u>aimed exclusively at women</u>… emphasized a woman who was <u>strong, independent and very thin</u>."</span>
+          <p class="bn"><span class="lbl">কেন ii:</span> একটা নির্দিষ্ট <b>image</b> (শক্ত/স্বাধীন/সরু নারী) ধরে বানানো ব্র্যান্ড = "cigarettes produced to match an image"। ব্যবহৃত হয়নি: v, viii, x।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q34 · "Cigarette marketing has declined since the TV ban." → <span class="ans">NO</span></div>
+          <span class="ev">📍 Para A: "$5 billion… a <u>huge increase</u> from the… £250-million budget in 1971, when tobacco advertising was banned from television."</span>
+          <p class="bn"><span class="lbl">কেন NO:</span> statement বলছে marketing <b>কমেছে</b>; passage বলছে ১৯৭১-এর £250M → ১৯৯২-এ $5bn = বিশাল <b>বৃদ্ধি</b>। সরাসরি উল্টো → <b>NO</b> (Y/N/NG-তে contradiction = NO)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q35 · "Tobacco companies claim their advertising targets existing smokers." → <span class="ans">YES</span></div>
+          <span class="ev">📍 Para B: "the tobacco business has maintained that its advertising is <u>geared to draw established smokers</u> to particular brands."</span>
+          <p class="bn"><span class="lbl">কেন YES:</span> "established smokers" = existing smokers; "maintained that" = কোম্পানির দাবি। statement-এর সাথে হুবহু এক → <b>YES</b>।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q36 · "Women who took up smoking in the past lost weight." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 Para F: Lucky Strikes ad — "<u>Reach for a Lucky instead of a Sweet</u>." (ওজন/মিষ্টির ইঙ্গিত)</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> বিজ্ঞাপন ওজন কমানোর <b>ইঙ্গিত</b> দিয়েছে, কিন্তু নারীরা ধূমপান করে আসলে <b>ওজন কমিয়েছে</b> কিনা — passage বলেনি। বিজ্ঞাপনের বার্তা ≠ বাস্তব ফলাফল। নিজের অনুমানে YES দিও না → <b>NG</b>।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q37 · "The two surveys show different trends." → <span class="ans">NO</span></div>
+          <span class="ev">📍 Para E: "According to the 1955 CPS, initiation… jumped to 21.6 percent… The <u>NHIS initiation rate also reflected this change</u>."</span>
+          <p class="bn"><span class="lbl">কেন NO:</span> "also reflected this change" = দুই survey (CPS, NHIS) <b>একই প্রবণতা</b> দেখায়। statement বলছে "different" → উল্টো → <b>NO</b>।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q38–40 · Sentence completion → <span class="ans">adolescents · 1955 · Virginia Slims</span></div>
+          <p class="bn"><span class="lbl">38 adolescents:</span> "accused of aiming… mainly at ___" — public health advocates-দের অভিযোগ; Para B: "<b>adolescents</b> being the primary target"। (≤3 words; "teenagers" নয়, passage হুবহু "adolescents")।</p>
+          <p class="bn"><span class="lbl">39 1955:</span> ১৮৯০–১৮৯৯-এ জন্মানো পুরুষদের তথ্য — Para E: "According to the <b>1955</b> CPS"। সংখ্যা।</p>
+          <p class="bn"><span class="lbl">40 Virginia Slims:</span> "designed for a particular sex" = এক লিঙ্গের জন্য — Para G: "exclusively at women… <b>Virginia Slims</b>"। (Camel = সবার; Virginia Slims = শুধু নারী → নিখুঁত)।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 এই passage-এর বড় শিক্ষা</span> Y/N/NG-তে দুই ফাঁদ পরপর: <b>Q36</b> = বিজ্ঞাপনের <i>দাবি</i>কে <i>বাস্তব ফল</i> ভেবে NG মিস করা; <b>Q37</b> = "also reflected" না দেখে "different" ভাবা। সবসময় জিজ্ঞেস করো — passage কি statement-এর উল্টো বলছে (NO), নাকি চুপ (NOT GIVEN)?</div>
+      </div></details>
+    </section>
+
+    <!-- ============ TEST B · P1 STEAM ENGINE ============ -->
+    <section id="b1">
+      <p class="eyebrow">Test B · Passage 1 · Q1–12</p>
+      <h2 class="sec"><span class="n">B1</span> History of the Steam Engine</h2>
+      <p class="bn">প্রশ্ন: <b>Q1–5 Flow-chart completion</b> + <b>Q6–12 Matching person</b> (A–D)।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Reading Passage</div>
+        <p>The first steam-powered machine was built in 1698 by the English military engineer Thomas Savery (c. 1650–1715). His invention, designed to pump water out of coal mines, was known as the Miner's Friend. The machine, which had no moving parts, consisted of a simple boiler — a steam chamber whose valves were located on the surface — and a pipe leading to the water in the mine below. Water was heated in the boiler chamber until its steam filled the chamber, forcing out any remaining water or air. The valves were then closed and cold water was sprayed over the chamber. This chilled and condensed the steam inside to form a vacuum. When the valves were reopened, the vacuum sucked up the water from the mine, and the process could then be repeated.</p>
+        <p>A few years later, an English engineer named Thomas Newcomen (1663–1729) improved the steam pump. He increased efficiency by setting a moving piston inside a cylinder, a technique still in use today. A cylinder — a long, thin, closed chamber separate from the boiler — replaced the large, open boiler chamber. A piston — a sliding piece that fits in the cylinder — was used to create motion instead of a vacuum. Steam filled the cylinder from an open valve. When filled, the cylinder was sprayed with water, causing the steam inside to condense into water and create a partial vacuum. The pressure of the outside air then forced the piston down, producing a power stroke. The piston was connected to a beam, which was connected to a water pump at the bottom of the mine. Through these connections, the movement of the piston caused the water pump to suck up the water.</p>
+        <p>The most important improvement in steam engine design was brought about by the Scottish engineer James Watt (1736–1819). He set out to improve the performance of Newcomen's engine and by 1769 had arrived at the conclusion: if steam were condensed separately from the cylinder, the cylinder could always be kept hot. That year he introduced the design of a steam engine that had a separate condenser and sealed cylinders. Since this kept the heating and cooling processes separate, his machine could work constantly, without any long pause at each cycle to reheat the cylinder. Watt's refined steam engine design used one-third less fuel than a comparable Newcomen engine.</p>
+        <p>Over the next 15 years, Watt continued to improve his engine and made three significant additions. He introduced the centrifugal governor, a device that could control steam output and engine speed. He made the engine double-acting by allowing steam to enter alternately on either side of the piston. This allowed the engine to work rapidly and deliver power on the upward and downward piston strokes. Most important, he attached a flywheel to the engine.</p>
+        <p>Flywheels allow the engine to run more smoothly by creating a more constant load, and they convert the conventional back-and-forth power stroke into a circular (rotary) motion that can be adapted more readily to power machinery. By 1790, Watt's improved steam engine offered a powerful, reliable power source that could be located almost anywhere. It was used to pump bellows for blast furnaces, to power huge hammers for shaping and strengthening forged metals, and to turn machinery at textile mills. More than anything, it was Watt's steam engine that speeded up the Industrial Revolution both in England and the rest of the world.</p>
+        <p>Steam was successfully adapted to powerboats in 1802 and railways in 1829. Later, some of the first automobiles were powered by steam. In the 1880s, the English engineer Charles A. Parsons (1854–1931) produced the first steam turbine, a new steam technology that was more efficient and which enabled the steam engine to evolve into a highly sophisticated and powerful engine that propelled huge ships and ran turbogenerators that supplied electricity.</p>
+        <p>Once the dominant power source, steam engines eventually declined in popularity as other power sources became available. Although there were more than 60,000 steam cars made in the United States between 1897 and 1927, the steam engine eventually gave way to the internal combustion engine as a power source for vehicles.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q1–5 · Flow-chart completion</span> NO MORE THAN THREE WORDS — passage থেকে শব্দ বসাও।</div>
+      <div class="passage" style="border-left-color:var(--primary)">
+        <div class="plabel" style="color:var(--primary-d)">🔧 Development of the Steam Engine</div>
+        <p><b>The Miner's Friend</b> used condensed steam to <b>(1)______</b>, which sucked water from mines.</p>
+        <p>↓ <b>Design improved:</b> Newcomen <b>(2)______</b> by using a piston and cylinder instead of an open boiler.</p>
+        <p>↓ <b>1769:</b> separating the heating and cooling processes meant no <b>(3)______</b> between power strokes.</p>
+        <p>↓ <b>Further development:</b> it became easier to <b>(4)______</b> through the use of the flywheel.</p>
+        <p>↓ <b>Nineteenth century:</b> steam power <b>(5)______</b> for use in various means of transport.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q6–12 · Matching person</span> প্রতিটা statement-কে সঠিক ব্যক্তির (A–D) সাথে মেলাও। একজন একাধিকবার আসতে পারে।</div>
+      <div class="chips">
+        <span class="chip link"><b>A</b> Thomas Savery</span><span class="chip link"><b>B</b> Thomas Newcomen</span><span class="chip link"><b>C</b> James Watt</span><span class="chip link"><b>D</b> Charles A. Parsons</span>
+      </div>
+      <ol class="clean" start="6">
+        <li>His invention was the first to use moving parts.</li>
+        <li>His invention allowed steam power to be converted into electric power.</li>
+        <li>His invention was the single biggest step in development.</li>
+        <li>His invention was a simple solution to an industrial problem.</li>
+        <li>His invention was the first continuous power source.</li>
+        <li>His invention first used a method people still use now.</li>
+        <li>His invention allowed a much greater degree of control.</li>
+      </ol>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Ans</th><th>কেন (locate)</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><span class="ans">form a vacuum</span></td><td class="bn">"condensed the steam… to <b>form a vacuum</b>… the vacuum sucked up the water"</td></tr>
+            <tr><td>2</td><td><span class="ans">increased efficiency</span></td><td class="bn">"Newcomen… <b>increased efficiency</b> by setting a moving piston"</td></tr>
+            <tr><td>3</td><td><span class="ans">long pause</span></td><td class="bn">"work constantly, without any <b>long pause</b>… to reheat the cylinder"</td></tr>
+            <tr><td>4</td><td><span class="ans">power machinery</span></td><td class="bn">flywheel → rotary motion "adapted… to <b>power machinery</b>"</td></tr>
+            <tr><td>5</td><td><span class="ans">was adapted</span></td><td class="bn">"Steam was successfully <b>adapted</b> to powerboats… railways"</td></tr>
+            <tr><td>6</td><td><span class="ans">B</span> Newcomen</td><td class="bn">"setting a <b>moving piston</b>" (Savery = "no moving parts")</td></tr>
+            <tr><td>7</td><td><span class="ans">D</span> Parsons</td><td class="bn">"steam turbine… <b>turbogenerators that supplied electricity</b>"</td></tr>
+            <tr><td>8</td><td><span class="ans">C</span> Watt</td><td class="bn">"The <b>most important improvement</b>… by James Watt"</td></tr>
+            <tr><td>9</td><td><span class="ans">A</span> Savery</td><td class="bn">"a <b>simple boiler</b>… to pump water out of coal mines"</td></tr>
+            <tr><td>10</td><td><span class="ans">C</span> Watt</td><td class="bn">"his machine could <b>work constantly</b>" = প্রথম continuous</td></tr>
+            <tr><td>11</td><td><span class="ans">B</span> Newcomen</td><td class="bn">"a moving piston… <b>a technique still in use today</b>"</td></tr>
+            <tr><td>12</td><td><span class="ans">C</span> Watt</td><td class="bn">"centrifugal governor… could <b>control</b> steam output and speed"</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">🧠</span> ৭ প্রশ্ন > ৪ ব্যক্তি, তাই reuse স্বাভাবিক। <b>Watt তিনবার</b> (Q8 বড় ধাপ · Q10 continuous · Q12 control)। <b>Newcomen দুবার</b> (Q6 প্রথম moving parts · Q11 এখনো ব্যবহৃত method)।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা প্রশ্ন breakdown (Q1–12)</summary><div class="body">
+        <p class="intro bn">Flow-chart = প্রক্রিয়ার ধাপ ক্রমে (passage-এর হুবহু শব্দ)। Matching person = প্রতিটা আবিষ্কার কার — keyword (vacuum, electricity, control…) দিয়ে ব্যক্তি ধরো।</p>
+
+        <div class="dq">
+          <div class="dqh">Q1 · "used condensed steam to ___" → <span class="ans">form a vacuum</span></div>
+          <span class="ev">📍 "This chilled and <u>condensed the steam inside to form a vacuum</u>. When the valves were reopened, the <u>vacuum sucked up the water</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> condensed steam → vacuum তৈরি → সেই vacuum পানি টানে। ৩ শব্দের সীমায় "<b>form a vacuum</b>"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q2 · "Newcomen ___ using a piston and cylinder" → <span class="ans">increased efficiency</span></div>
+          <span class="ev">📍 "Thomas Newcomen… <u>increased efficiency by setting a moving piston inside a cylinder</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> piston-cylinder দিয়ে Newcomen যা করল = <b>increased efficiency</b> (দক্ষতা বাড়াল)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q3 · "separating heating and cooling meant no ___" → <span class="ans">long pause</span></div>
+          <span class="ev">📍 "his machine could work constantly, <u>without any long pause at each cycle to reheat the cylinder</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> separate condenser → cylinder সবসময় গরম → প্রতি cycle-এ গরম করার <b>দীর্ঘ বিরতি</b> লাগে না = "no long pause"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q4 · "became easier to ___ through the flywheel" → <span class="ans">power machinery</span></div>
+          <span class="ev">📍 flywheel "convert… into a circular (rotary) motion that can be adapted more readily to <u>power machinery</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> flywheel → rotary motion → যন্ত্র চালানো সহজ = "power machinery"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q5 · "steam power ___ for use in transport" → <span class="ans">was adapted</span></div>
+          <span class="ev">📍 "Steam was successfully <u>adapted</u> to powerboats in 1802 and railways in 1829."</span>
+          <p class="bn"><span class="lbl">কেন:</span> flow বলছে "steam power ___ for use in transport" → "(was) <b>adapted</b>" (খাপ খাওয়ানো হলো)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q6 · "first to use moving parts" → <span class="ans">B · Newcomen</span></div>
+          <span class="ev">📍 Newcomen "setting a <u>moving piston</u>"; Savery's machine "had <u>no moving parts</u>."</span>
+          <p class="bn"><span class="lbl">কেন B:</span> Savery-র যন্ত্রে moving parts ছিল না; Newcomen-ই প্রথম moving piston আনলেন → প্রথম moving parts।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q7 · "converted steam power into electric power" → <span class="ans">D · Parsons</span></div>
+          <span class="ev">📍 Parsons "produced the first steam turbine… ran <u>turbogenerators that supplied electricity</u>."</span>
+          <p class="bn"><span class="lbl">কেন D:</span> electricity-র একমাত্র উল্লেখ Parsons-এর turbine/turbogenerator অংশে।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q8 · "single biggest step in development" → <span class="ans">C · Watt</span></div>
+          <span class="ev">📍 "The <u>most important improvement</u> in steam engine design was brought about by… James Watt."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "most important improvement" = সবচেয়ে বড় ধাপ → Watt।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q9 · "simple solution to an industrial problem" → <span class="ans">A · Savery</span></div>
+          <span class="ev">📍 Savery — a "<u>simple boiler</u>… designed to <u>pump water out of coal mines</u>."</span>
+          <p class="bn"><span class="lbl">কেন A:</span> খনির পানি তোলা (industrial problem)-এর সরল boiler-সমাধান = simple solution।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q10 · "first continuous power source" → <span class="ans">C · Watt</span></div>
+          <span class="ev">📍 Watt — "his machine could <u>work constantly</u>, without any long pause."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "work constantly" = থেমে না থেকে চলা = প্রথম continuous → Watt।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q11 · "first used a method people still use now" → <span class="ans">B · Newcomen</span></div>
+          <span class="ev">📍 Newcomen — "a moving piston inside a cylinder, <u>a technique still in use today</u>."</span>
+          <p class="bn"><span class="lbl">কেন B:</span> "still in use today" = এখনো ব্যবহৃত method (piston-in-cylinder) → Newcomen।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q12 · "allowed a much greater degree of control" → <span class="ans">C · Watt</span></div>
+          <span class="ev">📍 Watt — "the centrifugal governor, a device that could <u>control steam output and engine speed</u>."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "control" শব্দটাই governor-এর সাথে → Watt।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 এই passage-এর বড় শিক্ষা</span> Matching-person-এ প্রশ্ন (৭) > ব্যক্তি (৪) হলে <b>reuse বাধ্যতামূলক</b> — একজন বারবার আসবে (Watt ৩বার)। প্রতিটা statement-এর <b>একক keyword</b> (vacuum, electricity, control, "still in use") ধরে ব্যক্তি locate করো — ক্রমে আসে না।</div>
+      </div></details>
+    </section>
+
+    <!-- ============ TEST B · P2 DISABILITY ============ -->
+    <section id="b2">
+      <p class="eyebrow">Test B · Passage 2 · Q13–27</p>
+      <h2 class="sec"><span class="n">B2</span> Intellectual Disability</h2>
+      <p class="bn">প্রশ্ন: <b>Q13–15 Completion</b> + <b>Q16–20 Yes/No/Not Given</b> + <b>Q21–22 Short answer</b> + <b>Q23–27 Matching Headings</b>।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Reading Passage</div>
+        <p><span class="pp">A.</span> People with intellectual disability form one of the largest single disability groups in a community. Intellectual disability refers to a general slowness to learn and function within society, and the identification of intellectual disability is usually based on an assessment of a person's performance in a variety of tasks. An individual's level of performance, as assessed, can change with time and circumstances. On occasions, an intellectually disabled person may perform better than at other times. Evidence for this inconsistent level of performance comes from modern research and practice which have shown that with skilled training and opportunity for development, people with intellectual disability have much greater potential for acquiring skills and for participation in community life than previously had been thought possible.</p>
+        <p><span class="pp">B.</span> In many western societies, five categories of intellectual disability have traditionally been used in order to indicate the perceived degree of difficulty an individual has with learning. All five may occur in children, adolescents or adults, and show as mild, moderate, severe, profound or multiple intellectual disabilities. However, undue reliance on such categories and the consequent 'pigeonholing' of individuals into one of the five categories can result in failure to provide the opportunities for each person to develop.</p>
+        <p><span class="pp">C.</span> For the majority of intellectual disabilities, there is no identifiable cause, but there are some causes that are well documented. They include: brain damage at birth due to lack of oxygen, prolonged labour; drug or diet-related problems; damage after birth due to illnesses such as encephalitis or accidents; hereditary defects in the genes; abnormal chromosome count resulting in, for example, Down Syndrome.</p>
+        <p><span class="pp">D.</span> Like everyone else, people with an intellectual disability need a rewarding job, a satisfying place to live and a good social life. But they may need extra support to achieve these things. Good support services are based on the principle of normalization — which means enabling people to be part of the community like everyone else. In turn, normalization needs to be well-integrated into the community in order to be effective. Some of the services needed include assessment centres, training for employment in order to keep jobs once they get them, residential accommodation that is homelike. For children, early education and school education appropriate to the child's needs are essential. Without a strong community-based system of care, the intellectually disabled run the risk of becoming a huge underclass as in the United States, where thousands of intellectually disabled are homeless because of the American policy of de-institutionalization.</p>
+        <p><span class="pp">E.</span> With the introduction of the intellectually disabled into communities, there is a need to promote awareness of communication. Although many people may have little experience in talking with an intellectually disabled person, and anticipate great difficulty in communication, there are common guidelines that can simplify the interaction. Firstly, it is useful to remember that people with disabilities have feelings and can usually understand what is said, even though they sometimes may take longer to respond. Speaking in the same friendly manner as you would to anyone else, and using straightforward language and uncomplicated sentences, is also recommended. Being prepared to wait a little longer for replies during a conversation with an intellectually disabled person would undoubtedly benefit the exchange. Above all, it is suggested not to talk about the person with someone else within their hearing. Ultimately, the idea is to encourage intellectually disabled people to do things for themselves.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 Q13–15 · Completion</span> ONE word from Passage 2.</div>
+      <ol class="clean" start="13">
+        <li>Training helps intellectually disabled people be a part of a ______.</li>
+        <li>In order to retain a job, people with disabilities need ______.</li>
+        <li>Housing for intellectually disabled people needs to be ______.</li>
+      </ol>
+
+      <div class="callout tip bn"><span class="ct">📋 Q16–20 · YES / NO / NOT GIVEN</span></div>
+      <ol class="clean" start="16">
+        <li>Intellectual disability is an unchanging disorder.</li>
+        <li>Poor nutrition in mothers can lead to brain damage in newborns.</li>
+        <li>Down syndrome is the result of a shortage of oxygen at birth.</li>
+        <li>Work is the most urgent need for a person with disabilities.</li>
+        <li>Intellectually disabled people usually have hearing problems.</li>
+      </ol>
+
+      <div class="callout tip bn"><span class="ct">📋 Q21–22 · Short answer</span> Which TWO causes of brain damage are NOT related to birth or genes? (ONE word each)</div>
+      <ol class="clean" start="21">
+        <li>______</li>
+        <li>______</li>
+      </ol>
+
+      <div class="callout tip bn"><span class="ct">📋 Q23–27 · Matching Headings</span> Para A–E, প্রতিটা heading একবার ব্যবহৃত।</div>
+      <div class="bank">
+        <div class="blab">📚 List of Headings</div>
+        <ol>
+          <li><b>i</b> — How is intellectual disability assessed?</li>
+          <li><b>ii</b> — What do people with an intellectual disability need?</li>
+          <li><b>iii</b> — What is intellectual disability?</li>
+          <li><b>iv</b> — How do people with an intellectual disability talk?</li>
+          <li><b>v</b> — What are the forms of intellectual disability?</li>
+          <li><b>vi</b> — What causes intellectual disability?</li>
+          <li><b>vii</b> — How do you talk to a person with an intellectual disability?</li>
+          <li><b>viii</b> — Which community-based services are available?</li>
+        </ol>
+      </div>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Ans</th><th>কেন (locate)</th></tr></thead>
+          <tbody>
+            <tr><td>13</td><td><span class="ans">community</span></td><td class="bn">A: training → "participation in <b>community</b> life"</td></tr>
+            <tr><td>14</td><td><span class="ans">support</span></td><td class="bn">D: "may need extra <b>support</b>… to keep jobs"</td></tr>
+            <tr><td>15</td><td><span class="ans">homelike</span></td><td class="bn">D: "residential accommodation that is <b>homelike</b>"</td></tr>
+            <tr><td>16</td><td><span class="ans">NO</span></td><td class="bn">A: performance "<b>can change</b> with time" — unchanging-এর উল্টো</td></tr>
+            <tr><td>17</td><td><span class="ans">NOT GIVEN</span></td><td class="bn">C: "diet-related" আছে, কিন্তু "<b>মায়ের</b> nutrition → newborn" নির্দিষ্ট নয়</td></tr>
+            <tr><td>18</td><td><span class="ans">NO</span></td><td class="bn">C: Down Syndrome = "<b>abnormal chromosome count</b>", oxygen নয়</td></tr>
+            <tr><td>19</td><td><span class="ans">NOT GIVEN</span></td><td class="bn">D: সব দরকার বলেছে, কিন্তু কোনটা "<b>most urgent</b>" বলা নেই</td></tr>
+            <tr><td>20</td><td><span class="ans">NOT GIVEN</span></td><td class="bn">E: ধীরে সাড়া দেয় বলা আছে, কিন্তু "<b>hearing problems</b>" নয়</td></tr>
+            <tr><td>21</td><td><span class="ans">illnesses</span></td><td class="bn">C: "damage <b>after birth</b> due to <b>illnesses</b>… or accidents"</td></tr>
+            <tr><td>22</td><td><span class="ans">accidents</span></td><td class="bn">C: একই বাক্য — birth/genes নয় (ক্রম বদলানো যায়)</td></tr>
+            <tr><td>23</td><td>A · <span class="ans">iii</span></td><td class="bn">"refers to a general slowness to learn" = সংজ্ঞা</td></tr>
+            <tr><td>24</td><td>B · <span class="ans">v</span></td><td class="bn">"<b>five categories</b>… mild, moderate, severe…" = forms</td></tr>
+            <tr><td>25</td><td>C · <span class="ans">vi</span></td><td class="bn">"some <b>causes</b> that are well documented"</td></tr>
+            <tr><td>26</td><td>D · <span class="ans">ii</span></td><td class="bn">"people… <b>need</b> a rewarding job…"</td></tr>
+            <tr><td>27</td><td>E · <span class="ans">vii</span></td><td class="bn">"guidelines… how <b>you talk to</b> them"</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️ ফাঁদ:</span> <b>Q18 NO</b> — passage Down Syndrome-কে chromosome-এর সাথে জোড়ে, oxygen নয় (কার্যকারণ ভুল)। <b>Q19/20 NG</b> — "most urgent" ও "hearing problems" passage বলেনি। <b>Q27 vii নয় iv</b> — (iv)"how <i>they</i> talk" ≠ (vii)"how <i>you</i> talk <i>to</i> them"। ব্যবহৃত হয়নি: i, iv, viii।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা প্রশ্ন breakdown (Q13–27)</summary><div class="body">
+        <p class="intro bn">চার ধরনের প্রশ্ন এক passage-এ: Completion (হুবহু শব্দ), Y/N/NG (লেখকের দাবি), Short answer (নির্দিষ্ট শব্দ), Headings (para-র প্রশ্ন-শিরোনাম)। এখানে NG-র ফাঁদ তিনটা (Q17/19/20) — খুব সাবধান।</p>
+
+        <div class="dq">
+          <div class="dqh">Q13–15 · Completion (ONE word) → <span class="ans">community · support · homelike</span></div>
+          <span class="ev">📍 A: "greater potential… for <u>participation in community life</u>." · D: "may need extra <u>support</u>… training for employment in order to keep jobs." · D: "residential accommodation that is <u>homelike</u>."</span>
+          <p class="bn"><span class="lbl">13 community:</span> training → community life-এ অংশগ্রহণ। <span class="lbl">14 support:</span> চাকরি ধরে রাখতে "extra support"। <span class="lbl">15 homelike:</span> বাসস্থান হতে হবে "homelike" — হুবহু এক শব্দ।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q16 · "Intellectual disability is an unchanging disorder." → <span class="ans">NO</span></div>
+          <span class="ev">📍 A: "An individual's level of performance, as assessed, <u>can change with time and circumstances</u>."</span>
+          <p class="bn"><span class="lbl">কেন NO:</span> "can change" সরাসরি "unchanging" দাবিকে খণ্ডন করে। passage বিষয়টা নিয়ে কথা বলছে ও উল্টো বলছে → <b>NO</b> (NG নয়)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q17 · "Poor nutrition in mothers can lead to brain damage in newborns." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 C: causes include "drug or <u>diet-related</u> problems"; "brain damage at birth due to lack of oxygen, prolonged labour."</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> "diet-related problems" আছে, কিন্তু নির্দিষ্টভাবে "<b>মায়ের</b> দুর্বল পুষ্টি → নবজাতকের brain damage" — এই কার্যকারণ passage বলেনি। কাছাকাছি শব্দ আছে, কিন্তু <b>নির্দিষ্ট দাবিটা অনুপস্থিত</b> → NG।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q18 · "Down syndrome is the result of a shortage of oxygen at birth." → <span class="ans">NO</span></div>
+          <span class="ev">📍 C: "<u>abnormal chromosome count</u> resulting in, for example, <u>Down Syndrome</u>." (lack of oxygen আলাদা একটা কারণ হিসেবে তালিকায়)</span>
+          <p class="bn"><span class="lbl">কেন NO:</span> passage Down Syndrome-কে জোড়ে <b>chromosome</b>-এর সাথে, oxygen-এর সাথে নয় (oxygen আলাদা কারণ)। statement কার্যকারণ <b>উল্টো</b> জোড়ায় → <b>NO</b>।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q19 · "Work is the most urgent need for a person with disabilities." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 D: "need a rewarding job, a satisfying place to live and a good social life." (সব একসাথে, কোনো ক্রম নেই)</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> passage সব দরকার একসাথে বলেছে, কিন্তু কোনটা "<b>most urgent</b>" (সবচেয়ে জরুরি) — এই তুলনা/ক্রম বলা নেই → NG। (job আছে দেখে "most urgent" ভেবো না)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q20 · "Intellectually disabled people usually have hearing problems." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 E: "can usually understand what is said, even though they sometimes <u>may take longer to respond</u>."</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> তারা ধীরে সাড়া দেয়/বুঝতে পারে — কিন্তু "<b>hearing problem</b>" (শোনার সমস্যা) passage কোথাও বলেনি। ধীরে সাড়া ≠ কানে সমস্যা → NG। নিজে যুক্তি জুড়ো না।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q21–22 · Two causes NOT related to birth or genes → <span class="ans">illnesses · accidents</span></div>
+          <span class="ev">📍 C: "damage <u>after birth</u> due to <u>illnesses</u> such as encephalitis or <u>accidents</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> তালিকার বাকিগুলো birth/genes-এর সাথে যুক্ত — lack of oxygen/prolonged labour = <b>birth</b>; hereditary/chromosome = <b>genes</b>। শুধু "<b>illnesses</b>" ও "<b>accidents</b>" ("after birth") দুটোই birth/genes নয় (ক্রম বদলানো যায়)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q23–26 · Matching Headings → <span class="ans">A·iii · B·v · C·vi · D·ii</span></div>
+          <p class="bn"><span class="lbl">23 A → iii (What is it?):</span> "Intellectual disability <b>refers to</b> a general slowness to learn" = সংজ্ঞা।</p>
+          <p class="bn"><span class="lbl">24 B → v (forms):</span> "<b>five categories</b>… mild, moderate, severe, profound, multiple" = ধরন।</p>
+          <p class="bn"><span class="lbl">25 C → vi (causes):</span> "some <b>causes</b> that are well documented…" = কারণ।</p>
+          <p class="bn"><span class="lbl">26 D → ii (needs):</span> "people… <b>need</b> a rewarding job, a satisfying place to live…" = চাহিদা।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q27 · Para E → <span class="ans">vii · How do you talk TO a person…?</span></div>
+          <span class="ev">📍 E: "common guidelines that can simplify the <u>interaction</u>… Speaking in the same friendly manner as you would to anyone else."</span>
+          <p class="bn"><span class="no">কেন vii নয় iv:</span> (iv) "How do <b>they</b> talk?" = তারা কীভাবে কথা বলে। (vii) "How do <b>you</b> talk <b>to</b> them?" = তুমি কীভাবে তাদের সাথে কথা বলবে। Para E তোমাকে <b>নির্দেশ</b> দিচ্ছে (speak friendly, wait longer) → vii। ব্যবহৃত হয়নি: i, iv, viii।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 এই passage-এর বড় শিক্ষা</span> এক passage-এ ৩টা NOT GIVEN (Q17/19/20) — প্রতিটাতেই passage <b>কাছাকাছি</b> কথা বলেছে কিন্তু <b>ঠিক ঐ দাবিটা</b> বলেনি (মায়ের পুষ্টি, most urgent, hearing)। আর Heading-এ "they talk" vs "you talk to them"-এর মতো <b>সূক্ষ্ম শব্দ-পার্থক্য</b> ধরো।</div>
+      </div></details>
+    </section>
+
+    <!-- ============ TEST B · P3 PLACEHOLDER ============ -->
+    <section id="b3">
+      <p class="eyebrow">Test B · Passage 3 · Q28–40</p>
+      <h2 class="sec"><span class="n">B3</span> Crop-growing Skyscrapers</h2>
+      <div class="callout bad bn"><span class="ct">⏳ এই passage এখনো সমাধান করা হয়নি</span>
+        Test B · Passage 3 ("Crop-growing skyscrapers", Sentence completion + T/F/NG, Q28–40) এর জন্য কোনো <b>generated source file ছিল না</b> (<code>06_TestB-P3-Crop-Skyscrapers.md</code> এখনো তৈরি হয়নি) — তাই এখানে passage, প্রশ্ন বা উত্তর বসানো হয়নি। বাকি ৫টা passage সম্পূর্ণ।</div>
+      <div class="callout info bn"><span class="ct">পরের ধাপ</span> চাইলে আমি <code>00_SOURCE/</code>-এর PDF/ছবি (M1_01–M1_23) থেকে এই passage transcribe ও সমাধান করে এখানে যোগ করে দিতে পারি — বললেই করব। তখন এই section টা বাকিগুলোর মতোই পূর্ণ হবে।</div>
+    </section>
+
+    <!-- ============ ANSWER KEY ============ -->
+    <section id="answers">
+      <p class="eyebrow">Cheat sheet</p>
+      <h2 class="sec"><span class="n">✓</span> Answer Key — সব Exercise</h2>
+      <div class="card">
+        <h3 style="margin-top:0">TEST A · P1 — Zulu Culture (Q1–13)</h3>
+        <div class="akrow"><span class="ak">1 <b>F</b></span><span class="ak">2 <b>T</b></span><span class="ak">3 <b>T</b></span><span class="ak">4 <b>T</b></span><span class="ak">5 <b>T</b></span><span class="ak">6 <b>F</b></span><span class="ak">7 <b>T</b></span><span class="ak">8 <b>NG</b></span><span class="ak">9 <b>migrated</b></span><span class="ak">10 <b>women</b></span><span class="ak">11 <b>messages</b></span><span class="ak">12 <b>misfortune</b></span><span class="ak">13 <b>consulted</b></span></div>
+        <h3>TEST A · P2 — Obesity (Q14–27)</h3>
+        <div class="akrow"><span class="ak">14 <b>x</b></span><span class="ak">15 <b>vii</b></span><span class="ak">16 <b>iii</b></span><span class="ak">17 <b>iv</b></span><span class="ak">18 <b>xi</b></span><span class="ak">19 <b>v</b></span><span class="ak">20 <b>vi</b></span><span class="ak">21 <b>viii</b></span><span class="ak">22 <b>weight</b></span><span class="ak">23 <b>metabolism</b></span><span class="ak">24 <b>less</b></span><span class="ak">25 <b>genetic</b></span><span class="ak">26 <b>consume</b></span><span class="ak">27 <b>behavior</b></span></div>
+        <h3>TEST A · P3 — Adolescents (Q28–40)</h3>
+        <div class="akrow"><span class="ak">28 <b>iii</b></span><span class="ak">29 <b>vii</b></span><span class="ak">30 <b>i</b></span><span class="ak">31 <b>ix</b></span><span class="ak">32 <b>vi</b></span><span class="ak">33 <b>ii</b></span><span class="ak">34 <b>NO</b></span><span class="ak">35 <b>YES</b></span><span class="ak">36 <b>NG</b></span><span class="ak">37 <b>NO</b></span><span class="ak">38 <b>adolescents</b></span><span class="ak">39 <b>1955</b></span><span class="ak">40 <b>Virginia Slims</b></span></div>
+        <p class="bn" style="font-size:12.5px;color:var(--muted);margin:4px 0 0">Example দেওয়া ছিল: Para D = iv · Para H = xi।</p>
+        <h3>TEST B · P1 — Steam Engine (Q1–12)</h3>
+        <div class="akrow"><span class="ak">1 <b>form a vacuum</b></span><span class="ak">2 <b>increased efficiency</b></span><span class="ak">3 <b>long pause</b></span><span class="ak">4 <b>power machinery</b></span><span class="ak">5 <b>was adapted</b></span><span class="ak">6 <b>B</b></span><span class="ak">7 <b>D</b></span><span class="ak">8 <b>C</b></span><span class="ak">9 <b>A</b></span><span class="ak">10 <b>C</b></span><span class="ak">11 <b>B</b></span><span class="ak">12 <b>C</b></span></div>
+        <h3>TEST B · P2 — Intellectual Disability (Q13–27)</h3>
+        <div class="akrow"><span class="ak">13 <b>community</b></span><span class="ak">14 <b>support</b></span><span class="ak">15 <b>homelike</b></span><span class="ak">16 <b>NO</b></span><span class="ak">17 <b>NG</b></span><span class="ak">18 <b>NO</b></span><span class="ak">19 <b>NG</b></span><span class="ak">20 <b>NG</b></span><span class="ak">21 <b>illnesses</b></span><span class="ak">22 <b>accidents</b></span><span class="ak">23 <b>iii</b></span><span class="ak">24 <b>v</b></span><span class="ak">25 <b>vi</b></span><span class="ak">26 <b>ii</b></span><span class="ak">27 <b>vii</b></span></div>
+        <h3>TEST B · P3 — Crop-growing Skyscrapers (Q28–40)</h3>
+        <div class="akrow"><span class="ak" style="color:var(--bad)">⏳ এখনো সমাধান বাকি — source থেকে যোগ করতে হবে</span></div>
+      </div>
+      <div class="callout tip bn"><span class="ct">📝 Writing prompts (এই module-এ, রেফারেন্স)</span> <b>Task 1:</b> music-album বিক্রির table → report। <b>Task 2:</b> স্কুল পাঠ্যক্রমে arts/music বিষয় রাখা উচিত কিনা → essay।</div>
+      <div class="callout good bn"><span class="ct">🎯 পরের ধাপ</span> ৫টা passage timed করে শেষ করো · প্রতিটা ভুল ERROR-LOG-এ কোড দিয়ে লেখো · Test B · P3 যোগ করাতে চাইলে বলো।</div>
+    </section>
+
+  </main>
+</div>
+
+<button class="totop" id="totop" title="উপরে">↑</button>
+<script>
+const prog=document.getElementById('progress');
+function onScroll(){
+  const h=document.documentElement;
+  const sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(sc/max*100):0)+'%';
+  document.getElementById('totop').classList.toggle('show',sc>400);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+const links=[...document.querySelectorAll('.nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const spy=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+      const sel=document.getElementById('mobsel'); if(sel) sel.value=id;
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>s&&spy.observe(s));
+const sel=document.getElementById('mobsel');
+links.forEach(a=>{const o=document.createElement('option');o.value=a.getAttribute('href');o.textContent=a.textContent.trim();sel.appendChild(o);});
+sel.addEventListener('change',()=>{document.querySelector(sel.value).scrollIntoView({behavior:'smooth'});});
+let allOpen=false;
+const revs=[...document.querySelectorAll('details.reveal')];
+function setAll(v){revs.forEach(d=>d.open=v);allOpen=v;
+  const t=v?'সব উত্তর বন্ধ করো':'সব উত্তর খোলো';
+  document.getElementById('revealAll').textContent=t;}
+document.getElementById('revealAll').addEventListener('click',()=>setAll(!allOpen));
+const root=document.documentElement;
+function toggleTheme(){root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');}
+document.getElementById('themeBtn').addEventListener('click',toggleTheme);
+document.getElementById('mobtheme').addEventListener('click',toggleTheme);
+document.getElementById('totop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+onScroll();
+</script>
+</body>
+</html>

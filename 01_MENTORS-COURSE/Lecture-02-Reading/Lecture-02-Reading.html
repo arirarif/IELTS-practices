@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentors' Reading · Lecture 2 — Md. Ariful Islam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7; --bg2:#efe7d6; --panel:#fffefb; --panel2:#fbf5e9;
+  --ink:#26241f; --muted:#7c7363; --line:#e6dcc6; --line2:#efe7d6;
+  --primary:#0e7490; --primary-d:#0b5566; --primary-soft:#dcf0f3;
+  --accent:#c2870b; --accent-soft:#fbf0d3;
+  --good:#157f3b; --good-bg:#e4f3e7; --good-line:#bfe3c7;
+  --bad:#c0392b; --bad-bg:#fbe7e3; --bad-line:#f1c7bf;
+  --warn:#9c6a06; --warn-bg:#fcf2d8; --warn-line:#ecd9a6;
+  --hero1:#0e7490; --hero2:#0b4a59; --shadow:0 6px 22px rgba(40,30,10,.08);
+}
+html[data-theme="dark"]{
+  --bg:#16191d; --bg2:#1c2026; --panel:#1f242b; --panel2:#252b33;
+  --ink:#e8e4da; --muted:#9aa1ab; --line:#323a44; --line2:#2a313a;
+  --primary:#38bdf8; --primary-d:#0ea5cf; --primary-soft:#0c3743;
+  --accent:#ecb949; --accent-soft:#3a2f12;
+  --good:#56d07f; --good-bg:#12301d; --good-line:#1e4a30;
+  --bad:#f08a7c; --bad-bg:#3a1d18; --bad-line:#5a2a22;
+  --warn:#e7c061; --warn-bg:#352b12; --warn-line:#4d3f1c;
+  --hero1:#0e7490; --hero2:#062e3a; --shadow:0 6px 22px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;}
+.bn,[lang="bn"]{font-family:'Noto Sans Bengali','Nirmala UI','Inter',sans-serif;line-height:1.95}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:100;transition:width .1s}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:268px;flex:0 0 268px;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--panel);border-right:1px solid var(--line);padding:22px 16px;}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.brand .logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;font-weight:800;font-size:18px}
+.brand b{font-size:15px;letter-spacing:.2px}
+.brand small{display:block;color:var(--muted);font-size:11.5px;font-weight:500}
+.side-meta{font-size:11.5px;color:var(--muted);margin:8px 2px 16px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:9px;color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:500;margin-bottom:3px;transition:.15s;border:1px solid transparent}
+.nav a .ic{width:22px;text-align:center;font-size:15px;opacity:.9}
+.nav a:hover{background:var(--panel2)}
+.nav a.active{background:var(--primary-soft);color:var(--primary-d);font-weight:700;border-color:var(--line)}
+html[data-theme="dark"] .nav a.active{color:var(--primary)}
+.side-foot{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:11px;color:var(--muted)}
+.toolbar{display:flex;gap:8px;margin-top:14px}
+.toolbar button{flex:1;font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);transition:.15s}
+.toolbar button:hover{border-color:var(--primary);color:var(--primary)}
+.main{flex:1;min-width:0;max-width:920px;margin:0 auto;padding:0 30px 90px}
+.hero{margin:30px 0 8px;padding:34px 32px;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--hero1),var(--hero2));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero .kicker{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.9}
+.hero h1{font-size:30px;font-weight:800;margin:8px 0 10px;line-height:1.2}
+.hero p{opacity:.95;font-size:14.5px;max-width:620px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.hero .pill{background:rgba(255,255,255,.16);backdrop-filter:blur(4px);padding:6px 12px;border-radius:20px;font-size:12.5px;font-weight:600}
+section{padding-top:34px;scroll-margin-top:14px}
+.eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:1px;text-transform:uppercase}
+h2.sec{font-size:23px;font-weight:800;margin:6px 0 16px;display:flex;align-items:center;gap:10px}
+h2.sec .n{color:var(--primary);font-size:15px;background:var(--primary-soft);width:30px;height:30px;border-radius:9px;display:grid;place-items:center}
+h3{font-size:17px;font-weight:700;margin:22px 0 10px;color:var(--primary-d)}
+html[data-theme="dark"] h3{color:var(--primary)}
+p{margin:9px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}
+.grid.c2{grid-template-columns:1fr 1fr}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.mini{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.mini .big{font-size:24px;font-weight:800;color:var(--primary)}
+.mini .lab{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px}
+.callout{border-radius:13px;padding:14px 16px;margin:14px 0;border:1px solid;font-size:14px}
+.callout .ct{font-weight:700;display:block;margin-bottom:4px}
+.callout.tip{background:var(--accent-soft);border-color:var(--warn-line);color:var(--ink)}
+.callout.good{background:var(--good-bg);border-color:var(--good-line)}
+.callout.bad{background:var(--bad-bg);border-color:var(--bad-line)}
+.callout.info{background:var(--primary-soft);border-color:var(--line);}
+.passage{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14px}
+.passage .plabel{font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.passage p{margin:8px 0}
+.passage em{background:rgba(194,135,11,.16);font-style:normal;padding:0 3px;border-radius:3px}
+mark{background:rgba(14,116,144,.16);color:inherit;padding:0 3px;border-radius:3px;font-weight:600}
+.q{margin:12px 0;padding:13px 16px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+.q .qh{font-weight:700;font-size:14px}
+details.reveal{margin:8px 0 4px;border:1px solid var(--good-line);border-radius:11px;overflow:hidden;background:var(--good-bg)}
+details.reveal>summary{cursor:pointer;list-style:none;padding:10px 15px;font-weight:700;font-size:13.5px;color:var(--good);display:flex;align-items:center;gap:8px;user-select:none}
+details.reveal>summary::-webkit-details-marker{display:none}
+details.reveal>summary::before{content:"👁";}
+details.reveal[open]>summary::before{content:"✓";}
+details.reveal[open]>summary{border-bottom:1px solid var(--good-line)}
+.reveal .body{padding:6px 16px 14px;font-size:13.5px;color:var(--ink)}
+.ans{display:inline-block;background:var(--good);color:#fff;font-weight:700;padding:1px 9px;border-radius:6px;font-size:13px}
+.trap{color:var(--bad);font-weight:600}
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
+th{background:var(--panel2);font-weight:700;color:var(--primary-d);font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+html[data-theme="dark"] th{color:var(--primary)}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.chip{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid}
+.chip.neg{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}
+.chip.link{background:var(--primary-soft);border-color:var(--line);color:var(--primary-d)}
+.chip.key{background:var(--accent-soft);border-color:var(--warn-line);color:var(--warn)}
+html[data-theme="dark"] .chip.link{color:var(--primary)}
+ul.clean{margin:8px 0 8px 4px;padding-left:18px}
+ul.clean li{margin:5px 0;font-size:14px}
+.akrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 14px}
+.ak{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:13px;font-weight:600}
+.ak b{color:var(--good)}
+.totop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;background:var(--primary);color:#fff;font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.totop.show{opacity:1;pointer-events:auto}
+.mobnav{display:none}
+@media(max-width:880px){
+  .sidebar{display:none}
+  .main{padding:0 16px 80px}
+  .grid.c2,.grid.c3{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+  .mobnav{display:flex;position:sticky;top:0;z-index:40;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px;align-items:center;justify-content:space-between;gap:10px}
+  .mobnav select{flex:1;font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+  .mobnav button{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:inherit;cursor:pointer}
+}
+@media print{.sidebar,.totop,.mobnav,.toolbar{display:none}.main{max-width:100%}details.reveal{open:true}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="mobnav">
+  <select id="mobsel"></select>
+  <button id="mobtheme">🌓</button>
+</div>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo">M</span>
+      <div><b>Reading · Lecture 2</b><small>MENTORS' CRASH Course</small></div>
+    </div>
+    <div class="side-meta bn">Md. Ariful Islam · Batch 005<br>লক্ষ্য: Band 7.0 · Q-Type 5 ও 6</div>
+    <nav class="nav" id="nav">
+      <a href="#overview"><span class="ic">🏁</span> ওভারভিউ</a>
+      <a href="#method"><span class="ic">🧭</span> দুই type-এর পদ্ধতি</a>
+      <a href="#headings"><span class="ic">🅴</span> Matching Headings</a>
+      <a href="#info"><span class="ic">🅵</span> Matching Information</a>
+      <a href="#tfng"><span class="ic">🆃</span> True/False/Not Given</a>
+      <a href="#hooks"><span class="ic">🪝</span> Focus Hooks ও ভুল</a>
+      <a href="#answers"><span class="ic">✅</span> Answer Key</a>
+    </nav>
+    <div class="toolbar">
+      <button id="revealAll">সব উত্তর খোলো</button>
+      <button id="themeBtn">🌓 থিম</button>
+    </div>
+    <a href="../../07_VOCABULARY/Mentors/Mentors-Vocabulary.html" target="_blank" style="display:block;margin-top:12px;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--primary-soft);color:var(--primary-d);text-decoration:none;font-size:12.5px;font-weight:700;text-align:center">🧠 Vocabulary খোলো →</a>
+    <div class="side-foot bn">English = পরীক্ষায় যা থাকবে।<br>বাংলা = কীভাবে করবে।<br>পাশাপাশি পড়ো।</div>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div class="kicker">Mentors' IELTS · Reading</div>
+      <h1>Reading Lecture-2 — Visual Study Guide</h1>
+      <p class="bn">দুটো "বড় ছবি" question type: <b>Matching</b> (Headings + Information) আর <b>True/False/Not Given · Yes/No/Not Given</b>। ৭টা practice passage সমাধান করা, ব্যাখ্যা বাংলায়।</p>
+      <div class="pills">
+        <span class="pill">Q-Type 5 + 6</span>
+        <span class="pill">7 passages solved</span>
+        <span class="pill">English + বাংলা</span>
+        <span class="pill">Self-test reveals</span>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <p class="eyebrow">Start here</p>
+      <h2 class="sec"><span class="n">i</span> ওভারভিউ — এক নজরে</h2>
+      <div class="grid c3">
+        <div class="mini"><div class="big">2</div><div class="lab bn">নতুন Question Type (5 ও 6)</div></div>
+        <div class="mini"><div class="big">7</div><div class="lab bn">Practice passage (সব solved)</div></div>
+        <div class="mini"><div class="big">F≠NG</div><div class="lab bn">আসল পরীক্ষা: False ও Not Given আলাদা করা</div></div>
+      </div>
+      <div class="callout info bn"><span class="ct">🎯 এই lecture-এর এক-লাইন শিক্ষা</span>
+        Matching = পুরো অনুচ্ছেদের <b>মূল ভাব / নির্দিষ্ট তথ্য</b> ধরা (শব্দ নয়)। T/F/NG = statement passage-এর সাথে <b>মেলে (T) / উল্টো (F) / নেই (NG)</b> — আর <b>FALSE ও NOT GIVEN আলাদা করাই</b> সবচেয়ে দামি দক্ষতা।</div>
+      <div class="card">
+        <h3>এই গাইডে কী আছে (৭টা exercise)</h3>
+        <ul class="clean bn">
+          <li><b>Matching Headings</b> — "Behind the Scenes at the Museum" (A–I) + "Shop till you drop" (A–E)।</li>
+          <li><b>Matching Information</b> — "Leonardo's lost mural" (A–F) + "Are germs bad?" (A–D)।</li>
+          <li><b>T/F/NI</b> — "The Frog Population"।</li>
+          <li><b>TRUE/FALSE/NOT GIVEN</b> — "Staff Value a Career Path above Salary" + "Shopping for what we need or what we want?"।</li>
+        </ul>
+        <div class="callout tip bn" style="margin-bottom:0"><span class="ct">কীভাবে ব্যবহার করবে</span> প্রতিটা সেটে আগে <b>নিজে উত্তর করো</b>, তারপর সবুজ "উত্তর ও ব্যাখ্যা দেখাও" বক্সে ক্লিক করে মেলাও। ভুল প্রতিটা T/F/NG <b>autopsy</b> করো — "F না NG ছিল কেন?"।</div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method">
+      <p class="eyebrow">Foundation</p>
+      <h2 class="sec"><span class="n">1</span> দুই Question Type-এর পদ্ধতি</h2>
+
+      <h3>পার্থক্য আগে গেঁথে নাও</h3>
+      <div class="tw"><table>
+        <thead><tr><th></th><th>Q-Type 5 · Matching</th><th>Q-Type 6 · T/F/NG · Y/N/NG</th></tr></thead>
+        <tbody>
+          <tr><td class="bn">কী চায়</td><td class="bn">paragraph ↔ heading / statement মেলানো</td><td class="bn">statement: মেলে / উল্টো / নেই</td></tr>
+          <tr><td class="bn">পড়ার ধরন</td><td class="bn"><b>gist</b> (পুরো অনুচ্ছেদের ভাব)</td><td class="bn"><b>detail</b> (নির্দিষ্ট লাইন)</td></tr>
+          <tr><td class="bn">বড় ফাঁদ</td><td class="bn">same-word; মূল ভাব ধরো, শব্দ নয়</td><td class="bn">Not Given কে False ভাবা</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="grid c2">
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">🅴 Matching Headings — ৬ ধাপ</b>
+          <p class="bn" style="font-size:13.5px">১) আগে <b>paragraph</b> পড়ো (প্রথম+শেষ বাক্য)। ২) এক বাক্যে এর <b>main idea</b> বলো। ৩) তালিকা থেকে সবচেয়ে মিলে যাওয়া heading বাছো। ৪) ব্যবহৃত heading <b>কেটে দাও</b>। ৫) <b>Example</b> দেওয়া heading বাদ। ৬) বাকিগুলো elimination।</p>
+        </div>
+        <div class="card" style="margin:0">
+          <b style="color:var(--primary-d)">🅵 Matching Information — ৫ ধাপ</b>
+          <p class="bn" style="font-size:13.5px">১) statement-এর <b>"তথ্য-ধরন"</b> বুঝো (কারণ/তুলনা/সীমাবদ্ধতা/মত)। ২) এটাকে <b>paraphrase</b> ধরো। ৩) পুরো passage <b>scan</b> করো। ৪) <b>"any letter more than once"</b> — একই para বারবার আসতে পারে। ৫) ক্রমে আসে <b>না</b>।</p>
+        </div>
+      </div>
+
+      <h3>🆃 True/False/Not Given · Yes/No/Not Given — মূল কৌশল</h3>
+      <div class="callout info bn"><span class="ct">তিন-প্রশ্ন টেস্ট</span>
+        keyword scan করে জায়গা পাও → তারপর জিজ্ঞেস করো: passage কি statement <b>নিশ্চিত করছে?</b> → <b>TRUE/YES</b>। passage কি <b>উল্টো</b> বলছে? → <b>FALSE/NO</b>। passage কি <b>চুপ</b>? → <b>NOT GIVEN</b>।</div>
+      <div class="callout tip bn"><span class="ct">TRUE/FALSE বনাম YES/NO</span> <b>TRUE/FALSE/NOT GIVEN</b> = passage-এর <b>তথ্য</b> যাচাই। <b>YES/NO/NOT GIVEN</b> = লেখকের <b>মত/claim</b> যাচাই। কৌশল একই; শুধু "তথ্য না মত" মাথায় রাখো।</div>
+      <div class="callout bad bn"><span class="ct">⚠️ FALSE ≠ NOT GIVEN</span> <b>FALSE</b> = passage সরাসরি <b>উল্টোটা বলছে</b> (contradiction)। <b>NOT GIVEN</b> = passage ঐ বিষয়ে <b>কিছুই বলছে না</b>। টেস্ট: "passage কি উল্টোটা প্রমাণ করে?" — না হলে (চুপ থাকলে) Not Given।</div>
+    </section>
+
+    <!-- MATCHING HEADINGS -->
+    <section id="headings">
+      <p class="eyebrow">Question Type 5A</p>
+      <h2 class="sec"><span class="n">A</span> Matching Headings to Paragraphs</h2>
+      <p class="bn"><b>Behind the Scenes at the Museum</b> — Sections A–I, ১৩টা heading থেকে ৯টা বাছো। মূল কৌশল: প্রতিটা অনুচ্ছেদের <b>topic sentence</b> ধরো।</p>
+
+      <div class="passage">
+        <div class="plabel">📖 Passage · "Behind the Scenes at the Museum" (সারসংক্ষেপ)</div>
+        <p><b>A.</b> Smithsonian (1938) ran out of space; restoring specimens was a <em>monumental task</em> — <em>30 million items and seven years later</em>, done.</p>
+        <p><b>B.</b> Smithsonian owns <em>130 million</em>; London <em>80 million</em>; Science Museum <em>300,000</em>. <em>On an international scale</em>, such numbers are not exceptional.</p>
+        <p><b>C.</b> Collections result from the <em>dual functions</em>: <em>on the one hand</em>, public display; <em>on the other</em>, research.</p>
+        <p><b>D.</b> Blythe House holds <em>dangerous</em> items — Crookes' <em>radioactive</em>, <em>contaminated</em> equipment.</p>
+        <p><b>E.</b> Curator Neil Brown finds it <em>hard to identify what future generations will regard as significant</em> (videocassette, computer).</p>
+        <p><b>F.</b> Public is <em>surprised</em>: he <em>turns down antique</em> instruments but is <em>happy to receive</em> a coffee maker, a green beer bottle.</p>
+        <p><b>G.</b> Natural history museums collect for <em>type specimens</em> and for <em>age</em> — two reasons (moth/natural-selection study).</p>
+        <p><b>H.</b> The <em>value</em> of collections <em>increases</em> — <em>genetic analysis, pharmaceutical, bio-mimetics</em>.</p>
+        <p><b>I.</b> Collections <em>grow bigger</em>; <em>space becomes a problem</em> → <em>out-of-town storage</em>.</p>
+      </div>
+
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> Section <b>A–I</b> প্রতিটার জন্য নিচের তালিকা (i–xiii) থেকে সঠিক heading বাছো — মোট ১৩টা থেকে ৯টা লাগবে (৪টা ফাঁদ)। আগে নিজে করো, পরে reveal খোলো।</div>
+      <div class="passage" style="border-left-color:var(--primary)">
+        <div class="plabel" style="color:var(--primary-d)">📚 List of Headings</div>
+        <ol class="clean" style="list-style:none;padding-left:0;columns:2;column-gap:26px;font-size:13px">
+          <li><b>i</b> — An unexpected preference for modern items</li>
+          <li><b>ii</b> — Two distinct reasons for selection in one type of museum</li>
+          <li><b>iii</b> — The growing cost of housing museum exhibits</li>
+          <li><b>iv</b> — The growing importance of collections for research purposes</li>
+          <li><b>v</b> — The global 'size' of the problem</li>
+          <li><b>vi</b> — Why some collections are unsafe</li>
+          <li><b>vii</b> — Why not all museums are the same</li>
+          <li><b>viii</b> — The need to show as much as possible to visitors</li>
+          <li><b>ix</b> — How unexpected items are dealt with</li>
+          <li><b>x</b> — The decision-making difficulties of one curator</li>
+          <li><b>xi</b> — The two roles of museums</li>
+          <li><b>xii</b> — Who owns the museum exhibits?</li>
+          <li><b>xiii</b> — A lengthy, but necessary task</li>
+        </ol>
+      </div>
+
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Sec</th><th>উত্তর (heading)</th><th>কেন</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>A</td><td><span class="ans">xiii</span></td><td class="bn">monumental task = lengthy but necessary task</td></tr>
+            <tr><td>2</td><td>B</td><td><span class="ans">v</span></td><td class="bn">সংখ্যা + international scale = global 'size'</td></tr>
+            <tr><td>3</td><td>C</td><td><span class="ans">xi</span></td><td class="bn">dual functions = two roles</td></tr>
+            <tr><td>4</td><td>D</td><td><span class="ans">vi</span></td><td class="bn">radioactive/contaminated = unsafe</td></tr>
+            <tr><td>5</td><td>E</td><td><span class="ans">x</span></td><td class="bn">curator সিদ্ধান্ত নিতে পারছেন না</td></tr>
+            <tr><td>6</td><td>F</td><td><span class="ans">i</span></td><td class="bn">antique বাদ, modern নেন = unexpected preference</td></tr>
+            <tr><td>7</td><td>G</td><td><span class="ans">ii</span></td><td class="bn">type specimens + age = two reasons</td></tr>
+            <tr><td>8</td><td>H</td><td><span class="ans">iv</span></td><td class="bn">genetic/pharma = research importance বাড়ছে</td></tr>
+            <tr><td>9</td><td>I</td><td><span class="ans">iii</span></td><td class="bn">grow bigger → space → housing cost</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">⚠️ Trap:</span> Section I-এর শেষ লাইন "widely available" দেখে <b>viii</b> দিও না — মূল ভাব = grow bigger/space, তাই <b>iii</b>। ব্যবহৃত হয়নি: vii, viii, ix, xii।</p>
+      </div></details>
+
+      <h3>Extra · "Shop till you drop" (A–E)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (সারসংক্ষেপ)</div>
+        <p><b>A.</b> Mall = <em>craze… went global</em> (1950s) → এখন <em>fewer and fewer people</em>, few opened since 2006।</p>
+        <p><b>B.</b> Austrian-born immigrant-এর <em>solution: recreate… city-centre experience</em> in suburbs।</p>
+        <p><b>C.</b> <em>my own local mall</em> ran <em>beauty pageants, fashion parades</em>… more recently celebrities।</p>
+        <p><b>D.</b> Always a <em>supermarket</em>; mall <em>learned a great deal from supermarkets</em>।</p>
+        <p><b>E.</b> Malls <em>spy on customers</em>, <em>cameras</em>, <em>studies</em> of behaviour।</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> Paragraph <b>A–E</b> প্রতিটার জন্য নিচের তালিকা (i–vii) থেকে সঠিক heading বাছো — ২টা ফাঁদ থাকবে।</div>
+      <div class="passage" style="border-left-color:var(--primary)">
+        <div class="plabel" style="color:var(--primary-d)">📚 List of Headings</div>
+        <ol class="clean" style="list-style:none;padding-left:0;columns:2;column-gap:26px;font-size:13px">
+          <li><b>i</b> — How one mall has promoted itself over the years</li>
+          <li><b>ii</b> — Reasons for government support of malls</li>
+          <li><b>iii</b> — Ongoing research in the psychology of shoppers</li>
+          <li><b>iv</b> — How malls have gone in and out of fashion</li>
+          <li><b>v</b> — How different countries interpret malls in new ways</li>
+          <li><b>vi</b> — The ideas behind the original malls</li>
+          <li><b>vii</b> — The influence one type of shop has had on malls</li>
+        </ol>
+      </div>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 · A <b>iv</b> (in & out of fashion)</span><span class="ak">2 · B <b>vi</b> (ideas behind original)</span><span class="ak">3 · C <b>i</b> (one mall's promotion)</span>
+          <span class="ak">4 · D <b>vii</b> (influence of one shop)</span><span class="ak">5 · E <b>iii</b> (research on shoppers)</span>
+        </div>
+        <p class="bn"><span class="trap">⚠️</span> ব্যবহৃত হয়নি: ii (government support), v (different countries) — passage-এ নেই, তাই ফাঁদ।</p>
+      </div></details>
+    </section>
+
+    <!-- MATCHING INFORMATION -->
+    <section id="info">
+      <p class="eyebrow">Question Type 5B</p>
+      <h2 class="sec"><span class="n">B</span> Matching Information to Paragraphs</h2>
+      <div class="callout info bn"><span class="ct">মনে রাখো</span> statement = একটা ছোট লেবেল (compromise / restriction / comparison / benefit / warning)। হুবহু শব্দ নয়, <b>ধারণা</b> খোঁজো। উত্তর <b>ক্রমে আসে না</b>; একই paragraph <b>একাধিকবার</b> আসতে পারে।</div>
+
+      <h3>"Leonardo's lost mural" (A–F)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (সারসংক্ষেপ)</div>
+        <p><b>A.</b> Da Vinci tried a <em>new oil painting technique, but it was not very successful</em>; never completed।</p>
+        <p><b>B.</b> <em>One source describes Vasari as a Leonardo fan who couldn't bring himself to destroy</em> the work।</p>
+        <p><b>C.</b> Seracini <em>spent around 40 years</em>; clue: <em>rather than doing what had been asked</em>, Vasari built a false wall।</p>
+        <p><b>D.</b> Drilling outcry; <em>Martin Kemp… who wasn't involved</em> said damage "can be repaired invisibly"।</p>
+        <p><b>E.</b> Permission to continue <em>but not in the 14 spots</em>; <em>only into existing cracks</em> (a compromise)।</p>
+        <p><b>F.</b> Pigment <em>similar to those found in</em> Mona Lisa; but <em>only permitted… within a very narrow time period</em> → <em>cannot say anything definite</em>।</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের তথ্যগুলো কোন paragraph-এ (<b>A–F</b>) আছে? <b>NB:</b> একই letter একাধিকবার ব্যবহার করতে পারো। আগে নিজে করো, পরে reveal।</div>
+      <ol class="clean" style="font-size:14px">
+        <li>a compromise that allowed work to continue</li>
+        <li>a connection that lends weight to a theory</li>
+        <li>a report that suggests great professional respect</li>
+        <li>a restriction that prevented a conclusion from being reached</li>
+        <li>evidence of instructions not being followed</li>
+        <li>a long-term commitment to an investigation</li>
+        <li>an experiment that failed to produce satisfactory results</li>
+        <li>an independent opinion on a contentious issue</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Statement</th><th>Para</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="bn">a compromise that allowed work to continue</td><td><span class="ans">E</span></td></tr>
+            <tr><td>2</td><td class="bn">a connection that lends weight to a theory</td><td><span class="ans">F</span></td></tr>
+            <tr><td>3</td><td class="bn">a report suggesting great professional respect</td><td><span class="ans">B</span></td></tr>
+            <tr><td>4</td><td class="bn">a restriction that prevented a conclusion</td><td><span class="ans">F</span></td></tr>
+            <tr><td>5</td><td class="bn">evidence of instructions not being followed</td><td><span class="ans">C</span></td></tr>
+            <tr><td>6</td><td class="bn">a long-term commitment to an investigation</td><td><span class="ans">C</span></td></tr>
+            <tr><td>7</td><td class="bn">an experiment that failed</td><td><span class="ans">A</span></td></tr>
+            <tr><td>8</td><td class="bn">an independent opinion on a contentious issue</td><td><span class="ans">D</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">🧠</span> C ও F দুবার করে — "use any letter more than once"। একটা para পেয়ে থেমো না।</p>
+      </div></details>
+
+      <h3>Extra · "Are germs bad?" (A–D)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage · "Are germs bad?" (সারসংক্ষেপ)</div>
+        <p><b>A.</b> H. pylori is tiny — three microns; <em>to give a sense of scale, a grain of sand is about three hundred microns long</em>. But <em>it would be a mistake to assume</em> from its diminutive proportions that the bacteria is a <em>benign presence</em>.</p>
+        <p><b>B.</b> Antibiotic medications could free the body of the bacterium and thus <em>cure various illnesses including gastritis and stomach ulcers</em>.</p>
+        <p><b>C.</b> Professor Blaser's laboratory developed the <em>original blood analysis techniques to identify</em> the bacterium. Blaser engages with <em>different intellectual activities</em> (even a literary-criticism magazine) — perhaps this <em>diversity of perspective</em> first made him wonder about H. pylori.</p>
+        <p><b>D.</b> <em>In 1998</em>, his findings appeared in the <em>British Medical Journal</em>; the paper concluded H. pylori <em>might actually help promote human health</em>, such as by <em>regulating the level of acidity</em> in the stomach.</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের তথ্যগুলো কোন paragraph-এ (<b>A–D</b>) আছে? <b>NB:</b> একই letter একাধিকবার ব্যবহার করতে পারো।</div>
+      <ol class="clean" style="font-size:14px">
+        <li>the first test to determine the presence of H. pylori</li>
+        <li>details of a pioneering academic publication</li>
+        <li>one man's range of interests leading to a new approach</li>
+        <li>a warning about underestimating the importance of H. pylori</li>
+        <li>a medical benefit attributed to the presence of H. pylori</li>
+        <li>a comparison with a natural substance familiar to most people</li>
+        <li>medical problems caused by H. pylori being present</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="tw"><table>
+          <thead><tr><th>Q</th><th>Statement</th><th>Para</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="bn">first test to detect H. pylori</td><td><span class="ans">C</span> (original blood analysis)</td></tr>
+            <tr><td>2</td><td class="bn">a pioneering academic publication</td><td><span class="ans">D</span> (1998 BMJ paper)</td></tr>
+            <tr><td>3</td><td class="bn">range of interests → new approach</td><td><span class="ans">C</span> (diversity of perspective)</td></tr>
+            <tr><td>4</td><td class="bn">warning against underestimating it</td><td><span class="ans">A</span> ("mistake to assume… benign")</td></tr>
+            <tr><td>5</td><td class="bn">a medical benefit of its presence</td><td><span class="ans">D</span> (regulates acidity)</td></tr>
+            <tr><td>6</td><td class="bn">comparison with a familiar natural substance</td><td><span class="ans">A</span> (grain of sand)</td></tr>
+            <tr><td>7</td><td class="bn">medical problems it causes</td><td><span class="ans">B</span> (gastritis, ulcers)</td></tr>
+          </tbody>
+        </table></div>
+        <p class="bn"><span class="trap">🧠</span> A, C, D প্রতিটা দুবার।</p>
+      </div></details>
+    </section>
+
+    <!-- TFNG -->
+    <section id="tfng">
+      <p class="eyebrow">Question Type 6</p>
+      <h2 class="sec"><span class="n">C</span> True / False / Not Given · Yes / No / Not Given</h2>
+
+      <h3>"The Frog Population" (T / F / NI)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (key lines)</div>
+        <p>"All over the world, and even in <em>remote areas</em>, frogs are losing the battle… biologists are <em>at a loss to explain</em>." "those slimy… <em>sometimes poisonous</em>." "development of once-natural <em>marshland</em>." "frogs keep <em>pestilent insects at manageable levels</em>." "Discovered in <em>1981</em>, <em>less than 10 years later</em> they vanished." "depletion of the ozone layer, a <em>well-documented phenomenon</em>." "<em>Another theory</em> is that worldwide temperature increases are upsetting breeding cycles."</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT INFORMATION (NI)</b>? আগে নিজে লেখো, পরে reveal খোলো।</div>
+      <ol class="clean" style="font-size:14px">
+        <li>Frogs are only disappearing from city areas.</li>
+        <li>Frogs and toads are usually poisonous.</li>
+        <li>Biologists are unable to explain why frogs are dying.</li>
+        <li>Their natural habitat is becoming more and more developed.</li>
+        <li>Attempts are being made to halt the development of marshland.</li>
+        <li>Frogs are important because they control pests.</li>
+        <li>The platypus frog became extinct by 1991.</li>
+        <li>Frogs usually give birth in an underwater nest.</li>
+        <li>There is convincing evidence that the ozone layer is being depleted.</li>
+        <li>It is a fact that breeding cycles are upset by temperature increases.</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 <b>F</b></span><span class="ak">2 <b>F</b></span><span class="ak">3 <b>T</b></span><span class="ak">4 <b>T</b></span><span class="ak">5 <b>NI</b></span>
+          <span class="ak">6 <b>T</b></span><span class="ak">7 <b>T</b></span><span class="ak">8 <b>NI</b></span><span class="ak">9 <b>T</b></span><span class="ak">10 <b>F</b></span>
+        </div>
+        <p class="bn"><b>1 F:</b> "only city" ↔ "all over the world/remote"। <b>2 F:</b> "usually" ↔ "sometimes"। <b>5 NI:</b> থামানোর চেষ্টার কথা নেই। <b>7 T:</b> 1981 + &lt;10 = ১৯৯১-এর আগে। <b>8 NI:</b> "in the water" আছে, কিন্তু "<span class="trap">nest</span>"/"usually" নেই। <b>10 F:</b> "<span class="trap">theory</span>" কে "fact" বলা = False।</p>
+      </div></details>
+
+      <h3>"Staff Value a Career Path above Salary" (TRUE/FALSE/NOT GIVEN)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (key lines)</div>
+        <p>"retail sector is <em>twice as high as the national average</em>… staff turnover at <em>26 per cent</em>… three out of four <em>retailers</em>… measures to retain people." "put a higher salary <em>second to the chance of career progression</em>." "<em>70 per cent</em>… listed <em>training</em> as their primary solution." "turnover was <em>33 per cent last year</em>… confident morale is rising." "Managers attend… together with shop-floor staff <em>who are earmarked for promotion</em>."</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT GIVEN</b>? মনে রাখো — passage উল্টো বললে F, চুপ থাকলে NG।</div>
+      <ol class="clean" style="font-size:14px">
+        <li>Employees say a career path is more important than money.</li>
+        <li>Staff turnover in the UK in general is 26 per cent.</li>
+        <li>Retailers are attempting to keep their staff.</li>
+        <li>Most employers in the survey prefer training as a way to keep staff.</li>
+        <li>Tesco has reduced its staff turnover.</li>
+        <li>Managers in each Tesco store designed the training programme.</li>
+        <li>All Tesco employees take part in Project Future.</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 <b>TRUE</b></span><span class="ak">2 <b>FALSE</b></span><span class="ak">3 <b>TRUE</b></span><span class="ak">4 <b>TRUE</b></span><span class="ak">5 <b>NOT GIVEN</b></span><span class="ak">6 <b>NOT GIVEN</b></span><span class="ak">7 <b>FALSE</b></span>
+        </div>
+        <p class="bn"><b>2 FALSE:</b> 26% = retail; "UK in general" নয় (national average অর্ধেক)। <b>5 NG:</b> morale বাড়া ≠ turnover কমা। <b>6 NG:</b> কে design করেছে বলা নেই। <b>7 FALSE:</b> "<span class="trap">All</span>" ↔ শুধু "earmarked for promotion"।</p>
+      </div></details>
+
+      <h3>Extra · "Shopping for what we need or what we want?" (TRUE/FALSE/NOT GIVEN)</h3>
+      <div class="passage">
+        <div class="plabel">📖 Passage (key lines)</div>
+        <p>"<em>Over the past hundred years</em>, shopping has grown to become one of the leading pastimes." "an increasing proportion of populations in <em>rich and developing nations alike</em>… <em>not necessarily restricted to the most affluent</em>." "for <em>many families</em>, it is no longer eating together but shopping that bonds them." "it is an issue that <em>merits serious study</em>." "Advertising works by focusing on the promotion of our <em>ego</em>… <em>rather than</em> on specific <em>objective facts</em>." "The 'feel-good factor'… can be explained in these terms <em>rather than price or value</em>." "Companies… don't sell products, they sell lifestyles, <em>regardless of whether they are selling a cheap daily necessity or a special luxury item</em>." "we buy into an image of ourselves that is <em>defined by what we have</em>, not who we are."</p>
+      </div>
+      <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT GIVEN</b>?</div>
+      <ol class="clean" style="font-size:14px">
+        <li>Shopping has only recently become a social pleasure.</li>
+        <li>Interest in shopping crosses social and national borders.</li>
+        <li>In most families, mealtimes have been replaced by shopping.</li>
+        <li>Medical research is being conducted into excessive shopping.</li>
+        <li>An advertisement's success relies on more than the product itself.</li>
+        <li>Buying things gives satisfaction as long as it is value for money.</li>
+        <li>Cheaper products are easier to sell without sophisticated techniques.</li>
+        <li>Our possessions make statements about our identity.</li>
+      </ol>
+      <details class="reveal"><summary>উত্তর ও ব্যাখ্যা দেখাও</summary><div class="body">
+        <div class="akrow">
+          <span class="ak">1 <b>FALSE</b></span><span class="ak">2 <b>TRUE</b></span><span class="ak">3 <b>NOT GIVEN</b></span><span class="ak">4 <b>NOT GIVEN</b></span><span class="ak">5 <b>TRUE</b></span><span class="ak">6 <b>FALSE</b></span><span class="ak">7 <b>FALSE</b></span><span class="ak">8 <b>TRUE</b></span>
+        </div>
+        <p class="bn"><b>1 FALSE:</b> "only recently" ↔ "over the past hundred years"। <b>3 NG:</b> "<span class="trap">most</span>" ↔ passage "many"। <b>4 NG:</b> "merits study" ≠ "research being conducted"। <b>6 FALSE:</b> feel-good = ego, "<span class="trap">rather than price or value</span>"। <b>7 FALSE:</b> সস্তা/দামি দুটোই একই lifestyle-কৌশলে বিক্রি।</p>
+      </div></details>
+    </section>
+
+    <!-- HOOKS -->
+    <section id="hooks">
+      <p class="eyebrow">Watch for these</p>
+      <h2 class="sec"><span class="n">🪝</span> Focus Hooks ও তোমার Common ভুল</h2>
+
+      <h3>🚩 FALSE-এর সংকেত (passage উল্টো বলছে)</h3>
+      <div class="chips">
+        <span class="chip neg">all ↔ some</span><span class="chip neg">only ↔ many</span><span class="chip neg">usually ↔ sometimes</span><span class="chip neg">fact ↔ theory</span><span class="chip neg">positive ↔ not/no/never</span>
+      </div>
+      <h3>🚩 NOT GIVEN-এর সংকেত (passage চুপ)</h3>
+      <div class="chips">
+        <span class="chip key">নতুন detail যোগ (nest/designed/reduced)</span><span class="chip key">is being done ↔ merits/needs</span><span class="chip key">most ↔ many</span>
+      </div>
+      <h3>🚩 Topic-sentence ও Info-label hook</h3>
+      <div class="chips">
+        <span class="chip link">প্রথম বাক্য</span><span class="chip link">শেষ বাক্য</span><span class="chip link">However…</span><span class="chip link">Hence…</span>
+        <span class="chip key">a compromise</span><span class="chip key">a comparison</span><span class="chip key">a restriction</span><span class="chip key">an independent opinion</span>
+      </div>
+
+      <h3>❌ তোমার (Bangla L1) Common ৮ ভুল</h3>
+      <div class="tw"><table>
+        <thead><tr><th>#</th><th class="bn">ভুল</th><th class="bn">এড়ানোর উপায়</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="bn">FALSE ও NOT GIVEN গুলিয়ে ফেলা</td><td class="bn">"passage কি উল্টোটা বলছে?" হ্যাঁ=F, চুপ=NG</td></tr>
+          <tr><td>2</td><td class="bn">common sense দিয়ে উত্তর</td><td class="bn">শুধু লেখা আছে যা; যুক্তি নয়</td></tr>
+          <tr><td>3</td><td class="bn">heading-এ same-word দেখে বসানো</td><td class="bn">শব্দ নয়, পুরো ভাব মেলাও</td></tr>
+          <tr><td>4</td><td class="bn">heading = একটা detail ধরা</td><td class="bn">heading পুরো অনুচ্ছেদ ঢাকছে কিনা দেখো</td></tr>
+          <tr><td>5</td><td class="bn">quantifier না মেলানো</td><td class="bn">some/most/all মিলিয়ে দেখো</td></tr>
+          <tr><td>6</td><td class="bn">theory কে fact ভাবা</td><td class="bn">theory/may/suggests = অনিশ্চিত</td></tr>
+          <tr><td>7</td><td class="bn">Matching Info ক্রমে খোঁজা</td><td class="bn">ক্রমে আসে না; পুরো passage scan</td></tr>
+          <tr><td>8</td><td class="bn">একই para দুবার ভুলে যাওয়া</td><td class="bn">"more than once" থাকলে বারবার চেক</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout good bn"><span class="ct">🎯 তোমার Priority Focus</span>
+        <b>বেশি জোর:</b> (1) FALSE vs NOT GIVEN আলাদা করা · (2) Topic-sentence ধরে দ্রুত heading · (3) quantifier + negative word-এ থামা।<br>
+        <b>কম জোর:</b> প্রতিটা অনুচ্ছেদ পুরো বোঝা — heading-এর জন্য শুধু gist লাগে।</div>
+    </section>
+
+    <!-- ANSWERS -->
+    <section id="answers">
+      <p class="eyebrow">Cheat sheet</p>
+      <h2 class="sec"><span class="n">✓</span> Answer Key — সব Exercise</h2>
+      <div class="card">
+        <h3 style="margin-top:0">Matching Headings — "Museum" (A–I)</h3>
+        <div class="akrow"><span class="ak">A <b>xiii</b></span><span class="ak">B <b>v</b></span><span class="ak">C <b>xi</b></span><span class="ak">D <b>vi</b></span><span class="ak">E <b>x</b></span><span class="ak">F <b>i</b></span><span class="ak">G <b>ii</b></span><span class="ak">H <b>iv</b></span><span class="ak">I <b>iii</b></span></div>
+        <h3>Matching Headings — "Shop till you drop" (A–E)</h3>
+        <div class="akrow"><span class="ak">A <b>iv</b></span><span class="ak">B <b>vi</b></span><span class="ak">C <b>i</b></span><span class="ak">D <b>vii</b></span><span class="ak">E <b>iii</b></span></div>
+        <h3>Matching Information — "Leonardo's lost mural"</h3>
+        <div class="akrow"><span class="ak">1 <b>E</b></span><span class="ak">2 <b>F</b></span><span class="ak">3 <b>B</b></span><span class="ak">4 <b>F</b></span><span class="ak">5 <b>C</b></span><span class="ak">6 <b>C</b></span><span class="ak">7 <b>A</b></span><span class="ak">8 <b>D</b></span></div>
+        <h3>Matching Information — "Are germs bad?"</h3>
+        <div class="akrow"><span class="ak">1 <b>C</b></span><span class="ak">2 <b>D</b></span><span class="ak">3 <b>C</b></span><span class="ak">4 <b>A</b></span><span class="ak">5 <b>D</b></span><span class="ak">6 <b>A</b></span><span class="ak">7 <b>B</b></span></div>
+        <h3>T/F/NI — "The Frog Population"</h3>
+        <div class="akrow"><span class="ak">1 <b>F</b></span><span class="ak">2 <b>F</b></span><span class="ak">3 <b>T</b></span><span class="ak">4 <b>T</b></span><span class="ak">5 <b>NI</b></span><span class="ak">6 <b>T</b></span><span class="ak">7 <b>T</b></span><span class="ak">8 <b>NI</b></span><span class="ak">9 <b>T</b></span><span class="ak">10 <b>F</b></span></div>
+        <h3>TRUE/FALSE/NOT GIVEN — "Staff Career Path"</h3>
+        <div class="akrow"><span class="ak">1 <b>T</b></span><span class="ak">2 <b>F</b></span><span class="ak">3 <b>T</b></span><span class="ak">4 <b>T</b></span><span class="ak">5 <b>NG</b></span><span class="ak">6 <b>NG</b></span><span class="ak">7 <b>F</b></span></div>
+        <h3>TRUE/FALSE/NOT GIVEN — "Shopping for what we need"</h3>
+        <div class="akrow"><span class="ak">1 <b>F</b></span><span class="ak">2 <b>T</b></span><span class="ak">3 <b>NG</b></span><span class="ak">4 <b>NG</b></span><span class="ak">5 <b>T</b></span><span class="ak">6 <b>F</b></span><span class="ak">7 <b>F</b></span><span class="ak">8 <b>T</b></span></div>
+      </div>
+      <div class="callout tip bn"><span class="ct">পরের ধাপ</span> পরের coaching sheet পেলে আমাকে দিও — একই visual কাঠামোয় <b>Lecture-03</b> বানিয়ে দেব। আর প্রতিদিন একটা passage timed করো — একদিন Matching, পরদিন T/F/NG।</div>
+    </section>
+
+  </main>
+</div>
+
+<button class="totop" id="totop" title="উপরে">↑</button>
+<script>
+const prog=document.getElementById('progress');
+function onScroll(){
+  const h=document.documentElement;
+  const sc=h.scrollTop, max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(sc/max*100):0)+'%';
+  document.getElementById('totop').classList.toggle('show',sc>400);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+const links=[...document.querySelectorAll('.nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const spy=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+      const sel=document.getElementById('mobsel'); if(sel) sel.value=id;
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>s&&spy.observe(s));
+const sel=document.getElementById('mobsel');
+links.forEach(a=>{const o=document.createElement('option');o.value=a.getAttribute('href');o.textContent=a.textContent.trim();sel.appendChild(o);});
+sel.addEventListener('change',()=>{document.querySelector(sel.value).scrollIntoView({behavior:'smooth'});});
+let allOpen=false;
+const revs=[...document.querySelectorAll('details.reveal')];
+function setAll(v){revs.forEach(d=>d.open=v);allOpen=v;
+  const t=v?'সব উত্তর বন্ধ করো':'সব উত্তর খোলো';
+  document.getElementById('revealAll').textContent=t;}
+document.getElementById('revealAll').addEventListener('click',()=>setAll(!allOpen));
+const root=document.documentElement;
+function toggleTheme(){root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');}
+document.getElementById('themeBtn').addEventListener('click',toggleTheme);
+document.getElementById('mobtheme').addEventListener('click',toggleTheme);
+document.getElementById('totop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+onScroll();
+</script>
+</body>
+</html>

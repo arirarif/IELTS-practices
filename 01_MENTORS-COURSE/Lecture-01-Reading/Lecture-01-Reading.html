@@ -126,6 +126,25 @@ details.reveal[open]>summary{border-bottom:1px solid var(--good-line)}
 .reveal .body{padding:6px 16px 14px;font-size:13.5px;color:var(--ink)}
 .ans{display:inline-block;background:var(--good);color:#fff;font-weight:700;padding:1px 9px;border-radius:6px;font-size:13px}
 .trap{color:var(--bad);font-weight:600}
+/* deep-dive mentor discussion (collapsed) */
+details.deep{margin:10px 0 4px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--primary-soft)}
+details.deep>summary{cursor:pointer;list-style:none;padding:11px 16px;font-weight:700;font-size:13.5px;color:var(--primary-d);display:flex;align-items:center;gap:8px;user-select:none}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::before{content:"📖"}
+details.deep[open]>summary::before{content:"📂"}
+details.deep[open]>summary{border-bottom:1px solid var(--line)}
+html[data-theme="dark"] details.deep>summary{color:var(--primary)}
+.deep .body{padding:12px 14px 16px;background:var(--panel)}
+.deep .intro{font-size:13px;margin-bottom:12px}
+.dq{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line2);border-left:3px solid var(--primary);border-radius:9px;background:var(--panel2)}
+.dq:last-child{margin-bottom:0}
+.dq .dqh{font-weight:700;font-size:13.5px;margin-bottom:5px}
+.dq .ev{display:block;margin:6px 0;padding:7px 10px;background:var(--accent-soft);border:1px solid var(--warn-line);border-radius:7px;font-size:12.8px}
+.dq .ev b{color:var(--accent)}
+.dq p{margin:5px 0;font-size:12.8px;line-height:1.85}
+.dq .lbl{font-weight:700;color:var(--primary-d)}
+html[data-theme="dark"] .dq .lbl{color:var(--primary)}
+.dq .no{color:var(--bad);font-weight:700}
 
 /* tables */
 .tw{overflow-x:auto;margin:14px 0}
@@ -200,6 +219,7 @@ ul.clean li{margin:5px 0;font-size:14px}
       <button id="revealAll">সব উত্তর খোলো</button>
       <button id="themeBtn">🌓 থিম</button>
     </div>
+    <a href="../../07_VOCABULARY/Mentors/Mentors-Vocabulary.html" target="_blank" style="display:block;margin-top:12px;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--primary-soft);color:var(--primary-d);text-decoration:none;font-size:12.5px;font-weight:700;text-align:center">🧠 Vocabulary খোলো →</a>
     <div class="side-foot bn">English = পরীক্ষায় যা থাকবে।<br>বাংলা = কীভাবে করবে।<br>পাশাপাশি পড়ো।</div>
   </aside>
 
@@ -332,6 +352,49 @@ ul.clean li{margin:5px 0;font-size:14px}
         <p><b>Q4 → <span class="ans">B, D, E</span></b> <span class="bn">— global warming (B) · huge rise in flights (D) · blood clots = health (E)। <span class="trap">C উল্টো-ফাঁদ</span>: engines "quieter", noisier নয়।</span></p>
         <p><b>Q5 → <span class="ans">C</span></b> <span class="bn">— "To cap it all" = অভিযোগের লিস্টে আরেকটা যোগ → আগের argument সমর্থন। কারণ-ব্যাখ্যা পরের para-তে।</span></p>
       </div></details>
+
+      <details class="deep"><summary>📖 মেন্টর deep-dive — প্রতিটা MCQ কীভাবে বেরোয় (Q1–5)</summary><div class="body">
+        <p class="intro bn">MCQ-তে নিয়ম: আগে passage-এ <b>locate</b> করো → নিজের ভাষায় উত্তর ভাবো → তারপর option মেলাও। ভুল option-এ সাধারণত passage-এর <b>আসল শব্দ</b> থাকে কিন্তু <b>অর্থ বদলানো</b> (word-match ফাঁদ)। নিচে প্রতিটার সঠিক option + কেন বাকিগুলো ভুল।</p>
+
+        <div class="dq">
+          <div class="dqh">Q1 · "What claim is the writer making in the first paragraph?" → <span class="ans">C</span> (positive and negative developments)</div>
+          <span class="ev">📍 Para 1: "Civil aviation is a tale of <u>two contrasting trends</u>: strong growth in sales and profits… on the other side of the coin, increasing <u>misery and dissatisfaction</u>."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "two contrasting trends" = একদিকে ভালো (profit), অন্যদিকে খারাপ (misery) = "positive and negative developments"।</p>
+          <p class="bn"><span class="no">কেন D নয়:</span> D বলছে "two <b>approaches</b> to analyzing concerns"। passage বলছে "two <b>trends</b>" — approach (বিশ্লেষণ-পদ্ধতি) ≠ trend (প্রবণতা)। দুটোতেই "two" আছে বলে এটা <b>word-match ফাঁদ</b>।</p>
+          <p class="bn"><span class="no">A/B:</span> A (high profit মানুষ অপছন্দ করে) — passage profit-কে ভালো দিক বলছে; B (America/Europe routes) passage-এ নেই।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q2 · "According to the writer, the profits airlines make—" → <span class="ans">D</span> (increasingly hard to maintain)</div>
+          <span class="ev">📍 Para 2: "<u>However</u>, the airlines are having to <u>work harder and harder</u> for them. Revenue per seat is <u>declining</u> by 2% per year."</span>
+          <p class="bn"><span class="lbl">কেন D:</span> "However" দিয়ে মোড় ঘুরছে — লাভ আছে কিন্তু ধরে রাখতে <b>কষ্ট বাড়ছে</b>, revenue কমছে → "hard to maintain"।</p>
+          <p class="bn"><span class="no">কেন A নয়:</span> "consistently grown" — "However" এটাকেই কাটছে; লাভ ধরে রাখা কঠিন, ধারাবাহিক নয়।</p>
+          <p class="bn"><span class="no">B/C:</span> B — 1995 = boom <b>শুরু</b> (পতন নয়); C — consumer <b>কম</b> দিচ্ছে (revenue per seat declining), বেশি নয়।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q3 · "The writer refers to Hollywood movies in order to illustrate—" → <span class="ans">B</span> (extent of public frustration)</div>
+          <span class="ev">📍 Para 3: "Hollywood has <u>even</u> started making movies that incorporate the <u>frustrations of air travel</u>."</span>
+          <p class="bn"><span class="lbl">কেন B:</span> সিনেমা পর্যন্ত এই হতাশা দেখাচ্ছে — মানে হতাশা কতটা <b>ব্যাপক/ছড়িয়েছে</b> তার উদাহরণ। "even" শব্দটা মাত্রা/extent বোঝায়।</p>
+          <p class="bn"><span class="lbl">🎯 শেখা:</span> "refers to X <b>in order to illustrate</b>" — উদাহরণটা কোন বড় কথা <b>প্রমাণ</b> করছে সেটা ধরো, উদাহরণটাকেই উত্তর ভেবো না।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q4 · "Which THREE issues are mentioned?" → <span class="ans">B, D, E</span></div>
+          <span class="ev">📍 Para 3: "contributing to <u>global warming</u>" (B) · "the huge rise in the <u>number of flights</u>" (D) · Para 4: "Sitting still for long periods can cause <u>blood clots</u>" (E = health)।</span>
+          <p class="bn"><span class="no">কেন C নয়:</span> passage বলছে engines আজ "<u>much quieter</u>" — statement C বলছে "noisier"। সরাসরি <b>উল্টো-ফাঁদ</b> (opposite)।</p>
+          <p class="bn"><span class="no">A/F:</span> A (airport size) passage-এ নেই; F (seat size) — passage বলছে "squashing in too many <b>people</b>" = মানুষের <b>সংখ্যা</b>, আসনের আকার নয় (সূক্ষ্ম পার্থক্য)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q5 · "In the sixth paragraph, the writer is—" → <span class="ans">C</span> (supporting an earlier argument)</div>
+          <span class="ev">📍 Para 4: "<u>To cap it all</u>, consumer groups are attacking airlines for squashing in too many people."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "To cap it all" = অভিযোগের তালিকায় <b>আরও একটা যোগ</b> → আগের argument (dissatisfaction) আরও জোরালো করছে।</p>
+          <p class="bn"><span class="no">B/D নয়:</span> কারণ ("growing too fast") ও সমাধান <b>পরের</b> অংশে আসছে; এই para শুধু আরেকটা অভিযোগ যোগ করছে — reason/solution দিচ্ছে না।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> MCQ-র প্রতিটা ভুল option চেনো: <b>word-match</b> (Q1-D), <b>opposite</b> (Q4-C), <b>wrong-time/wrong-direction</b> (Q2-B,C)। passage-এ আগে locate করে নিজের উত্তর ভাবলে এই ফাঁদে পা পড়ে না।</div>
+      </div></details>
     </section>
 
     <!-- SHORT ANSWER -->
@@ -360,6 +423,48 @@ ul.clean li{margin:5px 0;font-size:14px}
           <span class="ak">4 · <b>Firebird III</b></span><span class="ak">5 · <b>new laws</b></span><span class="ak">6 · <b>abnormal shrimp</b></span>
         </div>
         <p class="bn"><span class="trap">⚠️ ফাঁদ:</span> "Lightning fighter planes" লিখলে ৩ শব্দ = limit ভাঙা → শুধু <b>fighter planes</b>। বানান হুবহু কপি করো (abnormal, Firebird)।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 মেন্টর deep-dive — প্রতিটা Short Answer (Q1–6)</summary><div class="body">
+        <p class="intro bn">Short Answer-এ: প্রশ্নের <b>question word</b> (What/Which) থেকে উত্তরের জাত ধরো → keyword scan (প্রশ্ন passage-এর ক্রমে) → passage থেকে <b>হুবহু</b> তোলো, <b>word-limit</b> (NO MORE THAN TWO WORDS AND/OR A NUMBER) মানো।</p>
+
+        <div class="dq">
+          <div class="dqh">Q1 · "copied the fins on what type of transport?" → <span class="ans">fighter planes</span></div>
+          <span class="ev">📍 "Earl had been inspired by the twin tail fins he had seen on the <u>Lightning fighter planes</u> used during the war."</span>
+          <p class="bn"><span class="no">⚠️ word-limit ফাঁদ:</span> passage-এ লেখা "Lightning fighter planes" = ৩ শব্দ, কিন্তু limit = ২ শব্দ। "Lightning" হলো ব্র্যান্ড-নাম (adjective) — বাদ দিয়ে <b>fighter planes</b> (transport-এর ধরন)। এটাই এই প্রশ্নের সবচেয়ে বড় শিক্ষা।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q2 · "What did car companies take part in during the 1950s?" → <span class="ans">(a) race</span></div>
+          <span class="ev">📍 "In the 1950s, <u>a race began</u> between American manufacturers to produce the most extreme fins."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "take part in" = অংশ নেওয়া = <b>race</b> (প্রতিযোগিতা)। "a" রাখলেও/বাদ দিলেও চলে।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q3 · "What feeling in America did car makers exploit?" → <span class="ans">national optimism</span></div>
+          <span class="ev">📍 "the American people were filled with a sense of <u>national optimism</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "feeling" = sense/emotion → "national optimism" (জাতীয় আশাবাদ)। ২ শব্দ, ঠিক আছে।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q4 · "Which model of car had the most fins ever?" → <span class="ans">Firebird III</span></div>
+          <span class="ev">📍 "General Motors' <u>Firebird III</u> had no fewer than nine fins – still a world record."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "most fins ever" = "no fewer than nine fins – still a world record" → মডেল = <b>Firebird III</b>। বানান+সংখ্যা হুবহু কপি।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q5 · "what was introduced to make motoring more expensive?" → <span class="ans">new laws</span></div>
+          <span class="ev">📍 "the Federal Government passed a number of <u>new laws</u> that transformed the industry."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "introduced" = passed; petrol/safety নিয়ে চাপের ফলে আনা <b>new laws</b> → খরচ বাড়াল।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q6 · "what creature once had fins? (Chinese research 1998)" → <span class="ans">abnormal shrimp</span></div>
+          <span class="ev">📍 "Chinese researchers found a fossil of a species they named the <u>abnormal shrimp</u>, which had fins on its tail."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "creature" = species = <b>abnormal shrimp</b>। অস্বাভাবিক বানান ("abnormal") <b>হুবহু</b> কপি করো — এখানেই ভুল হয়।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> Short Answer-এ দুটো জায়গায় নম্বর পড়ে: (১) <b>word-limit</b> ভাঙা (Q1 — "Lightning" বাদ) আর (২) <b>বানান</b> ভুল (Q6 abnormal, Q4 Firebird)। উত্তর সবসময় passage-এর হুবহু শব্দ।</div>
       </div></details>
     </section>
 
@@ -406,6 +511,28 @@ ul.clean li{margin:5px 0;font-size:14px}
         </div>
         <p class="bn"><span class="trap">⚠️</span> "cis-3-hexanal" passage-এ আছে কিন্তু সেটা important <b>ছিল না</b> (decoy)। technical নাম <b>geranial</b> হুবহু কপি করো।</p>
       </div></details>
+
+      <details class="deep"><summary>📖 মেন্টর deep-dive — Summary দুটো (word-box vs no-box)</summary><div class="body">
+        <p class="intro bn">Summary = passage-এর <b>paraphrase</b>; উত্তর passage-এর <b>ক্রমে</b> আসে। 🅐 word-box থাকলে: grammar দিয়ে শব্দ বাছো, box-এর passage-দেখা শব্দ প্রায়ই <b>decoy</b> → synonym নাও। 🅑 box ছাড়া: passage থেকে <b>হুবহু</b> শব্দ।</p>
+
+        <div class="dq">
+          <div class="dqh">🅐 "Australian Politics" (word-box) → <span class="ans">influence · recently · devoted · Labor · trade unions · community · Liberal · liberty · attention · key</span></div>
+          <span class="ev">📍 "<u>dominated by</u> two major parties… in <u>recent years</u>… <u>remain faithful… for life</u>… <u>trade unions</u>… <u>welfare society</u>… more <u>freedom</u>… turning their <u>attention</u>… one <u>major</u> issue."</span>
+          <p class="bn"><span class="lbl">1 influence (verb):</span> "dominated by" → influence। <span class="lbl">2 recently (adverb):</span> "in recent years"। <span class="lbl">3 devoted (adj):</span> "faithful for life" → devoted।</p>
+          <p class="bn"><span class="lbl">6 community (noun):</span> "welfare <b>society</b>" → community। <span class="lbl">8 liberty (noun):</span> "freedom" → liberty। <span class="lbl">10 key (adj):</span> "major" → key।</p>
+          <p class="bn"><span class="no">⚠️ decoy খেলা:</span> box-এ "welfare, voters, policies"-এর মতো passage-এ <b>দেখা</b> শব্দ থাকে — এগুলো প্রায়ই ফাঁদ। grammar (verb/adj/noun) দিয়ে আগে box ভাগ করো, তারপর <b>synonym</b> বাছো (society→community, freedom→liberty)।</p>
+          <p class="bn"><span class="lbl">🎯 নাম হুবহু:</span> 4 <b>Labor</b> · 7 <b>Liberal</b> — দলের নাম, paraphrase হয় না; হুবহু লেখো।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">🅑 "Perfect Tomato" (no box) → <span class="ans">texture · shelf life · consumer · heritage · smell · geranial · hybrid · GM</span></div>
+          <span class="ev">📍 "taste and <u>texture</u>… extended <u>shelf life</u>… starts with the <u>consumer</u>… <u>heritage</u> tomatoes… enticing <u>smell</u>… <u>geranial</u>, regarded as marginal, were actually important… this <u>hybrid</u>… developed <u>GM</u> crops."</span>
+          <p class="bn"><span class="lbl">কেন এগুলো:</span> box নেই, তাই passage থেকে <b>হুবহু</b> শব্দ। প্রশ্নের paraphrase মিলিয়ে শব্দটা তোলো (যেমন "enticing smell" → <b>smell</b>)।</p>
+          <p class="bn"><span class="no">⚠️ decoy (Q6):</span> "cis-3-hexanal" passage-এ আছে কিন্তু সেটা <b>important ছিল না</b> — important যেটা ছিল = <b>geranial</b>। কঠিন technical নাম দেখে ভয় পেও না, <b>অক্ষরে অক্ষরে</b> কপি করো।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> দুই summary-র মূল পার্থক্য: <b>box থাকলে synonym</b> (dominated→influence), <b>box না থাকলে হুবহু শব্দ</b> (geranial)। দুটোতেই উত্তর passage-এর <b>ক্রমে</b> আসে — হারিয়ে গেলে পরের গ্যাপের keyword দিয়ে জায়গা ধরো।</div>
+      </div></details>
     </section>
 
     <!-- SENTENCE -->
@@ -432,6 +559,48 @@ ul.clean li{margin:5px 0;font-size:14px}
           <span class="ak">4 · <b>presentation</b></span><span class="ak">5 · <b>crime</b></span><span class="ak">6 · <b>January</b></span>
         </div>
         <p class="bn"><span class="trap">⚠️</span> "graded" = paraphrase of "assessment"। form ঠিক রাখো: <b>projects</b> (plural)। "the month of January" নয়, শুধু <b>January</b> (ONE WORD)।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 মেন্টর deep-dive — প্রতিটা Sentence (Q1–6)</summary><div class="body">
+        <p class="intro bn">Sentence completion: অসম্পূর্ণ বাক্য পুরো পড়ো → কোন জাতের শব্দ লাগবে বুঝো → keyword scan → grammar/form মিলিয়ে বসাও। এখানে limit = <b>ONE WORD ONLY</b>।</p>
+
+        <div class="dq">
+          <div class="dqh">Q1 · "Children are told stories by ___ as well as by librarians." → <span class="ans">authors</span></div>
+          <span class="ev">📍 "stories read aloud by librarians and sometimes by the <u>authors</u> themselves."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "as well as by librarians" = librarian ছাড়া আর কারা = <b>authors</b>। প্রশ্নের "as well as" = passage-এর "and… themselves"।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q2 · "heard in a variety of ___ in different libraries." → <span class="ans">languages</span></div>
+          <span class="ev">📍 "Some libraries offer storytimes in <u>languages</u> other than English."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "a variety of ___" = "languages other than English" → <b>languages</b> (plural)।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q3 · "assist children with researching their school ___." → <span class="ans">projects</span></div>
+          <span class="ev">📍 "children get help with the <u>projects</u> their teacher has set."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "school ___" = teacher-এর দেওয়া কাজ = <b>projects</b>। <span class="no">form:</span> plural (<b>projects</b>) রাখো — passage-এ যেমন।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q4 · "help with the ___ of their work because it will be graded." → <span class="ans">presentation</span></div>
+          <span class="ev">📍 "librarians help enhance the <u>presentation</u> of work submitted, a key aspect of <u>assessment</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "the ___ of their work" = <b>presentation</b>। <span class="lbl">🔑 paraphrase:</span> প্রশ্নের "because it will be <b>graded</b>" = passage-এর "a key aspect of <b>assessment</b>" (graded = assessed)। এই synonym ধরাই আসল কাজ।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q5 · "read books on the subject of ___ next." → <span class="ans">crime</span></div>
+          <span class="ev">📍 "looked at historical fiction, classics, horror; <u>crime</u> is next for Nov/Dec."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "___ next" = "crime is <b>next</b>" → <b>crime</b>। আগের genre-গুলো (fiction/horror) decoy — "next" শব্দটাই উত্তর ঠিক করে।</p>
+        </div>
+
+        <div class="dq">
+          <div class="dqh">Q6 · "No meetings in ___ have been scheduled." → <span class="ans">January</span></div>
+          <span class="ev">📍 "Does not meet in <u>January</u>."</span>
+          <p class="bn"><span class="lbl">কেন:</span> "No meetings in ___" = "Does not meet in January" → <b>January</b>। <span class="no">⚠️ ONE WORD:</span> "the month of January" নয়, শুধু <b>January</b>।</p>
+        </div>
+
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> Sentence completion-এ দুটো ধরো: (১) <b>paraphrase</b> (graded↔assessment, Q4), আর (২) <b>form</b> (projects plural, Q3) ও <b>word-limit</b> (শুধু January, Q6)। বসানোর পর বাক্যটা পড়ো — "শুনতে ঠিক?"।</div>
       </div></details>
     </section>
 

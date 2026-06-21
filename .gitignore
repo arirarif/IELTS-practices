@@ -1,7 +1,13 @@
-# Files exceeding GitHub's 100 MB limit (kept locally, not pushed)
-01_MENTORS-COURSE/Lecture-01-Reading/00_SOURCE/01_menor_L_1.pdf
+# Source scan PDFs are large (130–229 MB each) — over GitHub's 100 MB limit.
+# Kept locally as source material, never pushed.
+*.pdf
 
 # OS / editor cruft
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# App projects have their own repos — don't nest
+custom_app/
+mobile_app/
+node_modules/
