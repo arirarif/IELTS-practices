@@ -93,6 +93,25 @@ details.reveal[open]>summary{border-bottom:1px solid var(--good-line)}
 .reveal .body{padding:6px 16px 14px;font-size:13.5px;color:var(--ink)}
 .ans{display:inline-block;background:var(--good);color:#fff;font-weight:700;padding:1px 9px;border-radius:6px;font-size:13px}
 .trap{color:var(--bad);font-weight:600}
+/* deep-dive mentor discussion (collapsed) */
+details.deep{margin:10px 0 4px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--primary-soft)}
+details.deep>summary{cursor:pointer;list-style:none;padding:11px 16px;font-weight:700;font-size:13.5px;color:var(--primary-d);display:flex;align-items:center;gap:8px;user-select:none}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::before{content:"📖"}
+details.deep[open]>summary::before{content:"📂"}
+details.deep[open]>summary{border-bottom:1px solid var(--line)}
+html[data-theme="dark"] details.deep>summary{color:var(--primary)}
+.deep .body{padding:12px 14px 16px;background:var(--panel)}
+.deep .intro{font-size:13px;margin-bottom:12px}
+.dq{margin:0 0 12px;padding:11px 13px;border:1px solid var(--line2);border-left:3px solid var(--primary);border-radius:9px;background:var(--panel2)}
+.dq:last-child{margin-bottom:0}
+.dq .dqh{font-weight:700;font-size:13.5px;margin-bottom:5px}
+.dq .ev{display:block;margin:6px 0;padding:7px 10px;background:var(--accent-soft);border:1px solid var(--warn-line);border-radius:7px;font-size:12.8px}
+.dq .ev b{color:var(--accent)}
+.dq p{margin:5px 0;font-size:12.8px;line-height:1.85}
+.dq .lbl{font-weight:700;color:var(--primary-d)}
+html[data-theme="dark"] .dq .lbl{color:var(--primary)}
+.dq .no{color:var(--bad);font-weight:700}
 .tw{overflow-x:auto;margin:14px 0}
 table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--panel);border-radius:12px;overflow:hidden}
 th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
@@ -232,16 +251,17 @@ ul.clean li{margin:5px 0;font-size:14px}
       <p class="bn"><b>Behind the Scenes at the Museum</b> — Sections A–I, ১৩টা heading থেকে ৯টা বাছো। মূল কৌশল: প্রতিটা অনুচ্ছেদের <b>topic sentence</b> ধরো।</p>
 
       <div class="passage">
-        <div class="plabel">📖 Passage · "Behind the Scenes at the Museum" (সারসংক্ষেপ)</div>
-        <p><b>A.</b> Smithsonian (1938) ran out of space; restoring specimens was a <em>monumental task</em> — <em>30 million items and seven years later</em>, done.</p>
-        <p><b>B.</b> Smithsonian owns <em>130 million</em>; London <em>80 million</em>; Science Museum <em>300,000</em>. <em>On an international scale</em>, such numbers are not exceptional.</p>
-        <p><b>C.</b> Collections result from the <em>dual functions</em>: <em>on the one hand</em>, public display; <em>on the other</em>, research.</p>
-        <p><b>D.</b> Blythe House holds <em>dangerous</em> items — Crookes' <em>radioactive</em>, <em>contaminated</em> equipment.</p>
-        <p><b>E.</b> Curator Neil Brown finds it <em>hard to identify what future generations will regard as significant</em> (videocassette, computer).</p>
-        <p><b>F.</b> Public is <em>surprised</em>: he <em>turns down antique</em> instruments but is <em>happy to receive</em> a coffee maker, a green beer bottle.</p>
-        <p><b>G.</b> Natural history museums collect for <em>type specimens</em> and for <em>age</em> — two reasons (moth/natural-selection study).</p>
-        <p><b>H.</b> The <em>value</em> of collections <em>increases</em> — <em>genetic analysis, pharmaceutical, bio-mimetics</em>.</p>
-        <p><b>I.</b> Collections <em>grow bigger</em>; <em>space becomes a problem</em> → <em>out-of-town storage</em>.</p>
+        <div class="plabel">📖 Reading Passage · "Behind the Scenes at the Museum"</div>
+        <p style="font-style:italic;color:var(--muted);font-size:13px">With more and more of what museums own ending up behind locked doors, curators are hatching plans to widen access to their collections.</p>
+        <p><b>A.</b> When, in 1938, the Smithsonian National Museum of Natural History, in Washington, DC, decided it had run out of space, it began transferring part of its collection from the cramped attic and basement rooms where the specimens had been languishing in an out-of-town warehouse. Restoring those specimens to pristine conditions was a monumental task. One member of staff, for example, spent six months doing nothing but gluing the legs back on to crane flies. But 30 million items and seven years later, the job was done.</p>
+        <p><b>B.</b> At least for the moment. For the Smithsonian owns 130 million plants, animals, rocks and fossils and that number is growing at 2–3% each year. On an international scale, however, such numbers are not exceptional. The Natural History Museum in London has 80 million specimens. And, in a slightly different scientific context, the Science Museum next door to it has 300,000 objects recording the history of science and technology. Deciding what to do with these huge accumulations of things is becoming a pressing problem. They cannot be thrown away, but only a tiny fraction can be put on display.</p>
+        <p><b>C.</b> The huge, invisible collections behind the scenes at science and natural history museums are the result of the dual functions of these institutions. On the one hand, they are places for the public to go and look at things. On the other, they are places of research — and researchers are not interested merely in the big, showy things that curators like to reveal to the public.</p>
+        <p><b>D.</b> Blythe House in West London, the Science Museum's principal storage facility, has, as might be expected, cabinets full of early astronomical instruments such as astrolabes and celestial globes. The museum is also custodian to things that are dangerous. It holds a lot of equipment of Sir William Crookes, a 19th-century scientist who built the first cathode-ray tubes, experimented with radium and also discovered thallium — an extremely radioactive element. He was a sloppy worker. All his equipment was contaminated with radioactive materials but he worked in an age when nobody knew about the malevolent effects of radioactivity.</p>
+        <p><b>E.</b> Neil Brown is the senior curator for classical physics, time and microscopes at the Science Museum. He spends his professional life looking for objects that illustrate some aspect of scientific and technological development. Collections of computers, and domestic appliances such as television sets and washing machines, are growing especially fast. But the rapid pace of technological change and the volume of new objects make it increasingly hard to identify what future generations will regard as significant. There were originally, for example, three different versions of the videocassette recorder and nobody knew at the time which was going to win. And who, in the 1970s, would have realized the enormous effect the computer would have by the turn of the century?</p>
+        <p><b>F.</b> The public is often surprised at the Science Museum's interest in recent objects. Mr Brown says he frequently turns down antique brass and mahogany electrical instruments on the grounds that they already have enough of them, but he is happy to receive objects such as an Atomic domestic coffee maker, a 114-piece Do-It-Yourself toolkit with canvas case, and a green beer bottle.</p>
+        <p><b>G.</b> Natural history museums collect for a different reason. Their accumulations are part of attempts to identify and understand the natural world. Some of the plants and animals are 'type specimens'. In other words, they are the standard reference unit, like a reference weight or length, for the species in question. Other specimens are valuable because of their age. One of the most famous demonstrations of natural selection in action was made using museum specimens. A study of moths collected over a long period of time showed that their wings became darker (which made them less visible to insectivorous birds) as the industrial revolution made Britain more polluted.</p>
+        <p><b>H.</b> Year after year, the value of such collections quietly and reliably increases, as scientists find uses that would have been unimaginable to those who started them a century or two ago. Genetic analysis, pharmaceutical development, bio-mimetics (engineering that mimics nature to produce new designs) and bio-diversity mapping are all developments that would have been unimaginable to the museum's founders.</p>
+        <p><b>I.</b> But as the collections grow older, they grow bigger. Insects may be small, but there are millions of them and entomologists would like to catalogue every one. And when the reference material is a pair of giraffes or a blue whale, space becomes a problem. That is why museums such as the Smithsonian are increasingly forced to turn to out-of-town storage facilities. But museums that show the public only a small fraction of their material risk losing the fickle goodwill of governments and the public, which they need to keep running. Hence the determination of so many museums to make their back-room collections more widely available.</p>
       </div>
 
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> Section <b>A–I</b> প্রতিটার জন্য নিচের তালিকা (i–xiii) থেকে সঠিক heading বাছো — মোট ১৩টা থেকে ৯টা লাগবে (৪টা ফাঁদ)। আগে নিজে করো, পরে reveal খোলো।</div>
@@ -282,14 +302,59 @@ ul.clean li{margin:5px 0;font-size:14px}
         <p class="bn"><span class="trap">⚠️ Trap:</span> Section I-এর শেষ লাইন "widely available" দেখে <b>viii</b> দিও না — মূল ভাব = grow bigger/space, তাই <b>iii</b>। ব্যবহৃত হয়নি: vii, viii, ix, xii।</p>
       </div></details>
 
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা heading (Q1–9)</summary><div class="body">
+        <p class="intro bn">Matching Headings-এ আগে para-র <b>topic sentence</b> ধরো → এক বাক্যে main idea বলো → তারপর heading বাছো (heading আগে পড়ে শব্দ খুঁজলে same-word ফাঁদে পড়বে)। নিচে প্রতিটার key line + কেন এই heading + কোন distractor-এ পা পিছলায়।</p>
+        <div class="dq"><div class="dqh">Q1 · Section A → <span class="ans">xiii · A lengthy, but necessary task</span></div>
+          <span class="ev">📍 "Restoring those specimens to pristine conditions was a <u>monumental task</u>… But <u>30 million items and seven years later</u>, the job was done."</span>
+          <p class="bn"><span class="lbl">কেন xiii:</span> পুরো para = একটা বিশাল, সময়সাপেক্ষ (lengthy) অথচ দরকারি কাজের বর্ণনা। "monumental task" = "lengthy but necessary task"-এর সরাসরি paraphrase।</p>
+          <p class="bn"><span class="no">কেন iii নয়:</span> "out of space / warehouse" দেখে housing-cost (iii) মনে হতে পারে — কিন্তু para-র মূল ভাব <b>কাজের বিশালতা</b>, খরচ নয়।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 · Section B → <span class="ans">v · The global 'size' of the problem</span></div>
+          <span class="ev">📍 "Smithsonian owns <u>130 million</u>… London has <u>80 million</u>… Science Museum has <u>300,000</u>… <u>On an international scale</u>… not exceptional."</span>
+          <p class="bn"><span class="lbl">কেন v:</span> একের পর এক বিশাল সংখ্যা + "international scale" = সমস্যাটা কত বড় (global size)। heading-এর 'size' শব্দটাই para-র প্রাণ।</p>
+          <p class="bn"><span class="no">কেন iii নয়:</span> "pressing problem" আছে বলে cost (iii) ভেবো না; জোর সংখ্যার <b>বিশালতায়</b>, housing খরচে নয়।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 · Section C → <span class="ans">xi · The two roles of museums</span></div>
+          <span class="ev">📍 "the result of the <u>dual functions</u>… <u>On the one hand</u>, places for the public… <u>On the other</u>, places of <u>research</u>."</span>
+          <p class="bn"><span class="lbl">কেন xi:</span> "dual functions" = "two roles"; on the one hand / on the other = দুই ভূমিকা স্পষ্ট। textbook match।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 · Section D → <span class="ans">vi · Why some collections are unsafe</span></div>
+          <span class="ev">📍 "custodian to things that are <u>dangerous</u>… thallium — an <u>extremely radioactive</u> element… equipment was <u>contaminated with radioactive materials</u>."</span>
+          <p class="bn"><span class="lbl">কেন vi:</span> পুরো para = কেন কিছু সংগ্রহ বিপজ্জনক/unsafe (তেজস্ক্রিয় দূষণ)। dangerous/radioactive/contaminated = unsafe।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 · Section E → <span class="ans">x · The decision-making difficulties of one curator</span></div>
+          <span class="ev">📍 "<u>Neil Brown</u> is the senior curator… make it increasingly <u>hard to identify what future generations will regard as significant</u>… nobody knew which was going to win."</span>
+          <p class="bn"><span class="lbl">কেন x:</span> একজন curator (Neil Brown) সিদ্ধান্ত নিতে পারছেন না ভবিষ্যতে কোনটা গুরুত্বপূর্ণ হবে — "decision-making difficulties of one curator" হুবহু।</p>
+          <p class="bn"><span class="no">কেন iv নয়:</span> "computers growing fast" দেখে research-importance (iv) ভেবো না; মূল ভাব = <b>কী সংগ্রহ করবে সেই সিদ্ধান্তের কঠিনতা</b>।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 · Section F → <span class="ans">i · An unexpected preference for modern items</span></div>
+          <span class="ev">📍 "The public is often <u>surprised</u>… he frequently <u>turns down antique</u> brass and mahogany… but he is <u>happy to receive</u> an Atomic domestic coffee maker… a green beer bottle."</span>
+          <p class="bn"><span class="lbl">কেন i:</span> পুরোনো জিনিস ফিরিয়ে দিয়ে আধুনিক/সাধারণ জিনিস নেওয়া = "unexpected preference for modern items"। "surprised" শব্দটাই "unexpected"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 · Section G → <span class="ans">ii · Two distinct reasons for selection in one type of museum</span></div>
+          <span class="ev">📍 "Natural history museums collect for a different reason… Some… are '<u>type specimens</u>'… <u>Other</u> specimens are valuable because of their <u>age</u>."</span>
+          <p class="bn"><span class="lbl">কেন ii:</span> একই ধরনের museum-এ (natural history) সংগ্রহের <b>দুটো আলাদা কারণ</b> — type specimen হওয়া, আর বয়স। "two distinct reasons" নিখুঁত।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q8 · Section H → <span class="ans">iv · The growing importance of collections for research purposes</span></div>
+          <span class="ev">📍 "the <u>value</u> of such collections quietly and reliably <u>increases</u>, as scientists find uses… <u>Genetic analysis, pharmaceutical development, bio-mimetics</u>."</span>
+          <p class="bn"><span class="lbl">কেন iv:</span> সংগ্রহের গবেষণা-মূল্য দিন দিন বাড়ছে (genetic/pharma/bio-mimetics) = "growing importance… for research purposes"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q9 · Section I → <span class="ans">iii · The growing cost of housing museum exhibits</span></div>
+          <span class="ev">📍 "as the collections grow older, they <u>grow bigger</u>… when the reference material is a pair of giraffes or a blue whale, <u>space becomes a problem</u>… <u>out-of-town storage facilities</u>."</span>
+          <p class="bn"><span class="lbl">কেন iii:</span> সংগ্রহ বড় হওয়ায় জায়গা/সংরক্ষণের সমস্যা ও খরচ বাড়ছে = "growing cost of housing exhibits"। topic sentence-ই "grow bigger → space problem"।</p>
+          <p class="bn"><span class="no">কেন viii নয়:</span> para-র শেষ বাক্য "make… more widely available" দেখে viii ("show as much as possible") ভেবো না — ওটা শেষের একটা ফলাফল-বাক্য মাত্র; <b>মূল ভাব = বড় হওয়া + storage সমস্যা</b>।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> প্রায় ৭০% heading বেরোয় শুধু <b>topic sentence</b> (প্রথম বাক্য) থেকে: A="monumental task", C="dual functions", G="different reason", I="grow bigger"। শেষ বাক্যের একটা detail (I-এর "widely available") দিয়ে ফাঁদে পড়ো না। distractor (vii, viii, ix, xii) = passage-এ নেই এমন বিষয় বা ছোট detail।</div>
+      </div></details>
+
       <h3>Extra · "Shop till you drop" (A–E)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage (সারসংক্ষেপ)</div>
-        <p><b>A.</b> Mall = <em>craze… went global</em> (1950s) → এখন <em>fewer and fewer people</em>, few opened since 2006।</p>
-        <p><b>B.</b> Austrian-born immigrant-এর <em>solution: recreate… city-centre experience</em> in suburbs।</p>
-        <p><b>C.</b> <em>my own local mall</em> ran <em>beauty pageants, fashion parades</em>… more recently celebrities।</p>
-        <p><b>D.</b> Always a <em>supermarket</em>; mall <em>learned a great deal from supermarkets</em>।</p>
-        <p><b>E.</b> Malls <em>spy on customers</em>, <em>cameras</em>, <em>studies</em> of behaviour।</p>
+        <div class="plabel">📖 Reading Passage · "Shop till you drop — the rise and rise of the shopping mall"</div>
+        <p><b>A.</b> Today, shopping malls are found in almost every nation, in both the developed and developing world. Visitors to any city, from Auckland to Washington, and to all of them, will appear to be broadly similar. So it's easy to forget that malls are actually a relatively recent development. The first suburban shopping malls as we would recognise them today only started to be built in America in the 1950s, and in most of the rest of the world in the decades after that, as the craze for mall shopping went global. But 50 or so years on, while malls are still an important part of the retail economy, mall owners have little to celebrate as increased competition from the Internet means fewer and fewer people walk into their air-conditioned halls. In the U.S.A. few malls have opened since 2006, and those already operating are having to work harder and harder to attract customers.</p>
+        <p><b>B.</b> One of the first indoor 'shopping centres' was the Cleveland Arcade, built in the late nineteenth century. However, this was an inner-city shopping venue without parking and cannot really be considered the forebear of today's malls, which didn't appear until much later and in response to a new feature of urban development. Their invention is usually credited to an Austrian-born U.S. immigrant, who hated suburban living, seeing it as essentially 'empty' and lacking any focal point. His solution was to try to recreate in the suburbs the same compact shopping experience as found in city centres — the shopping mall, a town square for the suburbs, but one with plentiful parking for the increasingly car-dominated culture of the 1950s.</p>
+        <p><b>C.</b> It would be a mistake, however, to assume that consumers have always flocked to malls on impulse without any effort being made to entice them. In fact, if my own local mall is any guide, these institutions have always found it necessary to publicise themselves and actively seek customers. In the 1960s my local mall ran a variety of publicity events such as beauty pageants, fashion parades and even a bed-making competition. More recently these events have focused on appearances by minor celebrities, aspiring singers, unemployed actors, and discarded contestants from the latest television reality series. So it's apparent that malls have never taken their customers for granted and have always been prepared to lure them away from rival shopping venues.</p>
+        <p><b>D.</b> While malls come in a variety of shapes and sizes, they nearly always contain at least one supermarket, and it is arguably this store that is the crucial component of any mall: the necessity of buying groceries draws customers in, and thereafter they may well be persuaded to purchase non-essential items from some of the other stores on site. What's more, the whole mall enterprise has learned a great deal from supermarkets, which have always led the field in understanding the shopper's mind. Studies conducted since the 1960s have established certain fixed principles to apply to supermarket design: essential items are spread throughout the shop, forcing customers to walk down every aisle, where they might be tempted into an unplanned purchase; chocolate and sweets are placed at a child's eye level at the checkouts, and so on. The potential for all shops to exploit consumers in similar ways is one that mall designers have been quick to recognise.</p>
+        <p><b>E.</b> These days it's not an understatement to say that malls extensively spy on their customers in order to better understand their shopping habits. This, of course, is justified in terms of 'better meeting customer needs', but it also has the fortunate by-product of increasing sales. Cameras are commonly used in numerous malls around the world, not just for security purposes but also to monitor shoppers' behaviour so as to learn how to exploit it. It's commonplace today for business schools to conduct these sorts of studies, to record how long shoppers spend in every store, which goods they inspect, what they try on and whether or not they ask for assistance. This way, according to marketers, real-time shopping in actual stores will always be more popular than internet-based alternatives.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> Paragraph <b>A–E</b> প্রতিটার জন্য নিচের তালিকা (i–vii) থেকে সঠিক heading বাছো — ২টা ফাঁদ থাকবে।</div>
       <div class="passage" style="border-left-color:var(--primary)">
@@ -311,6 +376,32 @@ ul.clean li{margin:5px 0;font-size:14px}
         </div>
         <p class="bn"><span class="trap">⚠️</span> ব্যবহৃত হয়নি: ii (government support), v (different countries) — passage-এ নেই, তাই ফাঁদ।</p>
       </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা heading (Q1–5)</summary><div class="body">
+        <p class="intro bn">৭টা heading থেকে ৫টা; ২টা (ii, v) passage-এ নেই বলে ফাঁদ। প্রতিটা para-র মূল ভাব ধরো।</p>
+        <div class="dq"><div class="dqh">Q1 · Para A → <span class="ans">iv · How malls have gone in and out of fashion</span></div>
+          <span class="ev">📍 "the <u>craze for mall shopping went global</u>… But 50 or so years on… <u>fewer and fewer people</u> walk into their… halls. In the U.S.A. few malls have opened since 2006."</span>
+          <p class="bn"><span class="lbl">কেন iv:</span> উত্থান (craze, global) ও পতন (fewer people, few opened since 2006) = সময়ের সাথে জনপ্রিয়তার ওঠানামা = "gone in and out of fashion"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 · Para B → <span class="ans">vi · The ideas behind the original malls</span></div>
+          <span class="ev">📍 "Their invention is usually credited to an Austrian-born U.S. immigrant… His <u>solution</u> was to try to <u>recreate in the suburbs the same compact shopping experience</u> as found in city centres."</span>
+          <p class="bn"><span class="lbl">কেন vi:</span> আদি mall-এর পেছনের ভাবনা/দর্শন (আবিষ্কারকের লক্ষ্য) = "the ideas behind the original malls"।</p>
+          <p class="bn"><span class="no">কেন নয় (Cleveland Arcade):</span> ওটা একটা নাম/detail, heading নয় — মূল ভাব original mall-এর concept।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 · Para C → <span class="ans">i · How one mall has promoted itself over the years</span></div>
+          <span class="ev">📍 "if <u>my own local mall</u> is any guide… In the 1960s my local mall ran… <u>beauty pageants, fashion parades</u>… <u>More recently</u> these events have focused on… minor celebrities."</span>
+          <p class="bn"><span class="lbl">কেন i:</span> "my own local mall" = one mall; ১৯৬০s থেকে এখন পর্যন্ত (over the years) নিজেকে প্রচার করা = "how one mall has promoted itself over the years"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 · Para D → <span class="ans">vii · The influence one type of shop has had on malls</span></div>
+          <span class="ev">📍 "they nearly always contain at least one <u>supermarket</u>… the whole mall enterprise has <u>learned a great deal from supermarkets</u>… mall designers have been quick to recognise."</span>
+          <p class="bn"><span class="lbl">কেন vii:</span> এক ধরনের দোকান (supermarket) কীভাবে mall-এর design/কৌশলে প্রভাব ফেলেছে = "the influence one type of shop has had on malls"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 · Para E → <span class="ans">iii · Ongoing research in the psychology of shoppers</span></div>
+          <span class="ev">📍 "malls extensively <u>spy on their customers</u>… <u>Cameras</u>… to <u>monitor shoppers' behaviour</u>… business schools to conduct these sorts of <u>studies</u>, to record how long shoppers spend."</span>
+          <p class="bn"><span class="lbl">কেন iii:</span> ক্রেতার মন/আচরণ নিয়ে চলমান গবেষণা (spy, monitor, studies) = "ongoing research in the psychology of shoppers"।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> distractor (ii government support, v different countries) passage-এ <b>একদমই নেই</b> — তাই বাদ। heading আগে পড়ে শব্দ খুঁজো না; para-র মূল সুর ধরো।</div>
+      </div></details>
     </section>
 
     <!-- MATCHING INFORMATION -->
@@ -321,13 +412,13 @@ ul.clean li{margin:5px 0;font-size:14px}
 
       <h3>"Leonardo's lost mural" (A–F)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage (সারসংক্ষেপ)</div>
-        <p><b>A.</b> Da Vinci tried a <em>new oil painting technique, but it was not very successful</em>; never completed।</p>
-        <p><b>B.</b> <em>One source describes Vasari as a Leonardo fan who couldn't bring himself to destroy</em> the work।</p>
-        <p><b>C.</b> Seracini <em>spent around 40 years</em>; clue: <em>rather than doing what had been asked</em>, Vasari built a false wall।</p>
-        <p><b>D.</b> Drilling outcry; <em>Martin Kemp… who wasn't involved</em> said damage "can be repaired invisibly"।</p>
-        <p><b>E.</b> Permission to continue <em>but not in the 14 spots</em>; <em>only into existing cracks</em> (a compromise)।</p>
-        <p><b>F.</b> Pigment <em>similar to those found in</em> Mona Lisa; but <em>only permitted… within a very narrow time period</em> → <em>cannot say anything definite</em>।</p>
+        <div class="plabel">📖 Reading Passage · "Leonardo's lost mural"</div>
+        <p><b>A.</b> According to historical records, in 1503 Florentine statesman Piero Soderini commissioned the artist Leonardo da Vinci to paint a fresco on the inside wall of the Hall of the Five Hundred — a room named after the 500 members of the Republic of Florence's Grand Council — which now serves as the city hall. The painting, six metres long and three metres tall, was to depict the scene of the knights of the Italian League defeating an army from Milan near the Tuscan town of Anghiari. Da Vinci, it is said, used the opportunity to try out a new oil painting technique, but it was not very successful, possibly because of the high humidity in the hall. He never completed the mural.</p>
+        <p><b>B.</b> In the 1550s, biographer and artist Giorgio Vasari was commissioned to remodel the Hall of the Five Hundred and paint several enormous murals, each four or five metres high. One mural — picturing the same battle — was to be painted over Leonardo's unfinished work, but at least one source describes Vasari as a Leonardo fan who couldn't bring himself to destroy the work.</p>
+        <p><b>C.</b> Maurizio Seracini, an art diagnostician at the University of California, San Diego, has spent around 40 years on a quest to find out what happened to Da Vinci's painting. 'I am convinced it's there.' A break came in the 1970s, when he climbed a scaffold in front of Vasari's painting and spied two words inscribed on a banner one of the knights is carrying: 'cerca trova' it said, usually translated as 'seek and find'. Seracini took it as a clue that, rather than doing what had been asked, Vasari had built a false wall in front of Da Vinci's work and painted his mural on that surface instead.</p>
+        <p><b>D.</b> A team led by Seracini eventually got permission to scan the entire building with high-frequency surface-penetrating radar. The scanning revealed some sort of hollow space directly behind the section of mural where the inscription had been found. To peek behind Vasari's fresco, the team planned to drill 14 strategically located centimetre-wide holes in the work. But an outcry ensued after journalists publicised the project. Some 300 Italian scholars petitioned the mayor of Florence to halt the work. 'But the team was making little boreholes some nine to twelve metres above the ground,' said art historian Martin Kemp of Oxford University, who wasn't involved in the work. 'That kind of damage can be repaired invisibly.'</p>
+        <p><b>E.</b> Despite the public protests, in late 2011 Seracini and his team were given permission to continue their work — but not in the 14 spots they'd originally hoped to investigate. To avoid damaging original portions of Vasari's painting, museum curators permitted them to drill only into existing cracks and recently restored spots. This time the researchers struck gold: a hollow space behind 17 centimetres of fresco and brick. They inserted an endoscopic camera into the space and took video footage of rough masonry work as well as spots that appear to have been stroked by a brush. A substance removed from the void was analysed with x-rays, and the results suggested it contained traces of black pigment.</p>
+        <p><b>F.</b> Based on the x-ray data, Seracini thinks the black pigment, which is made up of an unusual combination of manganese and iron, is similar to those found in brown glazes of what is probably da Vinci's most famous painting, La Gioconda (Mona Lisa). That Seracini found components unique to Renaissance painting leads him to call the results 'encouraging evidence', yet he complained that further samples couldn't be collected because he was only permitted to work on the project within a very narrow time period. 'Unless I get hold of a piece of it, and prove that it is real paint, I cannot say anything definite, and that's very frustrating,' he said.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের তথ্যগুলো কোন paragraph-এ (<b>A–F</b>) আছে? <b>NB:</b> একই letter একাধিকবার ব্যবহার করতে পারো। আগে নিজে করো, পরে reveal।</div>
       <ol class="clean" style="font-size:14px">
@@ -357,13 +448,51 @@ ul.clean li{margin:5px 0;font-size:14px}
         <p class="bn"><span class="trap">🧠</span> C ও F দুবার করে — "use any letter more than once"। একটা para পেয়ে থেমো না।</p>
       </div></details>
 
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা statement (Q1–8)</summary><div class="body">
+        <p class="intro bn">Matching Information-এ প্রতিটা statement আসলে একটা <b>ছোট লেবেল</b> (compromise / restriction / comparison / respect…)। হুবহু শব্দ নয়, <b>ধারণা</b> খোঁজো। উত্তর ক্রমে আসে না; একই para একাধিকবার (এখানে C ও F দুবার)।</p>
+        <div class="dq"><div class="dqh">Q1 → <span class="ans">E</span> · a compromise that allowed work to continue</div>
+          <span class="ev">📍 E: "given permission to continue their work — <u>but not in the 14 spots</u>… permitted to drill <u>only into existing cracks and recently restored spots</u>."</span>
+          <p class="bn"><span class="lbl">কেন E:</span> মূল ১৪ জায়গায় নয়, শুধু ফাটল/restored জায়গায় = একটা <b>আপস</b> (compromise) যাতে কাজ চলল।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 → <span class="ans">F</span> · a connection that lends weight to a theory</div>
+          <span class="ev">📍 F: "the black pigment… is <u>similar to those found in</u>… <u>La Gioconda (Mona Lisa)</u>."</span>
+          <p class="bn"><span class="lbl">কেন F:</span> da Vinci-র বিখ্যাত ছবির সাথে রঙের <b>মিল/সংযোগ</b> = এটা da Vinci-র কাজ, এই তত্ত্বকে জোর দেয়।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 → <span class="ans">B</span> · a report that suggests great professional respect</div>
+          <span class="ev">📍 B: "at least one source describes Vasari as a <u>Leonardo fan who couldn't bring himself to destroy</u> the work."</span>
+          <p class="bn"><span class="lbl">কেন B:</span> "one source describes" = a report; ধ্বংস করতে না পারা = গভীর পেশাগত শ্রদ্ধা।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 → <span class="ans">F</span> · a restriction that prevented a conclusion from being reached</div>
+          <span class="ev">📍 F: "further samples couldn't be collected because he was <u>only permitted to work… within a very narrow time period</u>… '<u>I cannot say anything definite</u>.'"</span>
+          <p class="bn"><span class="lbl">কেন F:</span> সময়ের <b>সীমাবদ্ধতা</b> → নিশ্চিত সিদ্ধান্ত নেওয়া গেল না। <span class="no">খেয়াল করো:</span> Para F দুটো প্রশ্নের উত্তর (Q2 মিল = theory; Q4 সীমাবদ্ধতা = no conclusion)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 → <span class="ans">C</span> · evidence of instructions not being followed</div>
+          <span class="ev">📍 C: "Seracini took it as a clue that, <u>rather than doing what had been asked</u>, Vasari had built a false wall."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> যা করতে বলা হয়েছিল তা না করে উল্টো করা = নির্দেশ <b>না মানার প্রমাণ</b>।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 → <span class="ans">C</span> · a long-term commitment to an investigation</div>
+          <span class="ev">📍 C: "Maurizio Seracini… has <u>spent around 40 years on a quest</u>."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> ৪০ বছর = দীর্ঘমেয়াদি নিষ্ঠা/লেগে থাকা। Para C-ও দুবার (Q5 নির্দেশ-অমান্য + Q6 ৪০ বছর)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 → <span class="ans">A</span> · an experiment that failed to produce satisfactory results</div>
+          <span class="ev">📍 A: "used the opportunity to try out a <u>new oil painting technique, but it was not very successful</u>… He never completed the mural."</span>
+          <p class="bn"><span class="lbl">কেন A:</span> নতুন কৌশল (experiment) → সফল হয়নি = "an experiment that failed"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q8 → <span class="ans">D</span> · an independent opinion on a contentious issue</div>
+          <span class="ev">📍 D: ৩০০ scholar drilling থামাতে petition দিল; এর মধ্যে "Martin Kemp… <u>who wasn't involved in the work</u>" মত দিলেন "damage can be repaired invisibly"।</span>
+          <p class="bn"><span class="lbl">কেন D:</span> "wasn't involved" = নিরপেক্ষ/independent; drilling-বিতর্ক = contentious issue।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> আগে statement-এর <b>লেবেল</b> ধরো (compromise/restriction/respect), তারপর সেই ধরনের বাক্য passage-এ খোঁজো — হুবহু শব্দ নয়। একটা para একাধিকবার আসতে পারে (C ও F দুবার), তাই পেয়ে গেলেও থেমো না।</div>
+      </div></details>
+
       <h3>Extra · "Are germs bad?" (A–D)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage · "Are germs bad?" (সারসংক্ষেপ)</div>
-        <p><b>A.</b> H. pylori is tiny — three microns; <em>to give a sense of scale, a grain of sand is about three hundred microns long</em>. But <em>it would be a mistake to assume</em> from its diminutive proportions that the bacteria is a <em>benign presence</em>.</p>
-        <p><b>B.</b> Antibiotic medications could free the body of the bacterium and thus <em>cure various illnesses including gastritis and stomach ulcers</em>.</p>
-        <p><b>C.</b> Professor Blaser's laboratory developed the <em>original blood analysis techniques to identify</em> the bacterium. Blaser engages with <em>different intellectual activities</em> (even a literary-criticism magazine) — perhaps this <em>diversity of perspective</em> first made him wonder about H. pylori.</p>
-        <p><b>D.</b> <em>In 1998</em>, his findings appeared in the <em>British Medical Journal</em>; the paper concluded H. pylori <em>might actually help promote human health</em>, such as by <em>regulating the level of acidity</em> in the stomach.</p>
+        <div class="plabel">📖 Reading Passage · "Are germs bad?"</div>
+        <p style="font-style:italic;color:var(--muted);font-size:13px">Scientists know that bacteria make humans sick, but research suggests some bacteria may also keep people alive.</p>
+        <p><b>A.</b> The bacterium Helicobacter pylori (H. pylori) is able to live — indeed, thrive — inside the human stomach, which makes it relatively rare because the stomach is so acidic as to be an extremely hostile environment for most bacteria. H. pylori is shaped like a corkscrew and is three microns long — to give a sense of scale, a grain of sand is about three hundred microns long. Research has shown that over 50% of the world's population is infected by H. pylori, making it the most common infection of its kind among human beings. However, it would be a mistake to assume from its diminutive proportions, or the fact that it occurs so frequently, that the bacteria is a benign presence in the human body.</p>
+        <p><b>B.</b> In the 1980s, doctors realised that antibiotic medications could free the body of the bacterium and thus cure various illnesses including gastritis and stomach ulcers. At the time, there was complete consensus among scientists that H. pylori did nothing but harm and all steps should be taken to eradicate it. One of those at the forefront of the research was Martin Blaser, Professor of Microbiology at New York University School of Medicine. Professor Blaser still remembers how certain the academic community was in those days about H. pylori. 'It was bad for us, so the idea was to get it out of our bodies, as fast as we can. I don't know of anyone who said that we'd be better to think about the consequences.'</p>
+        <p><b>C.</b> Professor Blaser's laboratory was ahead of the field and developed the original blood analysis techniques to identify the bacterium, and most of them are commonly in use today. But Professor Blaser has a mind that engages with a number of different intellectual activities; for example, in addition to his medical work, he helped to set up an important magazine of literary criticism in the United States. And perhaps it was this diversity of perspective that first caused him to wonder about H. pylori. In particular, he was curious to know how a bacterium that was as old as humans could survive in the human body if its only role was negative. As a result, Professor Blaser began to examine fresh aspects of the bacterium, such as its molecular make-up and behaviour.</p>
+        <p><b>D.</b> In 1998, Professor Blaser's findings appeared in the British Medical Journal. On the basis of extensive research into the subject, the paper concluded that, despite the prevailing consensus to the contrary, H. pylori might actually help promote human health, such as by regulating the level of acidity in the stomach. He pointed to the fact that, while the incidence of H. pylori is decreasing thanks to the widespread use of antibiotics, some diseases are actually becoming more common. Professor Blaser hypothesised that the bacterium occurs quite naturally in the human stomach and that the changes to the stomach's composition caused by its removal over recent decades account for today's increasing rates of diabetes, obesity and asthma. This is certainly an area of medical research worth watching over the years ahead.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের তথ্যগুলো কোন paragraph-এ (<b>A–D</b>) আছে? <b>NB:</b> একই letter একাধিকবার ব্যবহার করতে পারো।</div>
       <ol class="clean" style="font-size:14px">
@@ -390,6 +519,39 @@ ul.clean li{margin:5px 0;font-size:14px}
         </table></div>
         <p class="bn"><span class="trap">🧠</span> A, C, D প্রতিটা দুবার।</p>
       </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা statement (Q1–7)</summary><div class="body">
+        <p class="intro bn">৪ paragraph, ৭ statement → A, C, D প্রতিটা দুবার, B একবার। প্রতিটা statement-এর "তথ্য-ধরন" ধরে পুরো passage scan করো।</p>
+        <div class="dq"><div class="dqh">Q1 → <span class="ans">C</span> · first test to determine the presence of H. pylori</div>
+          <span class="ev">📍 C: "Professor Blaser's laboratory… developed the <u>original blood analysis techniques to identify the bacterium</u>."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> "original… to identify" = প্রথম শনাক্তকরণ পরীক্ষা।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 → <span class="ans">D</span> · details of a pioneering academic publication</div>
+          <span class="ev">📍 D: "In <u>1998</u>, Professor Blaser's findings appeared in the <u>British Medical Journal</u>… the paper concluded…"</span>
+          <p class="bn"><span class="lbl">কেন D:</span> একটা যুগান্তকারী গবেষণাপত্র প্রকাশের বিবরণ।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 → <span class="ans">C</span> · one man's range of interests led to a new approach</div>
+          <span class="ev">📍 C: "Blaser has a mind that engages with… <u>different intellectual activities</u>… a magazine of literary criticism… perhaps it was this <u>diversity of perspective</u> that first caused him to wonder."</span>
+          <p class="bn"><span class="lbl">কেন C:</span> বিচিত্র আগ্রহ → নতুন দৃষ্টিভঙ্গি/approach। Para C দুবার (Q1 প্রথম পরীক্ষা + Q3 বিচিত্র আগ্রহ)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 → <span class="ans">A</span> · a warning about underestimating the importance of H. pylori</div>
+          <span class="ev">📍 A: "<u>it would be a mistake to assume</u> from its diminutive proportions… that the bacteria is a <u>benign presence</u>."</span>
+          <p class="bn"><span class="lbl">কেন A:</span> ছোট/সাধারণ ভেবে গুরুত্ব কম দিও না = একটা সতর্কবার্তা (warning)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 → <span class="ans">D</span> · a medical benefit attributed to its presence</div>
+          <span class="ev">📍 D: "H. pylori <u>might actually help promote human health</u>, such as by <u>regulating the level of acidity</u> in the stomach."</span>
+          <p class="bn"><span class="lbl">কেন D:</span> উপস্থিতির একটা উপকার। Para D দুবার (Q2 publication + Q5 benefit)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 → <span class="ans">A</span> · a comparison with a natural substance familiar to most people</div>
+          <span class="ev">📍 A: "H. pylori… is three microns long — to give a sense of scale, a <u>grain of sand</u> is about three hundred microns long."</span>
+          <p class="bn"><span class="lbl">কেন A:</span> বালুকণা (চেনা প্রাকৃতিক জিনিস) দিয়ে আকারের তুলনা। Para A দুবার (Q4 warning + Q6 comparison)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 → <span class="ans">B</span> · medical problems caused by H. pylori being present</div>
+          <span class="ev">📍 B: "antibiotic medications could free the body of the bacterium and thus <u>cure various illnesses including gastritis and stomach ulcers</u>."</span>
+          <p class="bn"><span class="lbl">কেন B:</span> এই রোগগুলো H. pylori-র কারণে = উপস্থিতিজনিত সমস্যা।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> "use any letter more than once" থাকলে একই para বারবার আসবে (A/C/D তিনটিই দুবার)। প্রতিটা statement-কে ছোট লেবেলে অনুবাদ করো (warning, comparison, benefit, publication), তারপর সেই ধারণা খোঁজো।</div>
+      </div></details>
     </section>
 
     <!-- TFNG -->
@@ -399,8 +561,11 @@ ul.clean li{margin:5px 0;font-size:14px}
 
       <h3>"The Frog Population" (T / F / NI)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage (key lines)</div>
-        <p>"All over the world, and even in <em>remote areas</em>, frogs are losing the battle… biologists are <em>at a loss to explain</em>." "those slimy… <em>sometimes poisonous</em>." "development of once-natural <em>marshland</em>." "frogs keep <em>pestilent insects at manageable levels</em>." "Discovered in <em>1981</em>, <em>less than 10 years later</em> they vanished." "depletion of the ozone layer, a <em>well-documented phenomenon</em>." "<em>Another theory</em> is that worldwide temperature increases are upsetting breeding cycles."</p>
+        <div class="plabel">📖 Reading Passage · "The Frog Population"</div>
+        <p>When was the last time you saw a frog? Chances are, if you live in a city, you have not seen one for some time. Even in wet areas once teeming with frogs and toads, it is becoming less and less easy to find those slimy, hopping and sometimes poisonous members of the animal kingdom. All over the world, and even in remote areas of Australia, frogs are losing the ecological battle for survival, and biologists are at a loss to explain their demise. Are amphibians simply over-sensitive to changes in the ecosystem? Could it be that their decline in numbers is signalling some coming environmental disaster for us all?</p>
+        <p>This frightening scenario is in part the consequence of a dramatic increase over the last quarter century in the development of once-natural areas of wet marshland; home not only to frogs but to all manner of wildlife. However, as yet, there are no obvious reasons why certain frog species are disappearing from rainforests in Australia that have rarely been touched by human hand. The mystery is unsettling, to say the least, for it is known that amphibian species are extremely sensitive to environmental variations in temperature and moisture levels. The danger is that planet Earth might not only lose a vital link in the ecological food chain (frogs keep populations of otherwise pestilent insects at manageable levels), but might be increasing our output of air pollutants to levels that may have already become irreversible. Frogs could be inadvertently warning us of a catastrophe.</p>
+        <p>An example of a species of frog that, as far as is known, has become extinct is the platypus frog. Like the well-known Australian mammal of the same name, it exhibited some very strange behaviour; instead of giving birth to tadpoles in the water, it raised its young within the stomach. The baby frogs were actually born out from their mother's mouth. Discovered in 1981, less than 10 years later they had completely vanished from the crystal-clear waters of Booloumba Creek near Queensland's Sunshine Coast. Unfortunately, this freak of nature is not the only frog species to have been lost in Australia. Since the 1970s, no less than eight others have suffered the same fate.</p>
+        <p>One theory that seems to fit the facts concerns the depletion of the ozone layer, a well-documented phenomenon which has led to a sharp increase in ultraviolet radiation levels. The ozone layer is meant to shield the Earth from UV rays, but increased radiation may be having a greater effect upon frog populations than previously believed. Another theory is that worldwide temperature increases are upsetting the breeding cycles of frogs.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT INFORMATION (NI)</b>? আগে নিজে লেখো, পরে reveal খোলো।</div>
       <ol class="clean" style="font-size:14px">
@@ -423,10 +588,60 @@ ul.clean li{margin:5px 0;font-size:14px}
         <p class="bn"><b>1 F:</b> "only city" ↔ "all over the world/remote"। <b>2 F:</b> "usually" ↔ "sometimes"। <b>5 NI:</b> থামানোর চেষ্টার কথা নেই। <b>7 T:</b> 1981 + &lt;10 = ১৯৯১-এর আগে। <b>8 NI:</b> "in the water" আছে, কিন্তু "<span class="trap">nest</span>"/"usually" নেই। <b>10 F:</b> "<span class="trap">theory</span>" কে "fact" বলা = False।</p>
       </div></details>
 
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা statement (Q1–10)</summary><div class="body">
+        <p class="intro bn">প্রতিবার জিজ্ঞেস করো — passage কি statement <b>নিশ্চিত করছে</b> (T) / <b>উল্টো</b> বলছে (F) / <b>চুপ</b> (NI)? quantifier (only/usually) ও fact↔theory-তে বেশি ভুল হয়।</p>
+        <div class="dq"><div class="dqh">Q1 · "Frogs are only disappearing from city areas." → <span class="ans">F</span></div>
+          <span class="ev">📍 "<u>All over the world, and even in remote areas</u> of Australia, frogs are losing the ecological battle."</span>
+          <p class="bn"><span class="lbl">কেন F:</span> statement "only city" — passage সরাসরি উল্টো (সারা বিশ্বে, প্রত্যন্ত এলাকাতেও)। passage বিষয়টা নিয়ে কথা বলছে ও খণ্ডন করছে → F (NI নয়)।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 · "Frogs and toads are usually poisonous." → <span class="ans">F</span></div>
+          <span class="ev">📍 "those slimy, hopping and <u>sometimes poisonous</u> members."</span>
+          <p class="bn"><span class="lbl">কেন F:</span> passage বলছে "<b>sometimes</b>", statement বলছে "<b>usually</b>" — পরিমাণ-ফাঁদ (quantifier)। কম ↔ বেশি = contradiction → F।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 · "Biologists are unable to explain why frogs are dying." → <span class="ans">T</span></div>
+          <span class="ev">📍 "biologists are <u>at a loss to explain their demise</u>."</span>
+          <p class="bn"><span class="lbl">কেন T:</span> "at a loss to explain" = "unable to explain" — সরাসরি মিল।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 · "Their natural habitat is becoming more and more developed." → <span class="ans">T</span></div>
+          <span class="ev">📍 "a dramatic increase… in the <u>development of once-natural areas of wet marshland</u>; home… to frogs."</span>
+          <p class="bn"><span class="lbl">কেন T:</span> frog-এর বাসস্থান (marshland) ক্রমশ developed হচ্ছে → মিল।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 · "Attempts are being made to halt the development of marshland." → <span class="ans">NI</span></div>
+          <p class="bn"><span class="no">কেন NI:</span> passage marshland development <b>বাড়ছে</b> বলছে, কিন্তু সেটা <b>থামানোর চেষ্টা</b> হচ্ছে কিনা — একটাও শব্দ নেই। তথ্য অনুপস্থিত → NI। (অনেকে F দেয় — ভুল; passage থামানোর কথা অস্বীকারও করেনি।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 · "Frogs are important because they control pests." → <span class="ans">T</span></div>
+          <span class="ev">📍 "frogs keep populations of otherwise <u>pestilent insects at manageable levels</u>."</span>
+          <p class="bn"><span class="lbl">কেন T:</span> pestilent insects নিয়ন্ত্রণ = "control pests"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 · "The platypus frog became extinct by 1991." → <span class="ans">T</span></div>
+          <span class="ev">📍 "<u>Discovered in 1981</u>, <u>less than 10 years later</u> they had completely vanished."</span>
+          <p class="bn"><span class="lbl">কেন T:</span> ১৯৮১ + ১০ বছরের কম = ১৯৯১-এর আগেই বিলুপ্ত → "extinct <b>by</b> 1991" সত্য। (সংখ্যা-যুক্তি: by 1991 = ১৯৯১ বা তার আগে।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q8 · "Frogs usually give birth in an underwater nest." → <span class="ans">NI</span></div>
+          <span class="ev">📍 "instead of giving birth to tadpoles <u>in the water</u>, it raised its young within the stomach." (platypus frog-এর ব্যতিক্রমী আচরণ)</span>
+          <p class="bn"><span class="no">কেন NI:</span> "in the water" আছে, কিন্তু statement-এ বাড়তি শব্দ "<b>nest</b>" ও "<b>usually</b>" যোগ করা — যার সমর্থন passage-এ নেই। "nest" শব্দটাই কোথাও নেই → NI। (ফাঁদ: "in the water" দেখে T দিও না।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q9 · "There is convincing evidence that the ozone layer is being depleted." → <span class="ans">T</span></div>
+          <span class="ev">📍 "the depletion of the ozone layer, a <u>well-documented phenomenon</u>."</span>
+          <p class="bn"><span class="lbl">কেন T:</span> "well-documented" = প্রচুর প্রমাণিত = "convincing evidence"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q10 · "It is a fact that breeding cycles are upset by temperature increases." → <span class="ans">F</span></div>
+          <span class="ev">📍 "<u>Another theory is that</u> worldwide temperature increases are upsetting the breeding cycles of frogs."</span>
+          <p class="bn"><span class="lbl">কেন F:</span> passage এটাকে "<b>theory</b>" (অনুমান) বলছে; statement বলছে "It is a <b>fact</b>"। theory কে fact বললে দাবিটা passage-এর সুরের বিপরীত → F। ক্লাসিক "theory ↔ fact" ফাঁদ।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> এই passage-এ তিন রকম খেলা: quantifier (Q2 sometimes↔usually), <b>বাড়তি শব্দ যোগ</b> → NI (Q5 halt, Q8 nest), আর fact↔theory (Q10)। NI মানে passage ঐ নির্দিষ্ট দাবিতে <b>চুপ</b> — F মানে <b>উল্টো</b> বলছে।</div>
+      </div></details>
+
       <h3>"Staff Value a Career Path above Salary" (TRUE/FALSE/NOT GIVEN)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage (key lines)</div>
-        <p>"retail sector is <em>twice as high as the national average</em>… staff turnover at <em>26 per cent</em>… three out of four <em>retailers</em>… measures to retain people." "put a higher salary <em>second to the chance of career progression</em>." "<em>70 per cent</em>… listed <em>training</em> as their primary solution." "turnover was <em>33 per cent last year</em>… confident morale is rising." "Managers attend… together with shop-floor staff <em>who are earmarked for promotion</em>."</p>
+        <div class="plabel">📖 Reading Passage · "Staff Value a Career Path above Salary"</div>
+        <p style="font-style:italic;color:var(--muted);font-size:13px">Companies are learning that they will hold on to staff only if they give them the chance to develop, as Ruth Prickett reports.</p>
+        <p>Staff retention is once again a key concern for many UK companies, while turnover in the retail sector is twice as high as the national average. But firms wishing to buy their employees' loyalty would be well advised to offer career opportunities rather than money, according to a survey by Reed Personnel Services.</p>
+        <p>With staff turnover at 26 per cent, it is not surprising that three out of four retailers have introduced, or are considering introducing, measures to retain people. Less predictably, however, respondents put a higher salary second to the chance of career progression in a list of the top five reasons why people change jobs.</p>
+        <p>Employers' responses to the problem vary widely, from staff recognition programmes to multi-skilling and team-building exercises, but 70 per cent of those surveyed listed training as their primary solution. 'This research emphasises how effective it can be to concentrate on increasing staff morale rather than pay,' said James Reed, Chief Executive of Reed.</p>
+        <p>Tesco, one of the retailers featured in the survey, began a staff retention programme some years ago. Although staff turnover was 33 per cent last year, the company is confident that morale is rising and long-term loyalty has increased.</p>
+        <p>Employees in every store have recently gone through a management programme focusing on improving core skills and process development. Managers scrutinised jobs and attempted to eliminate unnecessary or bureaucratic processes so that staff were able to concentrate on the main business.</p>
+        <p>The company has been running a programme called Project Future since early 1997 and, according to Cartwright, it is now an ongoing process. Managers attend short core-skill workshops in their stores, together with shop-floor staff who are earmarked for promotion. This training fits in with managers' individual career development plans, and the company is also keen to encourage employees to apply for jobs in different functions. 'I've been here for 12 years, but never in the same job for more than two,' Cartwright said. It is also worth noting that Tesco's expansion into Central Europe has opened up new possibilities for long-term jobs abroad.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT GIVEN</b>? মনে রাখো — passage উল্টো বললে F, চুপ থাকলে NG।</div>
       <ol class="clean" style="font-size:14px">
@@ -445,10 +660,44 @@ ul.clean li{margin:5px 0;font-size:14px}
         <p class="bn"><b>2 FALSE:</b> 26% = retail; "UK in general" নয় (national average অর্ধেক)। <b>5 NG:</b> morale বাড়া ≠ turnover কমা। <b>6 NG:</b> কে design করেছে বলা নেই। <b>7 FALSE:</b> "<span class="trap">All</span>" ↔ শুধু "earmarked for promotion"।</p>
       </div></details>
 
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা statement (Q1–7)</summary><div class="body">
+        <p class="intro bn">এখানে দুটো ভয়ংকর NOT GIVEN (Q5, Q6) — passage কাছাকাছি বলেছে কিন্তু <b>ঠিক ঐ দাবিটা</b> বলেনি। সংখ্যা (26% কার?) আর "All" শব্দে সাবধান।</p>
+        <div class="dq"><div class="dqh">Q1 · "Employees say a career path is more important than money." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "respondents put a higher salary <u>second to the chance of career progression</u>."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> বেতনকে দ্বিতীয়, ক্যারিয়ার-উন্নতিকে প্রথম রাখা = "career path more important than money"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 · "Staff turnover in the UK in general is 26 per cent." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 "turnover in the <u>retail sector</u> is <u>twice as high as the national average</u>… With staff turnover at <u>26 per cent</u>… three out of four retailers…"</span>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> ২৬% যুক্ত <b>retail</b>-এর সাথে; national average তার অর্ধেক (~১৩%)। statement "UK <b>in general</b> is 26%" → passage-এর তথ্যের বিপরীত। (সূত্র: "twice as high as national average" ধরলেই বোঝা যায় ২৬% = retail।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 · "Retailers are attempting to keep their staff." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "three out of four retailers have introduced… <u>measures to retain people</u>."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> retain = ধরে রাখার চেষ্টা।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 · "Most employers prefer training as a way to keep staff." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "<u>70 per cent</u> of those surveyed listed <u>training</u> as their primary solution."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> 70% = "most"; training = staff ধরে রাখার প্রধান উপায়।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 · "Tesco has reduced its staff turnover." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 "Although staff turnover was 33 per cent last year, the company is <u>confident that morale is rising and long-term loyalty has increased</u>."</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> morale/loyalty বাড়ার <b>আত্মবিশ্বাস</b> আছে, কিন্তু turnover সংখ্যাটা <b>কমেছে</b> এমন কোনো তথ্য নেই (গত বছরও ৩৩%)। morale বাড়া ≠ turnover কমা → NG।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 · "Managers in each Tesco store designed the training programme." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 "Managers attend short core-skill workshops…" (manager-রা অংশ নেয়)</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> manager-রা programme-এ <b>অংশ নেয়</b>; কিন্তু programme-টা <b>কে design করেছে</b> তা বলা নেই। "designed" দাবির কোনো সমর্থন নেই → NG।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 · "All Tesco employees take part in Project Future." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 "Managers attend… together with shop-floor staff <u>who are earmarked for promotion</u>."</span>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> শুধু manager + promotion-এর জন্য বাছাই করা কর্মী — <b>সবাই নয়</b>। statement "<b>All</b> employees" → passage-এর বিপরীত। ("All/every" extreme-word ফাঁদ।)</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> সংখ্যা দেখলে জিজ্ঞেস করো "এটা <b>কার</b>?" (26% = retail, general নয় → Q2 FALSE)। "All/every" দেখলে passage একটা উপসেট বলছে কিনা চেক করো (Q7)। আর "ভালো খবর" (morale↑) থেকে অন্য সিদ্ধান্ত (turnover↓) টেনো না (Q5 NG)।</div>
+      </div></details>
+
       <h3>Extra · "Shopping for what we need or what we want?" (TRUE/FALSE/NOT GIVEN)</h3>
       <div class="passage">
-        <div class="plabel">📖 Passage (key lines)</div>
-        <p>"<em>Over the past hundred years</em>, shopping has grown to become one of the leading pastimes." "an increasing proportion of populations in <em>rich and developing nations alike</em>… <em>not necessarily restricted to the most affluent</em>." "for <em>many families</em>, it is no longer eating together but shopping that bonds them." "it is an issue that <em>merits serious study</em>." "Advertising works by focusing on the promotion of our <em>ego</em>… <em>rather than</em> on specific <em>objective facts</em>." "The 'feel-good factor'… can be explained in these terms <em>rather than price or value</em>." "Companies… don't sell products, they sell lifestyles, <em>regardless of whether they are selling a cheap daily necessity or a special luxury item</em>." "we buy into an image of ourselves that is <em>defined by what we have</em>, not who we are."</p>
+        <div class="plabel">📖 Reading Passage · "Shopping for what we need or what we want?"</div>
+        <p>Over the past hundred years, shopping has grown to become one of the leading pastimes of an increasing proportion of populations in rich and developing nations alike. Indeed, for many — and this is not necessarily restricted to the most affluent — shopping is cited as the number one hobby. Changes in modern lifestyles mean that, for many families, it is no longer eating together but shopping that bonds them as a family, at least at the weekend. The era that invented the term 'shopaholic' witnessed shopping — originally the necessary process of exchanging goods or services in order to eat and dress — become acknowledged as a serious addiction, if not by all branches of medicine, at least by the general public, and, as such, it is an issue that merits serious study.</p>
+        <p>One reason for this lies in how the products we shop for are marketed. It is not simply a case of presenting the public with a product in an eye-catching manner. Advertising works by focusing on the promotion of our ego — the sense of ourselves that we identify with — rather than on specific objective facts of whatever it is we buy. The 'feel-good factor' often associated with purchasing items can be explained in these terms rather than price or value, although of course everyone likes to feel that he or she has got a bargain. Companies know that they don't sell products, they sell lifestyles, regardless of whether they are selling a cheap daily necessity or a special luxury item: everything from our breakfast cereals to the cars we drive is marketed in this way. We buy a toothbrush or a pair of jeans and we actually buy into an image of ourselves that is defined by what we have, not who we are.</p>
       </div>
       <div class="callout tip bn"><span class="ct">📋 নির্দেশ</span> নিচের প্রতিটা statement passage অনুযায়ী <b>TRUE / FALSE / NOT GIVEN</b>?</div>
       <ol class="clean" style="font-size:14px">
@@ -466,6 +715,43 @@ ul.clean li{margin:5px 0;font-size:14px}
           <span class="ak">1 <b>FALSE</b></span><span class="ak">2 <b>TRUE</b></span><span class="ak">3 <b>NOT GIVEN</b></span><span class="ak">4 <b>NOT GIVEN</b></span><span class="ak">5 <b>TRUE</b></span><span class="ak">6 <b>FALSE</b></span><span class="ak">7 <b>FALSE</b></span><span class="ak">8 <b>TRUE</b></span>
         </div>
         <p class="bn"><b>1 FALSE:</b> "only recently" ↔ "over the past hundred years"। <b>3 NG:</b> "<span class="trap">most</span>" ↔ passage "many"। <b>4 NG:</b> "merits study" ≠ "research being conducted"। <b>6 FALSE:</b> feel-good = ego, "<span class="trap">rather than price or value</span>"। <b>7 FALSE:</b> সস্তা/দামি দুটোই একই lifestyle-কৌশলে বিক্রি।</p>
+      </div></details>
+
+      <details class="deep"><summary>📖 পুরো passage ধরে মেন্টর আলোচনা — প্রতিটা statement (Q1–8)</summary><div class="body">
+        <p class="intro bn">এখানে quantifier (most↔many) আর "উচিত vs হচ্ছে" (merits study ↔ being conducted) — দুটো সূক্ষ্ম NOT GIVEN ফাঁদ। আর ego vs value-এর contradiction।</p>
+        <div class="dq"><div class="dqh">Q1 · "Shopping has only recently become a social pleasure." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 "<u>Over the past hundred years</u>, shopping has grown to become one of the leading pastimes."</span>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> শতবর্ষ ধরে ধীরে ধীরে বেড়েছে — "<b>only recently</b>" দাবিটা সময়সীমাকে ভুলভাবে ছোট করছে → passage-এর বিপরীত।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q2 · "Interest in shopping crosses social and national borders." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "populations in <u>rich and developing nations alike</u>… this is <u>not necessarily restricted to the most affluent</u>."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> জাতীয় সীমা (rich+developing) ও সামাজিক সীমা (not just affluent) — দুটোই পেরোয়।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q3 · "In most families, mealtimes have been replaced by shopping." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 "for <u>many families</u>, it is no longer eating together but shopping that bonds them."</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> passage = "<b>many</b>", statement = "<b>most</b>"। many ≠ most; passage "most" নিশ্চিতও করেনি, অস্বীকারও করেনি → NG। (many→most "upgrade" করলে সাধারণত NG।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q4 · "Medical research is being conducted into excessive shopping." → <span class="ans">NOT GIVEN</span></div>
+          <span class="ev">📍 "it is an issue that <u>merits serious study</u>."</span>
+          <p class="bn"><span class="no">কেন NOT GIVEN:</span> গবেষণা <b>হওয়া উচিত/দরকার</b> বলছে; কিন্তু গবেষণা <b>চলছে</b> (is being conducted) এমন কিছু নেই → NG। (ভবিষ্যৎ-প্রয়োজনকে বর্তমান-বাস্তবতা ভেবো না।)</p>
+        </div>
+        <div class="dq"><div class="dqh">Q5 · "An advert's success relies on more than the product itself." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "Advertising works by focusing on the promotion of our <u>ego</u>… <u>rather than</u> on specific <u>objective facts</u> of whatever it is we buy."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> বিজ্ঞাপনের সাফল্য পণ্যের গুণের চেয়ে বেশি ego-র উপর = "more than the nature/properties of the product itself"।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q6 · "Buying gives satisfaction as long as it is value for money." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 "The 'feel-good factor'… can be explained in these terms <u>rather than price or value</u>."</span>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> satisfaction আসে ego থেকে, value-for-money থেকে <b>নয়</b>। statement বলছে "as long as… value for money" → passage-এর বিপরীত।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q7 · "Cheaper products are easier to sell without sophisticated techniques." → <span class="ans">FALSE</span></div>
+          <span class="ev">📍 "they sell lifestyles, <u>regardless of whether they are selling a cheap daily necessity or a special luxury item</u>."</span>
+          <p class="bn"><span class="lbl">কেন FALSE:</span> সস্তা/দামি — দুটোই একই lifestyle-কৌশলে বিক্রি হয়। statement বলছে সস্তা পণ্যে "sophisticated technique লাগে না" → passage-এর বিপরীত।</p>
+        </div>
+        <div class="dq"><div class="dqh">Q8 · "Our possessions make statements about our identity." → <span class="ans">TRUE</span></div>
+          <span class="ev">📍 "we actually buy into an image of ourselves that is <u>defined by what we have</u>, not who we are."</span>
+          <p class="bn"><span class="lbl">কেন TRUE:</span> যা আমাদের আছে (possessions) তা আমাদের পরিচয়/image সংজ্ঞায়িত করে।</p>
+        </div>
+        <div class="callout good bn" style="margin:14px 0 0"><span class="ct">🧭 বড় শিক্ষা</span> দুটো সোনালি NG-নিয়ম: <b>many→most</b> বাড়ালে NG (Q3), আর <b>"উচিত/merits" ≠ "হচ্ছে"</b> (Q4)। বাকিগুলো ego↔value-এর সরাসরি contradiction (FALSE) নাকি মিল (TRUE) — passage-এর হুবহু সুর ধরো।</div>
       </div></details>
     </section>
 
