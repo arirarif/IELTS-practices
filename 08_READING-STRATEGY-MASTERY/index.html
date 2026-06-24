@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Reading — Strategy Mastery Vault</title>
+<style>
+  :root{
+    --bg:#0d1117; --bg2:#111823; --card:#161e2b; --card2:#1c2636;
+    --ink:#e8eef6; --mut:#9fb0c3; --dim:#6b7d92;
+    --line:#243245; --line2:#2e4056;
+    --acc:#4ea1ff; --acc2:#7c5cff; --grn:#36d399; --amb:#fbbf24; --red:#fb7185; --tea:#2dd4bf;
+    --bn:#ffd9a8;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --r:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:linear-gradient(180deg,#0a0e14,#0d1117 240px); color:var(--ink);
+    font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,"Noto Sans Bengali",sans-serif;
+  }
+  a{color:var(--acc);text-decoration:none}
+  /* layout */
+  .wrap{display:grid;grid-template-columns:300px 1fr;max-width:1500px;margin:0 auto;}
+  /* sidebar */
+  aside{
+    position:sticky;top:0;height:100vh;overflow-y:auto;padding:22px 16px;
+    border-right:1px solid var(--line);background:rgba(10,14,20,.65);backdrop-filter:blur(6px);
+  }
+  aside .brand{font-weight:800;font-size:18px;letter-spacing:.3px;margin:4px 8px 4px;color:#fff;line-height:1.3}
+  aside .brand small{display:block;font-weight:600;color:var(--acc);font-size:11.5px;letter-spacing:1.5px;margin-top:4px}
+  .search{margin:14px 4px}
+  .search input{
+    width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line2);
+    background:var(--bg2);color:var(--ink);font-size:14px;outline:none;
+  }
+  .search input:focus{border-color:var(--acc)}
+  nav{margin-top:8px}
+  nav a{
+    display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--mut);
+    font-size:13.5px;font-weight:600;margin:1px 0;border:1px solid transparent;
+  }
+  nav a .n{font-size:11px;color:var(--dim);width:22px;text-align:center;font-weight:800}
+  nav a:hover{background:var(--card);color:var(--ink)}
+  nav a.active{background:linear-gradient(90deg,rgba(78,161,255,.18),transparent);color:#fff;border-color:var(--line2)}
+  nav a.active .n{color:var(--acc)}
+  /* main */
+  main{padding:0 0 120px}
+  .hero{
+    padding:54px 48px 40px;border-bottom:1px solid var(--line);
+    background:radial-gradient(900px 300px at 12% -10%,rgba(124,92,255,.22),transparent),
+               radial-gradient(700px 280px at 85% -20%,rgba(78,161,255,.18),transparent);
+  }
+  .hero h1{margin:0 0 6px;font-size:34px;line-height:1.15;color:#fff;letter-spacing:-.5px}
+  .hero .tag{color:var(--acc);font-weight:700;letter-spacing:2px;font-size:12px}
+  .hero p{color:var(--mut);max-width:760px;margin:14px 0 0;font-size:15.5px}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .pill{font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line2);color:var(--mut)}
+  .sect{padding:40px 48px 8px;max-width:1040px}
+  .sect>h2{font-size:25px;color:#fff;margin:0 0 4px;letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+  .sect>h2 .badge{font-size:12px;font-weight:800;color:#0d1117;background:var(--acc);border-radius:8px;padding:3px 9px}
+  .sect>.lead{color:var(--mut);margin:6px 0 22px;font-size:15px}
+  .sect h3{font-size:17px;color:#dbe6f3;margin:26px 0 10px;border-left:3px solid var(--acc2);padding-left:10px}
+  /* cards & callouts */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:14px 0;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:1100px){.g2,.g3{grid-template-columns:1fr}}
+  .call{border-radius:13px;padding:14px 16px 14px 18px;margin:14px 0;border:1px solid var(--line2);position:relative}
+  .call .h{font-weight:800;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+  .key{background:linear-gradient(90deg,rgba(54,211,153,.12),transparent);border-color:rgba(54,211,153,.4)} .key .h{color:var(--grn)}
+  .tip{background:linear-gradient(90deg,rgba(78,161,255,.12),transparent);border-color:rgba(78,161,255,.4)} .tip .h{color:var(--acc)}
+  .warn{background:linear-gradient(90deg,rgba(251,113,133,.12),transparent);border-color:rgba(251,113,133,.4)} .warn .h{color:var(--red)}
+  .amber{background:linear-gradient(90deg,rgba(251,191,36,.1),transparent);border-color:rgba(251,191,36,.38)} .amber .h{color:var(--amb)}
+  .bn{background:linear-gradient(90deg,rgba(255,217,168,.09),transparent);border-color:rgba(255,217,168,.32);font-family:"Noto Sans Bengali","Segoe UI",sans-serif;line-height:1.85}
+  .bn .h{color:var(--bn)}
+  /* lists */
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  .clean{list-style:none;padding-left:0}
+  .clean li{padding-left:26px;position:relative}
+  .clean li::before{content:"▸";position:absolute;left:4px;color:var(--acc);font-weight:800}
+  .steps{counter-reset:s;list-style:none;padding-left:0}
+  .steps li{counter-increment:s;padding:8px 0 8px 44px;position:relative;border-bottom:1px dashed var(--line)}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:28px;height:28px;border-radius:8px;
+    background:linear-gradient(135deg,var(--acc),var(--acc2));color:#06101f;font-weight:800;display:grid;place-items:center;font-size:13px}
+  b,strong{color:#fff}
+  code{background:#0b1422;border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:13px;color:#9fe6c9}
+  .mut{color:var(--mut)} .dim{color:var(--dim)} .small{font-size:13.5px}
+  /* table */
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;overflow:hidden;border-radius:12px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--card2);color:#cfe0f0;font-size:12.5px;letter-spacing:.4px;text-transform:uppercase}
+  tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+  /* accordion (question types) */
+  .qt{border:1px solid var(--line);border-radius:13px;margin:10px 0;overflow:hidden;background:var(--card)}
+  .qt>summary{cursor:pointer;list-style:none;padding:15px 18px;display:flex;align-items:center;gap:13px;font-weight:700;color:#eaf1f9}
+  .qt>summary::-webkit-details-marker{display:none}
+  .qt>summary .num{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--bg2);border:1px solid var(--line2);
+    display:grid;place-items:center;font-size:13px;color:var(--acc);font-weight:800}
+  .qt>summary .arr{margin-left:auto;color:var(--dim);transition:.2s}
+  .qt[open]>summary{border-bottom:1px solid var(--line);background:var(--card2)}
+  .qt[open]>summary .arr{transform:rotate(90deg);color:var(--acc)}
+  .qt .body{padding:8px 20px 18px}
+  .rare{font-size:10.5px;font-weight:800;color:var(--amb);border:1px solid rgba(251,191,36,.4);border-radius:6px;padding:2px 7px;background:rgba(251,191,36,.08)}
+  .deep{font-size:10.5px;font-weight:800;color:var(--acc2);border:1px solid rgba(124,92,255,.4);border-radius:6px;padding:2px 7px;background:rgba(124,92,255,.08)}
+  .kp{color:var(--red);font-weight:700}
+  /* checklist */
+  .chk{list-style:none;padding-left:0}
+  .chk li{display:flex;gap:12px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin:7px 0;background:var(--bg2);cursor:pointer;transition:.15s}
+  .chk li:hover{border-color:var(--line2)}
+  .chk li .box{flex:0 0 auto;width:22px;height:22px;border-radius:6px;border:2px solid var(--line2);margin-top:1px;display:grid;place-items:center;font-size:14px;color:transparent}
+  .chk li.done{background:rgba(54,211,153,.08);border-color:rgba(54,211,153,.45)}
+  .chk li.done .box{background:var(--grn);border-color:var(--grn);color:#06101f}
+  .chk li.done span{color:var(--dim);text-decoration:line-through}
+  .phase{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--acc2);margin:22px 0 6px;text-transform:uppercase}
+  /* misc */
+  .hl{background:linear-gradient(transparent 55%,rgba(251,191,36,.35) 0)}
+  .one-liner{font-size:18px;line-height:1.6;color:#fff;font-weight:600;border-left:4px solid var(--grn);padding:6px 0 6px 18px;margin:6px 0}
+  .totop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--acc);color:#06101f;
+    display:grid;place-items:center;font-size:20px;font-weight:800;cursor:pointer;box-shadow:var(--shadow);opacity:0;transition:.25s;pointer-events:none;z-index:30;border:0}
+  .totop.show{opacity:1;pointer-events:auto}
+  .src{color:var(--dim);font-size:12.5px;border-top:1px solid var(--line);margin-top:18px;padding-top:12px}
+  .hide{display:none !important}
+  /* mobile */
+  .menubtn{display:none}
+  @media(max-width:920px){
+    .wrap{grid-template-columns:1fr}
+    aside{position:fixed;z-index:40;width:280px;left:-300px;transition:.25s;box-shadow:var(--shadow)}
+    aside.open{left:0}
+    .menubtn{display:grid;position:fixed;top:14px;left:14px;z-index:50;width:44px;height:44px;border-radius:11px;
+      background:var(--acc);color:#06101f;border:0;place-items:center;font-size:20px;font-weight:800;box-shadow:var(--shadow)}
+    .hero,.sect{padding-left:20px;padding-right:20px}
+    .hero{padding-top:70px}
+  }
+</style>
+</head>
+<body>
+<button class="menubtn" id="menubtn" aria-label="menu">☰</button>
+<div class="wrap">
+
+<!-- ============ SIDEBAR ============ -->
+<aside id="aside">
+  <div class="brand">IELTS Reading<small>STRATEGY MASTERY VAULT</small></div>
+  <div class="search"><input id="q" type="search" placeholder="🔎 Search strategies…" /></div>
+  <nav id="nav">
+    <a href="#top" class="active"><span class="n">00</span> Overview</a>
+    <a href="#s1"><span class="n">01</span> Band 9 Mindset</a>
+    <a href="#s2"><span class="n">02</span> The 4-Tire System</a>
+    <a href="#s3"><span class="n">03</span> The 5-Step Workflow</a>
+    <a href="#s4"><span class="n">04</span> Weakness Analysis</a>
+    <a href="#s5"><span class="n">05</span> Core Reading Skills</a>
+    <a href="#s6"><span class="n">06</span> All Question Types</a>
+    <a href="#s7"><span class="n">07</span> TFNG &amp; YNNG</a>
+    <a href="#s8"><span class="n">08</span> Matching Headings</a>
+    <a href="#s9"><span class="n">09</span> Time Management</a>
+    <a href="#s10"><span class="n">10</span> Practice Principles</a>
+    <a href="#s11"><span class="n">11</span> 2026 Changes Myths</a>
+    <a href="#s12"><span class="n">12</span> Demo Walkthrough</a>
+    <a href="#s13"><span class="n">13</span> Master Roadmap</a>
+  </nav>
+  <div style="margin:18px 8px 6px;color:var(--dim);font-size:11px;line-height:1.6">
+    Source: IELTS Advantage (Chris) reading masterclasses · ~9 videos · nothing trimmed.
+  </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main id="searchscope">
+
+  <header class="hero" id="top" data-s>
+    <div class="tag">THE COMPLETE READING PLAYBOOK</div>
+    <h1>Why solving endless passages isn't raising your score —<br>and the exact system that does.</h1>
+    <p>Every strategy, suggestion, roadmap, tip, and warning from the IELTS Advantage reading masterclasses, organised so you can actually <em>use</em> it. The big idea: practice alone doesn't work — <b>diagnosing and fixing your specific weaknesses</b> does.</p>
+    <div class="card" style="margin-top:24px">
+      <div class="call key" style="margin:0">
+        <div class="h">🎯 The whole course in one line</div>
+        <div class="one-liner">Get strategies that work → <span class="hl">master them until automatic</span> → do real tests under exam conditions → analyse <b>why</b> you got things wrong (find patterns) → turn your biggest weakness into a strength. Repeat. Don't book the test until you're consistently half a band above target, 3 times in a row.</div>
+      </div>
+      <div class="call bn">
+        <div class="h">🇧🇩 বাংলায়</div>
+        শুধু practice test করলে স্কোর বাড়বে না। আসল কাজ — প্রতিটা question type-এর আলাদা strategy শেখা, সেটা মুখস্থের মতো রপ্ত করা, real test দিয়ে নিজের <b>ভুলের প্যাটার্ন</b> বের করা, আর সেই দুর্বলতাকে শক্তিতে রূপান্তর করা। target-এর half band বেশি টানা ৩ বার না পেলে পরীক্ষা বুক করো না।
+      </div>
+    </div>
+    <div class="pill-row">
+      <span class="pill">🛞 4-Tire System</span>
+      <span class="pill">🔁 5-Step Workflow</span>
+      <span class="pill">📋 12 Question Types</span>
+      <span class="pill">🎯 Weakness Diagnostic</span>
+      <span class="pill">⏱️ Time Truth</span>
+      <span class="pill">✅ Test-Day Checklist</span>
+    </div>
+  </header>
+
+  <!-- 01 MINDSET -->
+  <section class="sect" id="s1" data-s>
+    <h2><span class="badge">01</span> The Big Picture — Band 9 Mindset</h2>
+    <p class="lead">What Band 9 students understand that band 5/6/7 students don't. Adopt the worldview first.</p>
+
+    <h3>Format facts you must internalise</h3>
+    <div class="grid g2">
+      <div class="card"><b>3 sections, ~10–12 question types.</b> The <i>combination</i> varies; the 3-section structure never does.</div>
+      <div class="card"><b>It gets progressively harder.</b> Section 1 easiest → Section 3 hardest. The hard end-questions separate band 7 / 8 / 9.</div>
+      <div class="card"><b>Academic vs GT = "same but different."</b> Different texts, but <b>identical question types &amp; strategies</b>. Practise both.</div>
+      <div class="card"><b>Same difficulty myth-buster.</b> GT needs <b>40/40</b> for Band 9; Academic allows <b>39/40</b>. GT is <i>not</i> "much easier."</div>
+      <div class="card"><b>Computer vs paper:</b> no score difference, but computer-based is <b>less stressful</b> (just click MCQs). Choose it if you can.</div>
+      <div class="card"><b>It's a vocabulary test too.</b> Questions use <b>synonyms</b> of the text. Many "reading" problems are really vocabulary problems.</div>
+    </div>
+
+    <h3>Core beliefs of a Band 9 student</h3>
+    <ul class="clean">
+      <li><b>A separate strategy for each question type</b> — each tests different sub-skills. Band 5/6/7 students use one approach for everything; Chris has <i>never</i> met a Band 9 who did that.</li>
+      <li><b>Master the strategy</b> = you could <b>teach it with no notes</b>, and apply it <b>automatically</b> on test day (like tying shoelaces).</li>
+      <li><b>It's rare to just be "bad at reading."</b> There's always a specific reason — find it.</li>
+      <li><b>You won't understand every word — and that's fine.</b> Your job is correct answers, not every word.</li>
+      <li><b>Don't panic at an unknown word.</b> Ask "Do I need it? No → move on." Mindset is the big band 7 → 9 difference.</li>
+      <li><b>Strategies are a guide, not magic</b> (the Sherpa): they guide the route, but weak reading/vocabulary still sinks you. Strategies <i>plus</i> real skill.</li>
+      <li><b>Tips &amp; tricks do NOT work.</b> No single "magic strategy for every question."</li>
+    </ul>
+
+    <div class="call warn"><div class="h">⚠️ Mindset rules</div>
+      Don't cry/complain about a weakness — feel uncomfortable but <b>keep working</b> and convert it. <b>"You're not bad at it — you're not good at it <i>yet</i>."</b> Success leaves clues: copy what Band 9 students all do. And you improve by <b>action</b>, not by watching one more YouTube video.</div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      প্রতিটা question type আলাদা — আলাদা strategy লাগবে, আর এমনভাবে রপ্ত করতে হবে যেন পরীক্ষায় চিন্তা না করেই প্রয়োগ হয়। সব শব্দ বোঝা লাগবে না; কাজ হলো সর্বোচ্চ সঠিক উত্তর। "Trick" বলে কিছু নেই — strategy + আসল reading skill + vocabulary একসাথে।</div>
+  </section>
+
+  <!-- 02 4-TIRE -->
+  <section class="sect" id="s2" data-s>
+    <h2><span class="badge">02</span> The 4-Tire System</h2>
+    <p class="lead">Chris's answer to "Why isn't my score increasing no matter how much I work?" — this is probably <b>you</b>.</p>
+
+    <div class="call amber"><div class="h">🚗 The car with 4 tires</div>
+      A $100,000 Tesla with <b>one busted tire is useless</b>. The 4 tires below are all required, <b>in order</b>. Miss one → no matter how many tests/courses you do, your score will <b>not</b> rise. Worse: <b>practising the wrong things makes you worse.</b></div>
+
+    <div class="grid g2">
+      <div class="card"><h3 style="margin-top:0">🛞 Tire 1 — A strategy per question type</h3>Different types test different sub-skills. Goal isn't to <i>see</i> a strategy once — it's to <b>master</b> it (teach-with-no-notes → automatic). An un-mastered strategy = a broken tire.</div>
+      <div class="card"><h3 style="margin-top:0">🛞 Tire 2 — Practice tests, used right</h3><b>Goal 1:</b> master strategies — take <b>as long as you want</b> (time doesn't matter). <b>Goal 2:</b> once comfortable, do tests under <b>exam conditions</b> to surface weaknesses.</div>
+      <div class="card"><h3 style="margin-top:0">🛞 Tire 3 — Weakness analysis</h3>Think deeply about each mistake → find the <b>pattern</b> (e.g. 8 of 10 wrong = spelling). Skip this = busted tire.</div>
+      <div class="card"><h3 style="margin-top:0">🛞 Tire 4 — Work on weaknesses</h3>Knowing isn't enough (students told the exact fix still did nothing → failed). 🎯 <b>Sniper, not shotgun</b> — fix the 1–2 things actually holding you back.</div>
+    </div>
+
+    <div class="call tip"><div class="h">⏳ The 5th part — TIME (the binding rule)</div>
+      "Just give me quick tips!" → <b>No. There are no quick tips.</b> <b>Pharmacist:</b> you can't demand the headache cure work in 5 minutes. <b>Two students (both start June 1):</b> the one who rushes everything into 30 days to hit a booked date <b>fails</b>; the one who just focuses on step 1→2→3→4 gets the score <b>fastest</b>. <b>Flat tire</b> takes 30 min to change properly — demand 5 and you go nowhere.</div>
+
+    <div class="card"><b>✅ Recap:</b> ① get strategies that work → master them; ② weakness analysis on practice tests; ③ work on those weaknesses; ④ respect time. Miss one → you fail. All four in order → great results.</div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      গাড়ির ৪টা চাকা — (১) প্রতিটা type-এর strategy রপ্ত, (২) practice test দুইভাবে (আগে strategy রপ্ত করতে, পরে exam condition-এ দুর্বলতা খুঁজতে), (৩) ভুলের প্যাটার্ন বিশ্লেষণ, (৪) সেই দুর্বলতা ঠিক করা (sniper)। একটা চাকা নষ্ট = গাড়ি চলবে না। আর সবকিছুর জন্য <b>সময়</b> দিতে হবে — শর্টকাট নেই।</div>
+  </section>
+
+  <!-- 03 WORKFLOW -->
+  <section class="sect" id="s3" data-s>
+    <h2><span class="badge">03</span> The Ultimate Band 9 Workflow</h2>
+    <p class="lead">The 4-Tire idea as a repeatable 5-step loop you run on every real test.</p>
+
+    <div class="grid g3">
+      <div class="card"><b>🩺 Doctor</b><br><span class="small mut">Diagnose first, then treat. Tests are for diagnosis, not endless re-testing.</span></div>
+      <div class="card"><b>💪 Gym</b><br><span class="small mut">Muscles grow <i>after</i> the gym. Improvement comes <i>after</i> practice, from the analysis.</span></div>
+      <div class="card"><b>🚜 Farm driver</b><br><span class="small mut">7 yrs driving daily, failed repeatedly; 6 wks proper practice passed. Mindless practice entrenches bad habits.</span></div>
+    </div>
+
+    <h3>The 5 steps</h3>
+    <ol class="steps">
+      <li><b>Get REAL practice tests</b> (never fake) — Cambridge.org, ielts.org, IDP, British Council, Cambridge books. Two or three you've never seen.</li>
+      <li><b>Do them under EXAM CONDITIONS</b> — quiet room, exact 60 minutes, no peeking, don't go 30 seconds over.</li>
+      <li><b>HONEST correction</b> — one letter wrong = wrong. No gifting yourself marks.</li>
+      <li><b>Ask WHY you got each wrong</b> (most important) — write the reason for every ✗, look for <b>patterns</b>. An investment of time, not wasted time.</li>
+      <li><b>WORK ON THE WEAKNESS</b> — turn it into a strength. <b>Biggest weakness first</b> (80/20: fixing it can kill 80–90% of mistakes).</li>
+    </ol>
+    <p class="mut small">Then loop: new test → diagnose new weaknesses → fix → repeat.</p>
+
+    <div class="call key"><div class="h">📏 The readiness rule — when may you book the test?</div>
+      Book <b>only</b> when you score <b>half a band above target, three times in a row.</b> Need Band 8 → hit 8.5+ ×3. If you get 7.5/8/7.5, you'll likely get 7–7.5 on the day (stress, not harder tests). <b>The #1 cause of failure (&gt;99%): booking before ready.</b></div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      ৫ ধাপ — (১) <b>আসল</b> test জোগাড়, (২) <b>exam condition</b>-এ করা, (৩) <b>সৎ</b> correction (এক অক্ষর ভুল = ভুল), (৪) প্রতিটা ভুলের <b>কারণ লিখে</b> প্যাটার্ন বের করা (সবচেয়ে গুরুত্বপূর্ণ), (৫) সেই দুর্বলতা <b>শক্তিতে</b> রূপান্তর — বড় দুর্বলতা আগে। target-এর half band বেশি টানা ৩ বার পেলে তবেই বুক করো।</div>
+  </section>
+
+  <!-- 04 WEAKNESS -->
+  <section class="sect" id="s4" data-s>
+    <h2><span class="badge">04</span> Weakness Analysis — Read Your Wrong Answers</h2>
+    <p class="lead">The one technique 95% of students don't know. Diagnose only from the questions you got <b>wrong</b>.</p>
+
+    <h3>The student case-studies — which one are you?</h3>
+    <div class="grid g2">
+      <div class="card"><b>Student A</b> — wrong only on <b>two question types</b> (e.g. every TFNG + every Matching Headings). → No reading/vocab problem; just needs <b>strategies for those two types</b>.</div>
+      <div class="card"><b>Student B</b> — wrong cluster in <b>Section 3</b>. → <b>Reading skills and/or vocabulary</b> (harder texts). Could be a <b>timing</b> issue.</div>
+      <div class="card"><b>Student C</b> — found the right answer but <b>spelled it wrong</b>. → <b>Pure spelling.</b> (One student went Band 5 → 8 fixing only this.)</div>
+      <div class="card"><b>Student D</b> — wrong cluster on <b>matching</b> types. → Usually a <b>scanning</b> sub-skill issue ("I get lost / run out of time" = can't scan).</div>
+    </div>
+
+    <h3>The 5 mistake categories (master checklist)</h3>
+    <table>
+      <tr><th>#</th><th>Category</th><th>How to spot it</th><th>How to fix it</th></tr>
+      <tr><td>1</td><td><b>Spelling</b></td><td>Right word, wrong letters.</td><td>Log misspellings + correct spelling → 80/20 patterns. Active reading.</td></tr>
+      <tr><td>2</td><td><b>Not reading instructions</b></td><td>Too many words; wrong format.</td><td>A cognitive habit — deliberately practise reading instructions every time.</td></tr>
+      <tr><td>3</td><td><b>Reading skills</b></td><td>Can't locate (scan) / can't get gist (skim) / can't decide in the paragraph (close read).</td><td>Identify the weak sub-skill &amp; drill it.</td></tr>
+      <tr><td>4</td><td><b>Vocabulary</b></td><td>Text feels hard, you get lost.</td><td>No shortcut — active reading + notebook + synonyms over time. Biggest 7→9 gap.</td></tr>
+      <tr><td>5</td><td><b>A particular question type</b></td><td>Consistently fail one type across tests.</td><td>Learn its strategy → practise slowly → speed up.</td></tr>
+    </table>
+
+    <div class="call key"><div class="h">🎯 Prioritisation</div> Fix your <b>biggest weakness first</b>. Hardest, but it makes everything else far easier.</div>
+    <div class="call warn"><div class="h">⚠️ A teacher can't fix this for you</div> Reading is a <b>receiving</b> skill — a teacher can't see your thought process. <b>Self-diagnosis from your wrong answers is more effective than even a teacher beside you.</b></div>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      শুধু <b>ভুল উত্তর</b> বিশ্লেষণ করো। প্রতিটা ভুলকে ৫ ক্যাটাগরির একটায় ফেলো — বানান / instruction / reading skill / vocabulary / নির্দিষ্ট question type। প্যাটার্ন বের করে <b>বড় দুর্বলতা আগে</b> ঠিক করো। reading-এ teacher-এর feedback সীমিত — নিজের self-diagnosis-ই সেরা।</div>
+  </section>
+
+  <!-- 05 SKILLS -->
+  <section class="sect" id="s5" data-s>
+    <h2><span class="badge">05</span> Core Reading Skills</h2>
+    <p class="lead">Strategies just tell you which skill to use, when, and in what order. Here are the skills.</p>
+    <div class="grid g3">
+      <div class="card"><h3 style="margin-top:0">📰 Skim</h3>Read <b>fast for general meaning</b> (like a newspaper). Key skill for <b>Matching Headings</b>.</div>
+      <div class="card"><h3 style="margin-top:0">🎬 Scan</h3>Search for <b>specific info / location</b> (like cinema times). Find <b>where</b> the answer is — not the answer.</div>
+      <div class="card"><h3 style="margin-top:0">🔬 Close reading</h3>Read carefully around the location to <b>decide the answer</b>. <b>Most important &amp; most overlooked</b> — Band 9 students spend most time here.</div>
+    </div>
+
+    <div class="call key"><div class="h">🧭 The golden principle — "Where before what"</div>
+      First find <b>WHERE</b> the answer is (scan), <b>then</b> decide <b>WHAT</b> it is (close read). You focus on one paragraph instead of reading all 6–7.</div>
+
+    <h3>Active vs passive reading</h3>
+    <div class="card">
+      <b>Passive</b> = reading for enjoyment only → near-zero IELTS improvement.<br>
+      <b>Active</b> = reading <i>while working on</i> vocabulary / grammar / spelling / skills: guess unknown words from context then look them up; write words in a notebook with synonyms; notice punctuation.
+      <div class="call tip" style="margin:12px 0 0"><div class="h">⚡ Power line</div> "10 minutes of <b>active</b> reading beats 1 hour of <b>passive</b> reading." And: anyone expecting Band 9 without reading is "insane" — read things you <b>enjoy</b> so it's sustainable.</div>
+    </div>
+
+    <h3>Vocabulary &amp; coping with unknown words</h3>
+    <ul class="clean">
+      <li>The reading test is a <b>vocabulary test</b> — synonyms are how you locate answers. A "time problem" is often a vocabulary problem.</li>
+      <li><b>Guess meaning from context</b>, then confirm — you'll be right 95%+ (this is how natives read).</li>
+      <li><b>Don't panic</b> — ask "do I need this word?" Usually no → move on.</li>
+      <li>Best way to build vocabulary = <b>reading</b> (active + notebook). The range of vocabulary is the big 7→9 difference.</li>
+    </ul>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      ৩টা skill — <b>Skim</b> (দ্রুত general meaning), <b>Scan</b> (উত্তরের <b>জায়গা</b> খোঁজা), <b>Close reading</b> (ওই জায়গা পড়ে উত্তর ঠিক করা — সবচেয়ে গুরুত্বপূর্ণ)। নিয়ম: <b>"Where before what"</b>। <b>Active reading</b> করো — ১০ মিনিট active = ১ ঘণ্টা passive। অজানা শব্দে ভয় নয়, context থেকে আন্দাজ করো।</div>
+  </section>
+
+  <!-- 06 QUESTION TYPES -->
+  <section class="sect" id="s6" data-s>
+    <h2><span class="badge">06</span> All 12 Question Types</h2>
+    <p class="lead">Each = key problem(s) + step-by-step. Two rules run through all: <b>"where before what"</b> &amp; <b>synonym awareness</b>. Click any type to expand.</p>
+    <div class="call warn" style="margin-bottom:16px"><div class="h">⚠️ Don't skip</div> Never assume the types are "all the same." Each tests a different sub-skill. <b>Order tricks:</b> Matching Headings → do <b>FIRST</b>; Matching Information → do <b>LAST</b>; Section 1 → do <b>fast</b>.</div>
+
+    <details class="qt"><summary><span class="num">1</span> Sentence Completion <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problems:</span> not reading instructions (word count); spelling (you write the word).</p>
+      <ol class="steps"><li>Read instructions (word limit).</li><li>Read the incomplete sentences <b>first</b> (not the text).</li><li>Predict the answer type/content.</li><li>Think of synonyms.</li><li>Scan for <b>location</b>.</li><li>Close-read &amp; decide.</li><li>Check spelling.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">2</span> Summary Completion <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problems:</span> instructions/word count; spelling; <b>grammar matters more</b> (noun/verb/adjective?).</p>
+      <ol class="steps"><li>Read instructions.</li><li>Read the summary <b>first</b>.</li><li>Predict content <b>and word type</b> (grammar makes the answer obvious).</li><li>Scan for location; synonyms; "where before what".</li><li>Close-read; <b>check it makes sense</b>.</li><li>Decide &amp; insert.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">3</span> Multiple Choice (MCQ) <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problem:</span> not understanding the <b>difference between options</b>.</p>
+      <ol class="steps"><li>Read question + options carefully <b>first</b>; understand differences.</li><li><b>Skim</b> the text (general meaning).</li><li>Focus on option differences (most important).</li><li>Locate the section (synonyms).</li><li>Close-read.</li><li>Confused? <b>Eliminate</b> the definitely-wrong → compare the 2 left → check text.</li><li>Re-read question; final choice.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">4</span> Short Answer Questions <span class="rare">RARE</span> <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problems:</span> rushing / misreading the <b>question</b>; not understanding words in the text.</p>
+      <ol class="steps"><li>Read &amp; understand the questions first.</li><li>Underline keywords (usually <b>nouns</b>).</li><li>Think synonyms for those nouns.</li><li>Scan for location.</li><li>Close-read.</li><li><b>Re-read the question</b> (your big risk).</li><li>Decide &amp; write (word count + spelling).</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">5</span> Labelling a Diagram / Map <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problems:</span> can't cope with the <b>unfamiliar</b> (they test interpreting an unfamiliar diagram via the text — not topic knowledge); instructions/limit.</p>
+      <ol class="steps"><li>Read instructions (word limit).</li><li><b>Study the diagram — don't panic.</b></li><li>Highlight keywords on it.</li><li>Look at the gaps; predict.</li><li>Scan to find location.</li><li>Read in detail; choose.</li><li>Check spelling.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">6</span> True / False / Not Given <span class="deep">DEEP DIVE → §07</span> <span class="arr">▸</span></summary>
+      <div class="body"><p>About <b>facts</b>. <span class="kp">Key problems:</span> online misinformation; not knowing what "Not Given" means; wasting time hunting what isn't there; over-focusing on keywords vs whole sentence.</p>
+      <ol class="steps"><li>Read instructions (confirm TFNG not YNNG).</li><li>Read the <b>whole statement</b>; note qualifying words.</li><li>Think synonyms.</li><li>Match to <b>location</b>.</li><li>Re-read statement; close-read section.</li><li>Decide: matches→True, contradicts→False, not there→Not Given.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">7</span> Yes / No / Not Given <span class="deep">DEEP DIVE → §07</span> <span class="arr">▸</span></summary>
+      <div class="body"><p>Same as TFNG <b>but about the writer's OPINION</b>. <span class="kp">Key problems:</span> confusing fact (TFNG) vs opinion (YNNG); not grasping the writer's opinion; confusing the <b>writer's</b> opinion with <b>other people's</b>.</p>
+      <p>Strategy = identical to TFNG, focused on the writer's view: Yes = agrees, No = disagrees, Not Given = no info on the writer's opinion.</p></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">8</span> Matching Sentence Endings <span class="rare">RARE</span> <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problem:</span> using your own <b>logic/grammar</b> instead of the <b>text</b>.</p>
+      <ol class="steps"><li>Read the sentence <b>beginnings</b> first.</li><li>Predict endings before looking.</li><li>Read endings; match the obvious ones.</li><li>Eliminate obviously wrong; shortlist 1–2.</li><li>Locate, close-read, choose — <b>based on the TEXT</b>.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">9</span> Matching Names <span class="arr">▸</span></summary>
+      <div class="body"><p>Often research findings, toward the end. <span class="kp">Key problem:</span> matching names fast without reading detail (tired/rushed).</p>
+      <ol class="steps"><li>Scan &amp; <b>underline</b> each name in the text.</li><li>Start with names mentioned <b>only once</b> (small area → fast).</li><li>Read that part in detail; match.</li><li><b>Delete the matched statement</b>.</li><li>Move to next single-mention name; then twice-mentioned; repeat.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">10</span> Matching Information ("which paragraph…") <span class="arr">▸</span></summary>
+      <div class="body"><p><span class="kp">Key problem:</span> must consider the <b>whole text</b>.</p>
+      <ol class="steps"><li><b>Do this LAST</b> in the section (skip if it appears first).</li><li>Read questions first; synonyms.</li><li>Skim the whole text.</li><li>Re-read questions; think location (some obvious).</li><li>Scan &amp; underline.</li><li>Mark correct if you can.</li><li>Stuck? <b>Move on</b> — the answer often appears in the next paragraph.</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">11</span> Table / Flowchart Completion <span class="arr">▸</span></summary>
+      <div class="body"><p>Table = more common in Academic; flowchart common in GT. <span class="kp">Key problem:</span> not reading instructions (word/number limit).</p>
+      <ol class="steps"><li>Read instructions carefully.</li><li>Scan to locate the correct paragraph.</li><li><b>Read carefully</b> (don't just skim).</li><li><b>Transfer words EXACTLY.</b></li><li>Check spelling (you're copying — "no excuse").</li></ol></div>
+    </details>
+
+    <details class="qt"><summary><span class="num">12</span> Matching Headings <span class="deep">DEEP DIVE → §08</span> <span class="arr">▸</span></summary>
+      <div class="body"><p>Always more headings than paragraphs. Tests the <b>general meaning</b> of each paragraph. <span class="kp">Key problems:</span> too much info; reading only first/last sentence or keywords; not differentiating similar headings.</p>
+      <ol class="steps"><li><b>Do this FIRST</b> in the section.</li><li><b>Ignore the headings</b> at first.</li><li>Read each paragraph &amp; <b>write your own heading</b>.</li><li>Then read the headings; understand differences.</li><li>Match the obvious ones.</li><li>Close-read the rest; move on if stuck.</li></ol></div>
+    </details>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      প্রতিটা type আলাদা sub-skill টেস্ট করে। প্রায় সব ক্ষেত্রে: আগে প্রশ্ন পড়ো, synonym ভাবো, <b>"আগে কোথায়, পরে কী"</b>, তারপর close reading। Completion/diagram/table-এ <b>word limit + বানান</b>। <b>Matching Headings আগে, Matching Information শেষে।</b> আটকে গেলে confidence নিয়ে পরেরটায় যাও।</div>
+  </section>
+
+  <!-- 07 TFNG -->
+  <section class="sect" id="s7" data-s>
+    <h2><span class="badge">07</span> TFNG &amp; YNNG — Masterclass</h2>
+    <p class="lead">The most-feared type. Full VIP treatment + the personalisation technique.</p>
+
+    <h3>The 4 key problems (TFNG)</h3>
+    <ul class="clean">
+      <li><b>Misinformation</b> — most online teachers aren't examiners.</li>
+      <li><b>Not knowing what "Not Given" means</b> → hunting for something that isn't there → wrecks other questions too.</li>
+      <li><b>Failing to understand the whole sentence</b> (the keyword trap).</li>
+      <li><b>Getting lost</b> in the text wasting time.</li>
+    </ul>
+
+    <h3>Tips before the strategy</h3>
+    <div class="grid g2">
+      <div class="card"><b>1. Ignore outside knowledge / common sense.</b> Use only the text. You can't get Band 9 "without reading the text."</div>
+      <div class="card"><b>2. Spot QUALIFYING words</b> — some vs all, many, female vs male polar bear. They test whole-sentence understanding.</div>
+      <div class="card"><b>3. There's always ≥1 True, ≥1 False, ≥1 Not Given.</b> Deduce the leftover if confident on the rest.</div>
+      <div class="card"><b>4. Don't rely on skim/scan</b> — the main skill is <b>close reading</b> (skim/scan are its opposite).</div>
+      <div class="card"><b>5. Be aware of synonyms</b> — bone → skeleton / skeletal system.</div>
+      <div class="card"><b>6. Can't find it? Write "NG"</b> and move on; re-check later. It's probably Not Given.</div>
+    </div>
+
+    <div class="call key"><div class="h">🧠 The personalisation technique — kills "Not Given" confusion</div>
+      Practise with facts about <b>yourself</b>. Statement = "Chris is 40." →
+      <b>True:</b> "born 16 Dec 1982" (agrees). <b>False:</b> "Chris is 21" (contradicts). <b>Not Given:</b> "Chris is middle-aged" (related, but not enough info — could be 40 or 55).
+      Second: nationality. "married to a Vietnamese woman, sons have Vietnamese passports" → <i>is he Vietnamese?</i> <b>We don't know → Not Given.</b> <b>Never</b> import outside knowledge. Do it 2–3× → on test day anchor to a fact about yourself.</div>
+
+    <div class="call tip"><div class="h">✅ Decision logic (keep it simple)</div>
+      First: <b>is it there at all?</b> No → <b>Not Given</b>. If there: meaning matches → <b>True</b>; you can correct/contradict it → <b>False</b>. (Trick: if you can <i>correct the statement</i> to make it true, it's False.)</div>
+
+    <h3>Worked example 🐻</h3>
+    <div class="card"><i>"Polar bears suffer from various health problems due to fat under their skin."</i> → text: humans with that much fat would be obese/diabetic, <b>"yet the polar bear experiences no such consequences."</b> Statement says <i>suffer</i>; text says <b>no consequences</b> → <b>FALSE.</b></div>
+
+    <h3>Yes / No / Not Given</h3>
+    <div class="card">Same format, about the <b>writer's opinion</b>. Extra trap: <b>confusing the writer's opinion with other people's</b> (if only "Jason" says it and the writer doesn't comment → Not Given). Strategy = TFNG, focused on the writer.</div>
+
+    <div class="call amber"><div class="h">🎓 Band 9 students confirm</div>
+      Shrubani &amp; Priyanka both stopped reading the passage blindly and started <b>comparing paragraph vs statement</b>; the repeated mantra: <b>develop the confidence to write "Not Given" and move on.</b> A short clip ≠ mastery — needs slow practice until automatic.</div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      TFNG = <b>তথ্য</b>; YNNG = <b>লেখকের মতামত</b> — গুলিও না। নিয়ম: আগে দেখো তথ্য <b>আছে কিনা</b> — না থাকলে Not Given; থাকলে মিললে True, বিরোধ করলে (বা statement "শুদ্ধ" করা গেলে) False। শুধু keyword নয়, <b>পুরো বাক্যের মানে</b>; qualifying words খেয়াল; বাইরের জ্ঞান নয়। নিজের সম্পর্কে fact দিয়ে অনুশীলন করো। সবচেয়ে বড় শিক্ষা: <b>"Not Given" লেখার সাহস</b>।</div>
+  </section>
+
+  <!-- 08 MATCHING HEADINGS -->
+  <section class="sect" id="s8" data-s>
+    <h2><span class="badge">08</span> Matching Headings — Masterclass</h2>
+    <p class="lead">Harder than TFNG for most — but easy with one transformative move. This single tip has taken hundreds of students from ~6→8 or ~7→9.</p>
+
+    <div class="grid g2">
+      <div class="card"><b>What it tests:</b> the <b>general meaning of each whole paragraph</b> (NOT keywords or single sentences) + differentiating <b>similar headings</b>.</div>
+      <div class="card"><b>Common problems:</b> too much info; reading only first/last sentence or keywords; not understanding heading differences; missing the general meaning.</div>
+    </div>
+
+    <div class="call key"><div class="h">⭐ The transformative technique — "write your OWN heading first"</div>
+      You can't title a paragraph without understanding it — so writing your own heading <b>forces</b> you to do exactly what's tested.</div>
+
+    <ol class="steps">
+      <li><b>Do this question FIRST</b> in its section (you read the whole text anyway → other questions get easier).</li>
+      <li><b>DO NOT look at the given headings</b> first (looking first → confusion).</li>
+      <li><b>Read each paragraph &amp; write YOUR OWN heading</b> (carefully, not skimming too fast). If a section is 2–3 paragraphs, write <b>ONE</b> heading for the main idea.</li>
+      <li><b>Then</b> look at the headings; understand the <b>differences in meaning</b>.</li>
+      <li><b>Match the obvious ones</b> — yours often matches a given heading exactly/nearly → correct.</li>
+      <li>For the rest: close-read &amp; compare meaning differences. Cover others with a ruler, or write the 2 similar ones side by side.</li>
+      <li>If stuck: <b>guess &amp; come back</b> (don't burn 5–10 min).</li>
+    </ol>
+
+    <h3>Worked example 🤖 (AI passage, Q27)</h3>
+    <div class="card">3 paragraphs: AI benefits → AI better than humans but distrusted → why distrust. Your single heading: <b>"AI is better at many things than humans."</b> Match → <b>"The superiority of AI projections over those made by humans"</b> ✅. Traps ("people don't like relying on AI") are <b>details</b>, not the paragraph's general meaning.</div>
+
+    <div class="call amber"><div class="h">🎓 Band 9 students confirm</div> Priyanka, Jaswant &amp; Shrubani all said: <b>don't read headings first — write your own, then match.</b> Jaswant credited this one tip for a "perfect" reading score; Shrubani stressed slow practice + memorising the strategy.</div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      <b>আগে দেওয়া heading দেখবে না।</b> প্রতিটা paragraph পড়ে <b>নিজে একটা heading লেখো</b> (এতে বাধ্য হয়ে general meaning বুঝবে — এটাই টেস্ট)। <b>তারপর</b> heading মিলিয়ে দেখো — হুবহু/প্রায় মিললে সেটাই উত্তর। এই type <b>section-এ আগে</b> করো। keyword/প্রথম-শেষ লাইনে আটকে থেকো না।</div>
+  </section>
+
+  <!-- 09 TIME -->
+  <section class="sect" id="s9" data-s>
+    <h2><span class="badge">09</span> The Time-Management Truth</h2>
+    <p class="lead">The most counter-intuitive lesson: time-management "tips" don't exist.</p>
+
+    <div class="call key"><div class="h">🏃 The Usain Bolt principle</div>
+      Runners behind Bolt don't lose on <b>time management</b> — Bolt is just <b>better at running</b>. He didn't Google "time tips" the night before — he spent years getting faster. <b>You finish on time because you're better at reading</b> (skills + vocabulary + strategy + practice), not because of tricks. <span class="mut">(Chris got Band 9 in 20 minutes — he's a native-speaker IELTS teacher.)</span></div>
+
+    <div class="grid g2">
+      <div class="card"><h3 style="margin-top:0">⚙️ Speed = automaticity</h3>Master a strategy per type until it's <b>automatic</b> (like riding a bike). That speed comes from mastery + reduces stress &amp; cognitive load.</div>
+      <div class="card"><h3 style="margin-top:0">⏱️ The one real time-habit: section pacing</h3>Sections get harder (1→3). <b>Don't spend equal time.</b> Do <b>Section 1 fast &amp; accurate</b>, bank time for Section 3. (Jaswant: Sections 1–2 in ~30 min. Shrubani: tracked section times in Excel, drove Section-1 time 10→7→5 min.)</div>
+    </div>
+
+    <div class="call tip"><div class="h">🐢→🐇 Slow then fast</div>
+      Beginners: practise <b>extremely slowly</b> (even 30–60 min for 6 TFNG) — goal is perfecting the strategy, not speed. Then build up: 3–4 hrs → 2.5 → 2 → 1.5 → 1h15 → 1h05 → <b>60 min</b>. (Driving lesson 1 isn't at 100 mph.)</div>
+
+    <div class="call warn"><div class="h">⚠️ The trap</div> A "time problem" is often a <b>vocabulary problem</b> (can't find words fast enough). Fix vocabulary &amp; the speed follows.</div>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      Time-management "tips" নেই — Usain Bolt-এর মতো, তুমি সময়ে শেষ করো কারণ <b>reading-এ ভালো</b>। strategy এতবার অনুশীলন করো যেন চিন্তা ছাড়াই প্রয়োগ হয়। আসল time-habit: <b>Section 1-এ কম সময়</b>, কঠিন Section 3-এর জন্য সময় জমাও। শুরুতে খুব ধীরে, পরে গতি বাড়াও।</div>
+  </section>
+
+  <!-- 10 PRACTICE -->
+  <section class="sect" id="s10" data-s>
+    <h2><span class="badge">10</span> Practice Principles</h2>
+    <p class="lead">Practice done wrong makes you worse. Here's how Band 9 students use it.</p>
+
+    <h3>Where to get REAL tests (only here)</h3>
+    <div class="grid g3">
+      <div class="card">Cambridge.org</div><div class="card">ielts.org</div><div class="card">IDP</div>
+      <div class="card">British Council</div><div class="card">Cambridge IELTS books</div>
+      <div class="card amber" style="color:var(--amb)"><b>❌ Everything else = fake</b><br><span class="small">90–95% of online PDFs are fake → cause failure.</span></div>
+    </div>
+    <p class="small mut">Books cost ~$20–30 but are effectively free vs ~$200–300 wasted per failed attempt. Fake tests are either too easy (false confidence → fail) or too hard (lose confidence → give up).</p>
+
+    <h3>The 5 practice principles</h3>
+    <ol class="steps">
+      <li><b>Practice does NOT make perfect</b> (7-yrs-on-the-farm driver failed; 6-wks-proper passed). Mindless practice entrenches bad habits.</li>
+      <li><b>Most practice tests are fake</b> (only the 5 sources are safe).</li>
+      <li><b>Improvement comes AFTER practice</b> (gym: muscles grow after, not during).</li>
+      <li><b>The real goal of practice = establish weaknesses</b> (doctor: diagnose, then treat).</li>
+      <li><b>Slow vs fast practice</b> are different (below).</li>
+    </ol>
+
+    <div class="grid g2">
+      <div class="card"><h3 style="margin-top:0">🐢 Slow practice</h3>When <b>learning a strategy / fixing a weakness</b>. Time &amp; score don't matter — only mastering steps.</div>
+      <div class="card"><h3 style="margin-top:0">🐇 Fast (exam-condition) practice</h3>When <b>finding weaknesses / checking readiness</b>: ① don't cheat ② exact timing ③ honest correction ④ convert to a band score.</div>
+    </div>
+
+    <div class="call key"><div class="h">📏 Readiness rule</div> Book only when you score <b>half a band above target, 3 times in a row.</b> #1 failure cause: booking before ready.</div>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      আসল test শুধু ৫ জায়গা থেকে — অনলাইন free PDF-এর ৯০–৯৫% ভুয়া। ৫ principle: practice নিজে perfect বানায় না; বেশিরভাগ ভুয়া; উন্নতি practice-এর <b>পরে</b>; আসল লক্ষ্য <b>দুর্বলতা খোঁজা</b>; slow vs fast আলাদা। Readiness: half band বেশি টানা ৩ বার।</div>
+  </section>
+
+  <!-- 11 MYTHS -->
+  <section class="sect" id="s11" data-s>
+    <h2><span class="badge">11</span> The "2026 Changes" — Myths vs Facts</h2>
+    <p class="lead">Only IDP, British Council &amp; Cambridge English announce changes. None announced these → it's noise.</p>
+
+    <div class="call key"><div class="h">🧭 The meta-rule</div>
+      No teacher has thousands of tests from every centre worldwide — so trend claims are <b>hunches/clicks</b>, not data. One video scares you, another gives false hope — both for clicks. <b>Correct response to every rumour: prepare for EVERY question type with a separate strategy.</b></div>
+
+    <table>
+      <tr><th>Claim</th><th>Area</th><th>Verdict</th></tr>
+      <tr><td>Question-type frequency changed</td><td>Reading</td><td>❌ No source. Prepare all types.</td></tr>
+      <tr><td>"Answers are more scattered"</td><td>Reading</td><td>❌ Types always had different patterns.</td></tr>
+      <tr><td>"Reading is more organised"</td><td>Reading</td><td>❌ Contradicts the above — proof it's clicks. No "one magic strategy."</td></tr>
+      <tr><td>Maps becoming rare (Google Maps)</td><td>Listening</td><td>❌ Cambridge plans years ahead; heard as "don't prepare maps" → danger.</td></tr>
+      <tr><td>Part 3 = only 3 question types</td><td>Listening</td><td>❌ No evidence. Prepare all.</td></tr>
+      <tr><td>More diverse accents now</td><td>Listening</td><td>❌ Always mixed; mostly very clear. Practise variety.</td></tr>
+      <tr><td>Mostly opinion + double questions</td><td>Writing</td><td>❌ Always common; no increase. Prepare all essay types.</td></tr>
+      <tr><td>Predict new monthly topics</td><td>Speaking</td><td>❌ Memorising/predicting = quickest way to FAIL (examiners spot it).</td></tr>
+    </table>
+
+    <div class="call key"><div class="h">✅ The only real change that matters</div>
+      The test hasn't changed — your <b>approach</b> must. IELTS doesn't reward tricks; it rewards <b>real English skills</b>. Follow a structured plan with question-specific strategies for every type.</div>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      ২০২৬-এর "পরিবর্তন" বেশিরভাগই গুজব — শুধু IDP, British Council, Cambridge official, তারা কিছু বলেনি। সব গুজবের একটাই উত্তর: <b>প্রতিটা type-এর strategy নিয়ে প্রস্তুত থাকো</b>। speaking-এ টপিক মুখস্থ/প্রেডিক্ট = ফেল। আসল পরিবর্তন একটাই — তোমার <b>approach</b>।</div>
+  </section>
+
+  <!-- 12 DEMO -->
+  <section class="sect" id="s12" data-s>
+    <h2><span class="badge">12</span> Lessons from the Live Demo Test</h2>
+    <p class="lead">The strategies in action — concrete, reusable lessons from the worked walkthrough.</p>
+
+    <div class="call tip"><div class="h">🔧 Pre-flight move (every section)</div>
+      First check <b>which question types</b> are in the section. If Matching Headings is present, do it <b>first</b>; Matching Information <b>last</b>; else dive in.</div>
+
+    <h3>🌞 Part 1 — Diagram + Sentence Completion + TFNG</h3>
+    <ul class="clean">
+      <li><b>Diagram:</b> study it first; a wrong prediction is fine; arrows/visual details <b>confirm</b> the location (the up/down arrows matched "hot material rises and plunges").</li>
+      <li><b>Completion:</b> predict by <b>grammar</b> &amp; <b>eliminate</b> ungrammatical options — grammar reveals the answer even if you don't know the science (plasma/helium). <b>Synonyms decide it</b> (fraction = small proportion; sunburn = skin damage).</li>
+      <li><b>TFNG:</b> hinges on <b>qualifying words</b> — "only two elements" vs "almost entirely" → <b>False</b>. Where text never compares/quantifies ("most of the surface", light speed) → <b>Not Given</b>, not False.</li>
+    </ul>
+
+    <h3>🌊 Part 2 — Matching Headings + Short Answer + MCQ</h3>
+    <ul class="clean">
+      <li>Matching Headings <b>first</b>; self-headings matched given ones near-exactly → delete used headings → eliminate.</li>
+      <li><b>Vocabulary decisive:</b> not knowing "dairy industry" → wrong answer. Trim to word limit ("high levels of water pollution" → <b>"water pollution"</b>).</li>
+      <li><b>MCQ trap:</b> "as big as Texas" appears, but text says <b>"some have theorised"</b> (theory ≠ fact) → answer is <b>"of unknown size."</b> Keywords give location, not the answer.</li>
+    </ul>
+
+    <h3>🗺️ Part 3 — Table + Matching Information + Matching Names</h3>
+    <ul class="clean">
+      <li><b>Table:</b> mind word limit ("the king and queen"); confirm "he" = Columbus before writing.</li>
+      <li><b>Matching Info:</b> "rebuffed" = refused (guess from context); move on if not found.</li>
+      <li><b>Matching Names:</b> start with <b>once-mentioned</b> names (Pizarro); use elimination for the heavily-mentioned (Columbus).</li>
+    </ul>
+
+    <div class="card"><b>Two big takeaways:</b> ① strategy + correct <b>order</b> saves huge time; ② it's reading + vocabulary <b>AND</b> being smart (strategy/order) — together.</div>
+    <div class="call bn"><div class="h">🇧🇩 বাংলায়</div>
+      প্রতি section-এ আগে type চেক করো (Matching Headings আগে)। diagram আগে বোঝো। completion-এ grammar দিয়ে predict ও eliminate; synonym-ই উত্তর মেলায়। TFNG-তে qualifying words; text তুলনা/পরিমাণ না দিলে Not Given। MCQ-তে keyword শুধু জায়গা দেয় ("some theorise" ≠ "is known to")।</div>
+  </section>
+
+  <!-- 13 ROADMAP -->
+  <section class="sect" id="s13" data-s>
+    <h2><span class="badge">13</span> The Master Action Roadmap</h2>
+    <p class="lead">Everything fused into one do-this-in-order plan. Tick items off — your progress saves automatically.</p>
+
+    <div class="phase">Phase 0 — Mindset reset</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Accept: more passages alone won't raise my score (it can lower it).</span></li>
+      <li><span class="box">✓</span><span>Accept: each question type needs its own mastered, automatic strategy.</span></li>
+      <li><span class="box">✓</span><span>Accept: tricks don't work; vocabulary + skills + strategy + correct practice do.</span></li>
+      <li><span class="box">✓</span><span>Accept: this takes time — rushing = failing.</span></li>
+    </ul>
+
+    <div class="phase">Phase 1 — Learn a strategy for every question type (Tire 1)</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Study all 12 question-type strategies (§06).</span></li>
+      <li><span class="box">✓</span><span>Deep-dive TFNG/YNNG (§07) + Matching Headings (§08).</span></li>
+      <li><span class="box">✓</span><span>Master each = recite steps with no notes; do the TFNG personalisation exercise 2–3×.</span></li>
+    </ul>
+
+    <div class="phase">Phase 2 — Master via SLOW practice (Tire 2, Goal 1)</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Use real Cambridge questions; take as long as needed; time &amp; score don't matter yet.</span></li>
+      <li><span class="box">✓</span><span>Build speed only gradually (90→80→70→60 min).</span></li>
+    </ul>
+
+    <div class="phase">Phase 3 — Find weaknesses via FAST practice (Tire 2 Goal 2 → Tire 3)</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Do 2–3 real tests under exam conditions (60 min, no cheating).</span></li>
+      <li><span class="box">✓</span><span>Honest correction; convert to a band score.</span></li>
+      <li><span class="box">✓</span><span>For every wrong answer, write WHY → classify into the 5 categories → find the pattern.</span></li>
+    </ul>
+
+    <div class="phase">Phase 4 — Fix the biggest weakness first (Tire 4)</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Sniper, not shotgun — pick the 1–2 dominant weaknesses.</span></li>
+      <li><span class="box">✓</span><span>Route each to its fix (spelling-log / instructions-drill / sub-skill drill / vocab / question-type mastery).</span></li>
+      <li><span class="box">✓</span><span>Daily active reading on topics I enjoy + vocabulary notebook with synonyms.</span></li>
+    </ul>
+
+    <div class="phase">Phase 5 — Re-test, re-diagnose, repeat</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>New real test → check improvement → find new weaknesses → fix. Loop.</span></li>
+    </ul>
+
+    <div class="phase">Phase 6 — Only now, book the test</div>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Book only after scoring half a band above target, 3 times in a row.</span></li>
+    </ul>
+
+    <h3>✅ Test-day execution checklist</h3>
+    <ul class="chk" data-chk>
+      <li><span class="box">✓</span><span>Per section: check types → Matching Headings FIRST, Matching Information LAST.</span></li>
+      <li><span class="box">✓</span><span>Section 1 fast + accurate → bank time for Section 3.</span></li>
+      <li><span class="box">✓</span><span>Every question: read instructions → read statement fully → predict → synonyms → "where before what" → close-read → decide.</span></li>
+      <li><span class="box">✓</span><span>Completion/table/diagram: transfer exactly, obey word limit, check spelling.</span></li>
+      <li><span class="box">✓</span><span>TFNG/YNNG: fact vs opinion; not there → Not Given (confidence!); watch qualifiers.</span></li>
+      <li><span class="box">✓</span><span>MCQ: understand option differences; eliminate; keyword = location only.</span></li>
+      <li><span class="box">✓</span><span>Stuck? Mark a guess, move on, come back. Don't burn 5–10 min.</span></li>
+      <li><span class="box">✓</span><span>Unknown word? Guess from context; usually move on; don't panic.</span></li>
+    </ul>
+
+    <div class="call key"><div class="h">🎓 Band 9 interviewees — pooled advice</div>
+      Every type needs its own strategy · blindly follow once mastered · write your own headings · TFNG: confidence to write Not Given · time management isn't a thing (read enjoyable topics + vocab notes) · section pacing · slow practice to learn then speed up · master strategies to remove fear of hated types.</div>
+
+    <div class="call tip"><div class="h">▶️ Next refinement passes (gradual)</div>
+      Full Bangla translation throughout · attach worked examples from your Cambridge 11–20 books to each type · a printable one-page cheat sheet.</div>
+
+    <div class="call bn"><div class="h">🇧🇩 বাংলায় সারাংশ</div>
+      ০) mindset ঠিক করো ১) প্রতিটা type-এর strategy রপ্ত ২) ধীরে practice করে master ৩) ২–৩টা real test exam condition-এ, প্রতি ভুলের কারণ লিখে ৫ ক্যাটাগরিতে প্যাটার্ন ৪) বড় দুর্বলতা আগে ঠিক (active reading + vocab) ৫) আবার test → loop ৬) half band বেশি টানা ৩ বার পেলে তবেই বুক করো।</div>
+
+    <div class="src">Source: <code>reading_IELTS_Advantage.md</code> — IELTS Advantage (Chris) reading masterclasses (~9 videos). Full text knowledge base lives alongside this file as <code>00–13 *.md</code>. Nothing trimmed.</div>
+  </section>
+
+</main>
+</div>
+
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
+
+<script>
+  // mobile menu
+  const aside=document.getElementById('aside'), menubtn=document.getElementById('menubtn');
+  menubtn.addEventListener('click',()=>aside.classList.toggle('open'));
+  document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>aside.classList.remove('open')));
+
+  // active nav on scroll
+  const links=[...document.querySelectorAll('#nav a')];
+  const map={};links.forEach(a=>{const id=a.getAttribute('href').slice(1);map[id]=a;});
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(l=>l.classList.remove('active'));if(map[id])map[id].classList.add('active');}});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('[data-s]').forEach(s=>obs.observe(s));
+
+  // back to top
+  const totop=document.getElementById('totop');
+  addEventListener('scroll',()=>{totop.classList.toggle('show',scrollY>600);});
+  totop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+  // checklist with localStorage
+  let cid=0;
+  document.querySelectorAll('[data-chk] li').forEach(li=>{
+    const key='ielts-rd-chk-'+(cid++);
+    if(localStorage.getItem(key)==='1')li.classList.add('done');
+    li.addEventListener('click',()=>{
+      li.classList.toggle('done');
+      localStorage.setItem(key, li.classList.contains('done')?'1':'0');
+    });
+  });
+
+  // search filter
+  const q=document.getElementById('q');
+  const sections=[...document.querySelectorAll('main .sect')];
+  q.addEventListener('input',()=>{
+    const t=q.value.trim().toLowerCase();
+    if(!t){sections.forEach(s=>s.classList.remove('hide'));document.querySelectorAll('.qt').forEach(d=>d.removeAttribute('open'));return;}
+    sections.forEach(s=>{
+      const hit=s.textContent.toLowerCase().includes(t);
+      s.classList.toggle('hide',!hit);
+      // auto-open matching question-type accordions
+      s.querySelectorAll('.qt').forEach(d=>{
+        if(d.textContent.toLowerCase().includes(t))d.setAttribute('open','');
+      });
+    });
+  });
+</script>
+</body>
+</html>
